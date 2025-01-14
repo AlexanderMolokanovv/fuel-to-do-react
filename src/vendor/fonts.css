@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'MADE';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("MADE-Regular.woff2?") format("woff2"),
+       url("MADE-Regular.woff?") format("woff");
+}
+
+@font-face {
+  font-family: 'MADE';
+  font-style:  normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("MADE-Medium.woff2?") format("woff2"),
+       url("MADE-Medium.woff?") format("woff");
+}
+
+@font-face {
+  font-family: 'MADE';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("MADE-Bold.woff2?") format("woff2"),
+        url("MADE-Bold.woff?") format("woff");
+}
+
+@font-face {
+  font-family: 'MADE-EVO';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("MADE-Regular-EVO.woff2?") format("woff2"),
+       url("MADE-Regular-EVO.woff?") format("woff");
+}
+
+@font-face {
+  font-family: 'MADE-EVO';
+  font-style:  normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("MADE-Medium-EVO.woff2?") format("woff2"),
+       url("MADE-Medium-EVO.woff?") format("woff");
+}
+
+@font-face {
+  font-family: 'MADE-EVO';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("MADE-Bold-EVO.woff2?") format("woff2"),
+        url("MADE-Bold-EVO.woff?") format("woff");
+}

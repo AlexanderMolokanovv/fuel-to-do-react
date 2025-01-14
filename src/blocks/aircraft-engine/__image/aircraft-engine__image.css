@@ -1,0 +1,15 @@
+.aircraft-engine__image {
+    background-image: url(../../../components/images/engine.svg);
+    background-size: 100%;
+    background-position: center;
+    cursor: pointer;
+    background-repeat: no-repeat;
+
+    display: block;
+    opacity: 1;
+    border: none;
+    /* background-color: transparent; */
+    width: 70px;
+    height: 60px;
+    border-radius: 12px;
+}

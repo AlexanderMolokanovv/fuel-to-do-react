@@ -1,0 +1,29 @@
+.header__name {
+    /* text-align: center; */
+
+    margin: 0;
+    padding: 0;
+    max-width: 829px;
+    /* font-size: 42px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 48px;
+    text-align: left;
+    max-width: 294px;
+    text-overflow: ellipsis; */
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    filter: drop-shadow(0 4px 2px  rgba(0, 0, 0, 0.25));
+    color: rgb(56, 56, 56);
+    /* shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 58px;
+    letter-spacing: 0%;
+    text-align: center;
+    font-family: 'MADE-EVO';
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+    /* width: 829px; */
+    /* height: 204px; */
+
+}

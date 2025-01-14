@@ -1,0 +1,5 @@
+.aircraft-engine-box {
+    display: flex;
+    flex-direction:row;
+width: 570px;
+}

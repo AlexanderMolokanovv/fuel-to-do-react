@@ -1,0 +1,18 @@
+.aircraft-type__rocket{
+    background-image: url(../../../components/images/rocket.svg);
+    background-size: 40%;
+    background-position: center;
+    cursor: pointer;
+    background-repeat: no-repeat;
+
+    display: block;
+    opacity: 1;
+    border: none;
+    /* background-color: transparent; */
+    width: 70px;
+    height: 60px;
+    border-radius: 12px;
+    /* background-color: rgb(255, 255, 255); */
+
+    /* background: linear-gradient(226.17deg, rgb(11, 50, 255) 0%,rgb(188, 47, 255) 98.278%); */
+}
