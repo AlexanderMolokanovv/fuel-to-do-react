@@ -23,8 +23,9 @@ code {
 @import url(./blocks/section-content/__name/section-content__name.css);
 @import url(./blocks/aircraft-type/__name/aircraft-type__name.css);
 @import url(./blocks/aircraft-type/aircraft-type.css);
-@import url(./blocks/aircraft-engine-box/aircraft-engine-box.css);
+@import url(./blocks/box-two-containers/box-two-containers.css);
 @import url(./blocks/aircraft-engine/aircraft-engine.css);
 @import url(./blocks/aircraft-type/__aircraft/aircraft-type__aircraft.css);
 @import url(./blocks/aircraft-type/__rocket/aircraft-type__rocket.css);
 @import url(./blocks/aircraft-engine/__image/aircraft-engine__image.css);
+@import url(./blocks/main-content/main-content.css);

@@ -43,11 +43,11 @@ function App() {
 
         <main className="main-content">
           <section className="section-content">
-            <h1 className="section-content__name">Характеристики летательного аппарата</h1>
+            <h1 className="section-content__name">Техническое задание</h1>
             <div className="aircraft">
-              <div className="aircraft-engine-box">
+              <div className="box-two-containers">
                 <div className="aircraft-type">
-                  <h2 className="aircraft-type__name">Выберете облик летательного аппарата</h2>
+                  <h2 className="aircraft-type__name">Облик летательного аппарата</h2>
                   <button
                     className="aircraft-type__aircraft"
                     type="button"
@@ -57,11 +57,7 @@ function App() {
                     className="aircraft-type__rocket"
                     type="button"
                   // onClick={onEditAvatar}
-                  ></button>
-
-
-
-                  
+                  ></button>      
                 </div>
                 <div className="aircraft-engine ">
                   <img
@@ -80,6 +76,11 @@ function App() {
                   // src={currentUser?.avatar}
                   alt="Изображение двигателя"
                 />
+
+
+
+                <h1 className="section-content__name">Характеристики летательного аппарата</h1>
+            
                 <h2 className="aircraft-weight__name">Масса летательного аппарата</h2>
                 <div className="aircraft-weight__data">
                 </div>

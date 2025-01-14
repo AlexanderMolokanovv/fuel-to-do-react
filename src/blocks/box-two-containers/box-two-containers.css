@@ -1,5 +1,5 @@
-.aircraft-engine-box {
+.box-two-containers {
     display: flex;
     flex-direction:row;
-width: 570px;
+width: 100%;
 }
