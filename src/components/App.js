@@ -46,28 +46,39 @@ function App() {
             <h1 className="section-content__name">Техническое задание</h1>
             <div className="aircraft">
               <div className="box-two-containers">
-                <div className="aircraft-type">
-                  <h2 className="aircraft-type__name">Облик летательного аппарата</h2>
+                <div className="data-conteiner">
+                  <h2 className="data-conteiner__name">Облик летательного аппарата</h2>
                   <button
-                    className="aircraft-type__aircraft"
+                    className="data-conteiner__aircraft"
                     type="button"
                   // onClick={onEditAvatar}
                   ></button>
                   <button
-                    className="aircraft-type__rocket"
+                    className="data-conteiner__rocket"
                     type="button"
                   // onClick={onEditAvatar}
-                  ></button>      
+                  ></button>
                 </div>
-                <div className="aircraft-engine ">
+
+
+
+
+
+
+
+
+
+
+                <div className="data-conteiner">
                   <img
                     className="aircraft-engine__image"
                     // src={currentUser?.avatar}
                     alt="Изображение двигателя"
                   />
-                  <h2 className="aircraft-engine__name aircraft-type__name">Выбор двигателя</h2>
+                  <h2 className="data-conteiner__name">Выбор двигателя</h2>
                   <div className="aircraft-engine__list">
                   </div>
+                  
                 </div>
               </div>
               <div className="aircraft-weight">
@@ -80,7 +91,7 @@ function App() {
 
 
                 <h1 className="section-content__name">Характеристики летательного аппарата</h1>
-            
+
                 <h2 className="aircraft-weight__name">Масса летательного аппарата</h2>
                 <div className="aircraft-weight__data">
                 </div>
