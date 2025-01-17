@@ -43,13 +43,12 @@ function App() {
 
         <main className="main-content">
           <section className="section-content">
-            <h1 className="section-content__name">Техническое задание</h1>
+            <h1 className="section-content__name">Характеристики летательного аппарата</h1>
             <div className="aircraft">
               <div className="box-two-containers">
                 <div className="data-conteiner">
                   <h2 className="data-conteiner__name">Облик летательного аппарата</h2>
                   <div className="data-conteiner__two-elements-container">
-
                     <button
                       className="data-conteiner__aircraft"
                       type="button"
@@ -62,15 +61,7 @@ function App() {
                     // onClick={onEditAvatar}
                     ></button>
                   </div>
-
                 </div>
-
-
-
-
-
-
-
 
 
 
@@ -81,28 +72,73 @@ function App() {
                     alt="Изображение двигателя"
                   /> */}
                   <div className="data-conteiner__img-name-container">
-                  <div className="data-conteiner__img-conteiner">
-
-                  <div className="data-conteiner__img-engine">
-
-
+                    <div className="data-conteiner__img-conteiner">
+                      <div className="data-conteiner__img-engine">
+                      </div>
+                    </div>
+                    <h2 className="data-conteiner__name">Выбор двигателя</h2>
                   </div>
-
-                  </div>
-
-
-
-
-                  <h2 className="data-conteiner__name">Выбор двигателя</h2>
-                  
-                    
-                  </div>
-                  
                   <div className="data-conteiner__aircraft-engine-list">
                   </div>
-
                 </div>
               </div>
+
+
+              <div className="box-two-containers">
+
+                <div className="data-conteiner">
+                  {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                  <div className="data-conteiner__img-name-container">
+                    <div className="data-conteiner__img-conteiner">
+                      <div className="data-conteiner__img-engine">
+                      </div>
+                    </div>
+                    <h2 className="data-conteiner__name">Масса летательного аппарата</h2>
+                  </div>
+                  <div className="data-conteiner__aircraft-engine-list">
+                  </div>
+                </div>
+
+                <div className="data-conteiner">
+                  {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                  <div className="data-conteiner__img-name-container">
+                    <div className="data-conteiner__img-conteiner">
+                      <div className="data-conteiner__img-engine">
+                      </div>
+                    </div>
+                    <h2 className="data-conteiner__name">Объем бака</h2>
+                  </div>
+                  <div className="data-conteiner__aircraft-engine-list">
+                  </div>
+                </div>
+                <div className="data-conteiner">
+                  {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                  <div className="data-conteiner__img-name-container">
+                    <div className="data-conteiner__img-conteiner">
+                      <div className="data-conteiner__img-engine">
+                      </div>
+                    </div>
+                    <h2 className="data-conteiner__name">Полезная нагрузка</h2>
+                  </div>
+                  <div className="data-conteiner__aircraft-engine-list">
+                  </div>
+                </div>
+              </div>
+
+
+
               <div className="aircraft-weight">
                 {/* <img
                   className="aircraft-weight__image"
@@ -140,6 +176,193 @@ function App() {
               </div>
             </div>
           </section>
+
+          <section className="section-content">
+            <h1 className="section-content__name">Ограничивающие параметры</h1>
+
+
+            <div className="box-two-containers">
+              <div className="data-conteiner">
+                {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                <div className="data-conteiner__img-name-container">
+                  <div className="data-conteiner__img-conteiner">
+                    <div className="data-conteiner__img-engine">
+                    </div>
+                  </div>
+                  <h2 className="data-conteiner__name">Температура застывания</h2>
+                </div>
+                <div className="data-conteiner__aircraft-engine-list">
+                </div>
+              </div>
+
+              <div className="data-conteiner">
+                {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                <div className="data-conteiner__img-name-container">
+                  <div className="data-conteiner__img-conteiner">
+                    <div className="data-conteiner__img-engine">
+                    </div>
+                  </div>
+                  <h2 className="data-conteiner__name">Плотность</h2>
+                </div>
+                <div className="data-conteiner__aircraft-engine-list">
+                </div>
+              </div>
+            </div>
+            <div className="box-two-containers">
+              <div className="data-conteiner">
+                {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                <div className="data-conteiner__img-name-container">
+                  <div className="data-conteiner__img-conteiner">
+                    <div className="data-conteiner__img-engine">
+                    </div>
+                  </div>
+                  <h2 className="data-conteiner__name">Вязкость при -20С</h2>
+                </div>
+                <div className="data-conteiner__aircraft-engine-list">
+                </div>
+              </div>
+
+              <div className="data-conteiner">
+                {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                <div className="data-conteiner__img-name-container">
+                  <div className="data-conteiner__img-conteiner">
+                    <div className="data-conteiner__img-engine">
+                    </div>
+                  </div>
+                  <h2 className="data-conteiner__name">Массовая теплота сгорания, кДж/кг</h2>
+                </div>
+                <div className="data-conteiner__aircraft-engine-list">
+                </div>
+              </div>
+            </div>
+            <div className="box-two-containers">
+              <div className="data-conteiner">
+                {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                <div className="data-conteiner__img-name-container">
+                  <div className="data-conteiner__img-conteiner">
+                    <div className="data-conteiner__img-engine">
+                    </div>
+                  </div>
+                  <h2 className="data-conteiner__name">Температура застывания</h2>
+                </div>
+                <div className="data-conteiner__aircraft-engine-list">
+                </div>
+              </div>
+
+              <div className="data-conteiner">
+                {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                <div className="data-conteiner__img-name-container">
+                  <div className="data-conteiner__img-conteiner">
+                    <div className="data-conteiner__img-engine">
+                    </div>
+                  </div>
+                  <h2 className="data-conteiner__name">Плотность</h2>
+                </div>
+                <div className="data-conteiner__aircraft-engine-list">
+                </div>
+              </div>
+            </div>
+            <div className="box-two-containers">
+              <div className="data-conteiner">
+                {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                <div className="data-conteiner__img-name-container">
+                  <div className="data-conteiner__img-conteiner">
+                    <div className="data-conteiner__img-engine">
+                    </div>
+                  </div>
+                  <h2 className="data-conteiner__name">Температура застывания</h2>
+                </div>
+                <div className="data-conteiner__aircraft-engine-list">
+                </div>
+              </div>
+
+              <div className="data-conteiner">
+                {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                <div className="data-conteiner__img-name-container">
+                  <div className="data-conteiner__img-conteiner">
+                    <div className="data-conteiner__img-engine">
+                    </div>
+                  </div>
+                  <h2 className="data-conteiner__name">Плотность</h2>
+                </div>
+                <div className="data-conteiner__aircraft-engine-list">
+                </div>
+              </div>
+            </div>
+            <div className="box-two-containers">
+              <div className="data-conteiner">
+                {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                <div className="data-conteiner__img-name-container">
+                  <div className="data-conteiner__img-conteiner">
+                    <div className="data-conteiner__img-engine">
+                    </div>
+                  </div>
+                  <h2 className="data-conteiner__name">Температура застывания</h2>
+                </div>
+                <div className="data-conteiner__aircraft-engine-list">
+                </div>
+              </div>
+
+              <div className="data-conteiner">
+                {/* <img
+                    className="aircraft-engine__image"
+                    // src={currentUser?.avatar}
+                    alt="Изображение двигателя"
+                  /> */}
+                <div className="data-conteiner__img-name-container">
+                  <div className="data-conteiner__img-conteiner">
+                    <div className="data-conteiner__img-engine">
+                    </div>
+                  </div>
+                  <h2 className="data-conteiner__name">Плотность</h2>
+                </div>
+                <div className="data-conteiner__aircraft-engine-list">
+                </div>
+              </div>
+            </div>
+
+
+
+          </section>
+
+
+
         </main>
       </div>
     </div>

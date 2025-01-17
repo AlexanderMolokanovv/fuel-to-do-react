@@ -1,6 +1,14 @@
 .box-two-containers {
     display: flex;
-    flex-direction:row;
-width: 100%;
-justify-content:center;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
 }
+
+.box-two-containers:last-child {
+    margin-bottom: 0;
+
+    /* border: 1px solid rgb(231, 231, 231); */
+ 
+} 
