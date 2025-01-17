@@ -48,16 +48,21 @@ function App() {
               <div className="box-two-containers">
                 <div className="data-conteiner">
                   <h2 className="data-conteiner__name">Облик летательного аппарата</h2>
-                  <button
-                    className="data-conteiner__aircraft"
-                    type="button"
-                  // onClick={onEditAvatar}
-                  ></button>
-                  <button
-                    className="data-conteiner__rocket"
-                    type="button"
-                  // onClick={onEditAvatar}
-                  ></button>
+                  <div className="data-conteiner__two-elements-container">
+
+                    <button
+                      className="data-conteiner__aircraft"
+                      type="button"
+                    // onClick={onEditAvatar}
+                    ></button>
+
+                    <button
+                      className="data-conteiner__rocket"
+                      type="button"
+                    // onClick={onEditAvatar}
+                    ></button>
+                  </div>
+
                 </div>
 
 
@@ -70,23 +75,40 @@ function App() {
 
 
                 <div className="data-conteiner">
-                  <img
+                  {/* <img
                     className="aircraft-engine__image"
                     // src={currentUser?.avatar}
                     alt="Изображение двигателя"
-                  />
+                  /> */}
+                  <div className="data-conteiner__img-name-container">
+                  <div className="data-conteiner__img-conteiner">
+
+                  <div className="data-conteiner__img-engine">
+
+
+                  </div>
+
+                  </div>
+
+
+
+
                   <h2 className="data-conteiner__name">Выбор двигателя</h2>
-                  <div className="aircraft-engine__list">
+                  
+                    
                   </div>
                   
+                  <div className="data-conteiner__aircraft-engine-list">
+                  </div>
+
                 </div>
               </div>
               <div className="aircraft-weight">
-                <img
+                {/* <img
                   className="aircraft-weight__image"
                   // src={currentUser?.avatar}
                   alt="Изображение двигателя"
-                />
+                /> */}
 
 
 
