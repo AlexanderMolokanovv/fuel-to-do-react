@@ -356,6 +356,16 @@ function App() {
                 </div>
               </div>
             </div>
+            <button
+                      className="calculate-button"
+                      type="button"
+                    // onClick={onEditAvatar}
+                    
+                    >
+Произвести расчет
+
+                    </button>
+
 
 
 
