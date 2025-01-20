@@ -3,6 +3,7 @@
 
 // import logo from '../images/header_logo.svg';
 import logo from './images/header_logo.svg';
+import arrow from './images/arrow.svg';
 
 // import './blocks/whole-page/whole-page.css';
 
@@ -149,6 +150,10 @@ function App() {
 
 
                 <h1 className="section-content__name">Характеристики летательного аппарата</h1>
+
+                <input type="range"/>
+                {/*
+                посмотреть архив или здесь https://www.kindacode.com/article/using-range-sliders-in-react */}
 
                 <h2 className="aircraft-weight__name">Масса летательного аппарата</h2>
                 <div className="aircraft-weight__data">
@@ -357,21 +362,25 @@ function App() {
               </div>
             </div>
             <button
-                      className="calculate-button"
-                      type="button"
-                    // onClick={onEditAvatar}
-                    
-                    >
-Произвести расчет
+              className="calculate-button"
+              type="button"
+            // onClick={onEditAvatar}
 
-                    </button>
+            >
+              Произвести расчет <img src={arrow} className="calculate-button__arrow" alt="BigCo Inc. logo" /></button>
+
+
 
 
 
 
           </section>
 
+          <footer className="footer">
 
+            2025. Все права защищены
+
+          </footer>
 
         </main>
       </div>

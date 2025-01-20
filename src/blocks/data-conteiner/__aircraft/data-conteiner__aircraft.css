@@ -2,9 +2,9 @@
     background-image: url(../../../components/images/aircraft.svg);
     background-size: 100%;
     background-position: center;
-    cursor: pointer;
     background-repeat: no-repeat;
-
+    
+    cursor: pointer;
     display: block;
     opacity: 1;
     border: none;

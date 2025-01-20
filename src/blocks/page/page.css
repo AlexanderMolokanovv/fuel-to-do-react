@@ -8,7 +8,7 @@
     box-sizing: border-box;
     background-color: #F5F5F5;
     color: black;
-    border-bottom: 1px solid rgba(84, 84, 84, .7);
+    /* border-bottom: 1px solid rgba(84, 84, 84, .7); */
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -webkit-box-sizing: border-box;

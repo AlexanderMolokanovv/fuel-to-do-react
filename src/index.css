@@ -35,3 +35,5 @@ code {
 @import url(./blocks/aircraft-engine/__image/aircraft-engine__image.css);
 @import url(./blocks/main-content/main-content.css);
 @import url(./blocks/calculate-button/calculate-button.css);
+@import url(./blocks/calculate-button/__arrow/calculate-button__arrow.css);
+@import url(./blocks/footer/footer.css);

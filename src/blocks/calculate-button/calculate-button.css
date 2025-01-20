@@ -10,6 +10,7 @@ font-weight: 700;
 line-height: 28px;
 letter-spacing: 0%;
 text-align: center;
+border: none;
 
 border-radius: 20px;
 
@@ -22,7 +23,16 @@ justify-content: center;
 align-items: center;
 gap: 24;
 padding: 0px;
-
+padding-left: 64px;
+padding-right: 30px;
+cursor: pointer;
+margin-top: 30px;
+margin-left: auto;
+margin-right: auto;
 }
+
+.calculate-button:hover .calculate-button__arrow {
+    margin: 0px 12px 0px 24px;
+  }
 
 /* изменяем гап при наведении */
