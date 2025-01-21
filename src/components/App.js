@@ -51,13 +51,16 @@ function App() {
                   <h2 className="data-conteiner__name">Облик летательного аппарата</h2>
                   <div className="data-conteiner__two-elements-container">
                     <button
-                      className="data-conteiner__aircraft"
+                      className="data-conteiner__aircraft data-conteiner__aircraft_active"
                       type="button"
                     // onClick={onEditAvatar}
                     ></button>
 
+
+{/* https://translated.turbopages.org/proxy_u/en-ru.ru.dcbf60f6-678fa25f-44b40967-74722d776562/https/www.geeksforgeeks.org/react-suite-dropdown-dropdown-with-icon/ */}
+
                     <button
-                      className="data-conteiner__rocket"
+                      className="data-conteiner__rocket data-conteiner__rocket_active"
                       type="button"
                     // onClick={onEditAvatar}
                     ></button>

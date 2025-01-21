@@ -24,10 +24,12 @@ code {
 @import url(./blocks/data-conteiner/data-conteiner.css);
 @import url(./blocks/data-conteiner/__two-elements-container/data-conteiner__two-elements-container.css);
 @import url(./blocks/data-conteiner/__aircraft/data-conteiner__aircraft.css);
+@import url(./blocks/data-conteiner/__aircraft/_active/data-conteiner__aircraft_active.css);
 @import url(./blocks/data-conteiner/__img-engine/data-conteiner__img-engine.css);
 @import url(./blocks/data-conteiner/__img-name-container/data-conteiner__img-name-container.css);
 @import url(./blocks/data-conteiner/__img-conteiner/data-conteiner__img-conteiner.css);
 @import url(./blocks/data-conteiner/__rocket/data-conteiner__rocket.css);
+@import url(./blocks/data-conteiner/__rocket/_active/data-conteiner__rocket_active.css);
 @import url(./blocks/data-conteiner/__name/data-conteiner__name.css);
 @import url(./blocks/data-conteiner/__aircraft-engine-list/data-conteiner__aircraft-engine-list.css);
 @import url(./blocks/box-two-containers/box-two-containers.css);

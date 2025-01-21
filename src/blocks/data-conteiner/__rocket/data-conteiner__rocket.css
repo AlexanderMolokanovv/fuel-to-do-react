@@ -1,6 +1,6 @@
-.data-conteiner__rocket{
+.data-conteiner__rocket {
     background-image: url(../../../components/images/rocket.svg);
-    background-size: 40%;
+    /* background-size: 40%; */
     background-position: center;
     cursor: pointer;
     background-repeat: no-repeat;
@@ -17,3 +17,6 @@
 
     /* background: linear-gradient(226.17deg, rgb(11, 50, 255) 0%,rgb(188, 47, 255) 98.278%); */
 }
+
+
+.data-conteiner__rocket:hover { opacity: 0.8;}
