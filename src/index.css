@@ -32,6 +32,10 @@ code {
 @import url(./blocks/data-conteiner/__rocket/_active/data-conteiner__rocket_active.css);
 @import url(./blocks/data-conteiner/__name/data-conteiner__name.css);
 @import url(./blocks/data-conteiner/__aircraft-engine-list/data-conteiner__aircraft-engine-list.css);
+@import url(./blocks/data-range-conteiner/data-range-conteiner.css);
+@import url(./blocks/data-range-conteiner/__picture-percentages-box/data-range-conteiner__picture-percentages-box.css);
+@import url(./blocks/data-range-conteiner/__slider/data-range-conteiner__slider.css);
+@import url(./blocks/data-range-conteiner/__name/data-range-conteiner__name.css);
 @import url(./blocks/box-two-containers/box-two-containers.css);
 @import url(./blocks/aircraft-engine/aircraft-engine.css);
 @import url(./blocks/aircraft-engine/__image/aircraft-engine__image.css);

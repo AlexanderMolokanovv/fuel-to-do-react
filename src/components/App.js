@@ -57,7 +57,7 @@ function App() {
                     ></button>
 
 
-{/* https://translated.turbopages.org/proxy_u/en-ru.ru.dcbf60f6-678fa25f-44b40967-74722d776562/https/www.geeksforgeeks.org/react-suite-dropdown-dropdown-with-icon/ */}
+                    {/* https://translated.turbopages.org/proxy_u/en-ru.ru.dcbf60f6-678fa25f-44b40967-74722d776562/https/www.geeksforgeeks.org/react-suite-dropdown-dropdown-with-icon/ */}
 
                     <button
                       className="data-conteiner__rocket data-conteiner__rocket_active"
@@ -70,11 +70,6 @@ function App() {
 
 
                 <div className="data-conteiner">
-                  {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
                       <div className="data-conteiner__img-engine">
@@ -154,32 +149,58 @@ function App() {
 
                 <h1 className="section-content__name">Характеристики летательного аппарата</h1>
 
-                <input type="range"/>
+
                 {/*
                 посмотреть архив или здесь https://www.kindacode.com/article/using-range-sliders-in-react */}
 
-                <h2 className="aircraft-weight__name">Масса летательного аппарата</h2>
-                <div className="aircraft-weight__data">
+
+
+
+
+                <div className="box-two-containers">
+                  <div className="data-range-conteiner">
+                    <div className="data-range-conteiner__picture-percentages-box">
+                      <div className="data-conteiner__img-engine"></div>
+                      <h1 className="data-range-conteiner__percentages">73%</h1>
+                    </div>
+                    <input type="range" className="data-range-conteiner__slider" />
+                    <h2 className="data-range-conteiner__name">Дальность полета</h2>
+                  </div>
+                  <div className="data-range-conteiner">
+                    <div className="data-range-conteiner__picture-percentages-box">
+                      <div className="data-conteiner__img-engine"></div>
+                      <h1 className="data-range-conteiner__percentages">73%</h1>
+                    </div>
+                    <input type="range" className="data-range-conteiner__slider" />
+                    <h2 className="data-range-conteiner__name">Полезная нагрузка</h2>
+                  </div>
+                  <div className="data-range-conteiner">
+                    <div className="data-range-conteiner__picture-percentages-box">
+                      <div className="data-conteiner__img-engine"></div>
+                      <h1 className="data-range-conteiner__percentages">73%</h1>
+                    </div>
+                    <input type="range" className="data-range-conteiner__slider" />
+                    <h2 className="data-range-conteiner__name">Полезная нагрузка</h2>
+                  </div>
                 </div>
-              </div>
-              <div className="tank-volume">
-                <img
-                  className="tank-volume__image"
-                  // src={currentUser?.avatar}
-                  alt="Изображение двигателя"
-                />
-                <h2 className="tank-volume__name">Объем бака</h2>
-                <div className="tank-volume__data">
-                </div>
-              </div>
-              <div className="payload">
-                <img
-                  className="payload__image"
-                  // src={currentUser?.avatar}
-                  alt="Изображение двигателя"
-                />
-                <h2 className="payload__name">Полезная нагрузка</h2>
-                <div className="payload__data">
+
+                <div className="box-two-containers">
+                  <div className="data-range-conteiner">
+                    <div className="data-range-conteiner__picture-percentages-box">
+                      <div className="data-conteiner__img-engine"></div>
+                      <h1 className="data-range-conteiner__percentages">73%</h1>
+                    </div>
+                    <input type="range" className="data-range-conteiner__slider" />
+                    <h2 className="data-range-conteiner__name">Стоимость владения</h2>
+                  </div>
+                  <div className="data-range-conteiner">
+                    <div className="data-range-conteiner__picture-percentages-box">
+                      <div className="data-conteiner__img-engine"></div>
+                      <h1 className="data-range-conteiner__percentages">73%</h1>
+                    </div>
+                    <input type="range" className="data-range-conteiner__slider" />
+                    <h2 className="data-range-conteiner__name">Надежность</h2>
+                  </div>
                 </div>
               </div>
             </div>
