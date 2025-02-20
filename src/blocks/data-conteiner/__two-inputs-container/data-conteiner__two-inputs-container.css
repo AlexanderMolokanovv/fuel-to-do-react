@@ -1,0 +1,8 @@
+.data-conteiner__two-inputs-container {
+    display: flex;
+    flex-direction: row;
+    /* align-items: end; */
+    /* border: 1px solid black; */
+    gap: 0 10px;
+
+}

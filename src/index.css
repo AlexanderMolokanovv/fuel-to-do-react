@@ -23,6 +23,7 @@ code {
 @import url(./blocks/section-content/__name/section-content__name.css);
 @import url(./blocks/data-conteiner/data-conteiner.css);
 @import url(./blocks/data-conteiner/__two-elements-container/data-conteiner__two-elements-container.css);
+@import url(./blocks/data-conteiner/__two-inputs-container/data-conteiner__two-inputs-container.css);
 @import url(./blocks/data-conteiner/__aircraft/data-conteiner__aircraft.css);
 @import url(./blocks/data-conteiner/__aircraft/_active/data-conteiner__aircraft_active.css);
 @import url(./blocks/data-conteiner/__img-engine/data-conteiner__img-engine.css);
