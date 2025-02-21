@@ -31,7 +31,7 @@ function App() {
         </a> */}
 
           {/* <header className="header"> */}
-          <img className="header__logo" src={logo} alt="Логотип проекта" />
+          {/* <img className="header__logo" src={logo} alt="Логотип проекта" /> */}
 
 
           {/* </header> */}
