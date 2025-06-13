@@ -31,6 +31,8 @@ code {
 @import url(./blocks/data-conteiner/__img-conteiner/data-conteiner__img-conteiner.css);
 @import url(./blocks/data-conteiner/__rocket/data-conteiner__rocket.css);
 @import url(./blocks/data-conteiner/__rocket/_active/data-conteiner__rocket_active.css);
+@import url(./blocks/data-conteiner/__halicopter/data-conteiner__halicopter.css);
+@import url(./blocks/data-conteiner/__halicopter/_active/data-conteiner__halicopter_active.css);
 @import url(./blocks/data-conteiner/__name/data-conteiner__name.css);
 @import url(./blocks/data-conteiner/__aircraft-engine-list/data-conteiner__aircraft-engine-list.css);
 @import url(./blocks/data-range-conteiner/data-range-conteiner.css);

@@ -67,6 +67,11 @@ function App() {
                         type="button"
                       // onClick={onEditAvatar}
                       ></button>
+                      <button
+                        className="data-conteiner__halicopter data-conteiner__halicopter_active"
+                        type="button"
+                      // onClick={onEditAvatar}
+                      ></button>
                     </div>
                   </div>
 
