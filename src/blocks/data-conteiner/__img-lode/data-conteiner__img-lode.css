@@ -1,0 +1,16 @@
+.data-conteiner__img-lode {
+    padding: 0;
+    margin: 0;
+    background-image: url(../../../components/images/lode.svg);
+    /* background-size: 100%; */
+    background-size: contain;
+    /* display: block; */
+    border: none;
+    /* width: 100%; */
+    width: 24px;
+    height: 24px;
+ 
+    background-repeat: no-repeat;
+    background-position: center;
+   
+}

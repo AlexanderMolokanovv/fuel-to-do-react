@@ -134,7 +134,7 @@ function App() {
                   /> */}
                     <div className="data-conteiner__img-name-container">
                       <div className="data-conteiner__img-conteiner">
-                        <div className="data-conteiner__img-engine">
+                        <div className="data-conteiner__img-lode">
                         </div>
                       </div>
                       <h2 className="data-conteiner__name">Полезная нагрузка</h2>
