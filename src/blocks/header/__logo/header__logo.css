@@ -1,7 +1,15 @@
 .header__logo {
-    max-width: 70px;
-    margin-bottom: 32px;
+    /* max-width: 70px;
+    margin-bottom: 32px; */
+    width: 70px;
+height: 82.5px;
     
+    background-image: url(../../../components/images/flame-header.svg);
+       
+       background-size: 100%;
+       background-position: center;
+       background-repeat: no-repeat;
+       padding-bottom: 41px;
 }
 
 /* @media screen and (max-width:1200px) {
@@ -11,3 +19,12 @@
         margin-bottom: 31.6px;
     }
 } */
+
+
+    
+    
+    /* display: block;
+    border: none;
+    width: 70px;
+    height: 60px;
+    border-radius: 12px; */

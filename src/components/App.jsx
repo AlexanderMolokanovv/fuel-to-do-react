@@ -2,7 +2,7 @@
 // import './App.css';
 
 // import logo from '../images/header_logo.svg';
-import logo from './images/header_logo.svg';
+// import logo from './images/header_logo.svg';
 import arrow from './images/arrow.svg';
 
 // import './blocks/whole-page/whole-page.css';
@@ -17,6 +17,8 @@ function App() {
 
       <div className="page">
         <header className="header">
+          <div className="header__logo">
+          </div>
           {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -433,20 +435,59 @@ function App() {
                   </div>
                 </div>
               </div>
-              <button
-                className="calculate-button"
-                type="button"
-              // onClick={onEditAvatar}
-
-              >
-                Произвести расчет <img src={arrow} className="calculate-button__arrow" alt="BigCo Inc. logo" /></button>
-
-
-
-
-
 
             </section>
+
+            <section className="section-content">
+              <h1 className="section-content__name">Характеристики топлива </h1>
+
+
+              <div className="box-two-containers">
+                <div className="data-conteiner">
+                  <div className="data-conteiner__img-name-container">
+                    <div className="data-conteiner__img-conteiner">
+                      <div className="data-conteiner__img-engine">
+                      </div>
+                    </div>
+                    <h2 className="data-conteiner__name">Температура застывания</h2>
+                  </div>
+                  <div className="data-conteiner__two-inputs-container">
+                    <div className="data-conteiner__aircraft-engine-list">
+                    </div>
+                    
+                  </div>
+                </div>
+
+                <div className="data-conteiner">
+                  <div className="data-conteiner__img-name-container">
+                    <div className="data-conteiner__img-conteiner">
+                      <div className="data-conteiner__img-engine">
+                      </div>
+                    </div>
+                    <h2 className="data-conteiner__name">Температура застывания</h2>
+                  </div>
+                  <div className="data-conteiner__two-inputs-container">
+                    
+                    <div className="data-conteiner__aircraft-engine-list">
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </section>
+            <button
+              className="calculate-button"
+              type="button"
+            // onClick={onEditAvatar}
+
+            >
+              Произвести расчет <img src={arrow} className="calculate-button__arrow" alt="BigCo Inc. logo" /></button>
+
+
+
+
+
+
 
 
 
