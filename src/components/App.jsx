@@ -1,4 +1,5 @@
-// import logo from './logo.svg';
+import Header from "./Header";
+import React, { useState, useEffect } from "react";
 // import './App.css';
 
 // import logo from '../images/header_logo.svg';
@@ -11,38 +12,31 @@ import arrow from './images/arrow.svg';
 
 function App() {
 
+
+  // хуки
+
+  const [isOnHelicopterClick, setIsOnHelicopterClick] = useState(false);
+
+const handleOnHelicopterClick = () => setIsOnHelicopterClick(true);
+
+
+// useEffect(() => {
+//     if (isOnHelicopterClick) {
+//       document.addEventListener("keydown", handleEscClose);
+//     }
+//     return () => document.removeEventListener("keydown", handleEscClose);
+//   }, [isOnHelicopterClick]);
+
+  
   return (
     // <div className="App">
     <div className="whole-page">
 
       <div className="page">
-        <header className="header">
-          <div className="header__logo">
-          </div>
-          {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-
-          {/* <header className="header"> */}
-          {/* <img className="header__logo" src={logo} alt="Логотип проекта" /> */}
-
-
-          {/* </header> */}
-
-
-          <h1 className="header__name">Нейросетевой проектирование топлив для летательных аппаратов</h1>
-
-        </header>
-
+             <Header  
+                // <Header onSignOut={onSignOut} />
+             />
+        
 
         <main className="main-content">
           <form>
@@ -65,10 +59,13 @@ function App() {
                       {/* https://translated.turbopages.org/proxy_u/en-ru.ru.dcbf60f6-678fa25f-44b40967-74722d776562/https/www.geeksforgeeks.org/react-suite-dropdown-dropdown-with-icon/ */}
 
                       <button
-                        className="data-conteiner__rocket data-conteiner__rocket_active"
+                        className={isOnHelicopterClick ? "data-conteiner__rocket" : "data-conteiner__rocket_active"}
                         type="button"
-                      // onClick={onEditAvatar}
+                      onClick={handleOnHelicopterClick}
                       ></button>
+
+
+                      
                       <button
                         className="data-conteiner__halicopter data-conteiner__halicopter_active"
                         type="button"
