@@ -1,6 +1,6 @@
-.data-conteiner__rocket_active {
+.data-conteiner__helicopter--active {
     
-        background-image: url(../../../../components/images/rocket-act.svg);
+        background-image: url(../../../../components/images/helicopter-act.svg);
         /* background-size: 40%; */
         background-position: center;
         cursor: pointer;
@@ -20,4 +20,4 @@
     
 }
 
-.data-conteiner__rocket_active:hover { opacity: 0.8;}
+.data-conteiner__helicopter--active:hover { opacity: 0.8;}

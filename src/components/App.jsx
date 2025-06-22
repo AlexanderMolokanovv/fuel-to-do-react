@@ -1,193 +1,185 @@
 import Header from "./Header";
 import React, { useState, useEffect } from "react";
-// import './App.css';
-
-// import logo from '../images/header_logo.svg';
-// import logo from './images/header_logo.svg';
-import arrow from './images/arrow.svg';
-
-// import './blocks/whole-page/whole-page.css';
-
-// import '../index.css';
+import arrow from "./images/arrow.svg";
 
 function App() {
-
-
   // хуки
+  // const [isOnHelicopterClick, setIsOnHelicopterClick] = useState(false);
 
-  const [isOnHelicopterClick, setIsOnHelicopterClick] = useState(false);
+  // const handleOnHelicopterClick = () => setIsOnHelicopterClick(true);
 
-const handleOnHelicopterClick = () => setIsOnHelicopterClick(true);
+  // useEffect(() => {
+  //     if (isOnHelicopterClick) {
+  //       document.addEventListener("keydown", handleEscClose);
+  //     }
+  //     return () => document.removeEventListener("keydown", handleEscClose);
+  //   }, [isOnHelicopterClick]);
 
+  const [activeVehicle, setActiveVehicle] = useState(null);
 
-// useEffect(() => {
-//     if (isOnHelicopterClick) {
-//       document.addEventListener("keydown", handleEscClose);
-//     }
-//     return () => document.removeEventListener("keydown", handleEscClose);
-//   }, [isOnHelicopterClick]);
+  const handleVehicleClick = (vehicleId) => {
+    setActiveVehicle(vehicleId);
+    sendVehicleToApi(vehicleId);
+  };
 
-  
+  const sendVehicleToApi = async (vehicleId) => {
+    try {
+      console.log(`Отправка vehicleId ${vehicleId} на сервер`);
+      // const response = await apii.selectVehicleType(vehicleId);
+      // console.log('API response:', response);
+    } catch (error) {
+      console.error("Ошибка API:", error);
+    }
+  };
+
   return (
     // <div className="App">
     <div className="whole-page">
-
       <div className="page">
-             <Header  
-                // <Header onSignOut={onSignOut} />
-             />
-        
-
+        <Header
+        // <Header onSignOut={onSignOut} />
+        />
         <main className="main-content">
           <form>
-
-
             <section className="section-content">
-              <h1 className="section-content__name">Характеристики летательного аппарата</h1>
-              <div className="aircraft">
+              <h1 className="section-content__name">
+                Характеристики летательного аппарата
+              </h1>
+              <div className="airplane">
                 <div className="box-two-containers">
                   <div className="data-conteiner">
-                    <h2 className="data-conteiner__name">Облик летательного аппарата</h2>
-                    <div className="data-conteiner__two-elements-container">
+                    <h2 className="data-conteiner__name">
+                      Облик летательного аппарата
+                    </h2>
+                    <div className="data-conteiner__buttons">
                       <button
-                        className="data-conteiner__aircraft data-conteiner__aircraft_active"
+                        className={
+                          activeVehicle === 1
+                            ? "data-conteiner__airplane--active"
+                            : "data-conteiner__airplane"
+                        }
                         type="button"
-                      // onClick={onEditAvatar}
+                        onClick={() => handleVehicleClick(1)}
                       ></button>
-
-
                       {/* https://translated.turbopages.org/proxy_u/en-ru.ru.dcbf60f6-678fa25f-44b40967-74722d776562/https/www.geeksforgeeks.org/react-suite-dropdown-dropdown-with-icon/ */}
-
                       <button
-                        className={isOnHelicopterClick ? "data-conteiner__rocket" : "data-conteiner__rocket_active"}
+                        className={
+                          activeVehicle === 2
+                            ? "data-conteiner__rocket--active"
+                            : "data-conteiner__rocket"
+                        }
                         type="button"
-                      onClick={handleOnHelicopterClick}
+                        onClick={() => handleVehicleClick(2)}
                       ></button>
-
-
-                      
                       <button
-                        className="data-conteiner__halicopter data-conteiner__halicopter_active"
+                        className={
+                          activeVehicle === 3
+                            ? "data-conteiner__helicopter--active"
+                            : "data-conteiner__helicopter"
+                        }
                         type="button"
-                      // onClick={onEditAvatar}
+                        onClick={() => handleVehicleClick(3)}
                       ></button>
                     </div>
                   </div>
-
-
-
                   <div className="data-conteiner">
                     <div className="data-conteiner__img-name-container">
                       <div className="data-conteiner__img-conteiner">
-                        <div className="data-conteiner__img-engine">
-                        </div>
+                        <div className="data-conteiner__img-engine"></div>
                       </div>
                       <h2 className="data-conteiner__name">Выбор двигателя</h2>
                     </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
-
-
                 <div className="box-two-containers">
-
                   <div className="data-conteiner">
-                    {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                     <div className="data-conteiner__img-name-container">
                       <div className="data-conteiner__img-conteiner">
-                        <div className="data-conteiner__img-engine">
-                        </div>
+                        <div className="data-conteiner__img-engine"></div>
                       </div>
-                      <h2 className="data-conteiner__name">Масса летательного аппарата</h2>
+                      <h2 className="data-conteiner__name">
+                        Масса летательного аппарата
+                      </h2>
                     </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
 
                   <div className="data-conteiner">
-                    {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                     <div className="data-conteiner__img-name-container">
                       <div className="data-conteiner__img-conteiner">
-                        <div className="data-conteiner__img-engine">
-                        </div>
+                        <div className="data-conteiner__img-engine"></div>
                       </div>
                       <h2 className="data-conteiner__name">Объем бака</h2>
                     </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                   <div className="data-conteiner">
-                    {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                     <div className="data-conteiner__img-name-container">
                       <div className="data-conteiner__img-conteiner">
-                        <div className="data-conteiner__img-lode">
-                        </div>
+                        <div className="data-conteiner__img-lode"></div>
                       </div>
-                      <h2 className="data-conteiner__name">Полезная нагрузка</h2>
+                      <h2 className="data-conteiner__name">
+                        Полезная нагрузка
+                      </h2>
                     </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
 
-
-
-                <div className="aircraft-weight">
-                  {/* <img
-                  className="aircraft-weight__image"
-                  // src={currentUser?.avatar}
-                  alt="Изображение двигателя"
-                /> */}
-
-
-
-                  <h1 className="section-content__name">Характеристики летательного аппарата</h1>
-
+                <div className="airplane-weight">
+                  <h1 className="section-content__name">
+                    Характеристики летательного аппарата
+                  </h1>
 
                   {/*
                 посмотреть архив или здесь https://www.kindacode.com/article/using-range-sliders-in-react */}
 
-
-
-
-
                   <div className="box-two-containers">
                     <div className="data-range-conteiner">
                       <div className="data-range-conteiner__picture-percentages-box">
                         <div className="data-conteiner__img-engine"></div>
-                        <h1 className="data-range-conteiner__percentages">73%</h1>
+                        <h1 className="data-range-conteiner__percentages">
+                          73%
+                        </h1>
                       </div>
-                      <input type="range" className="data-range-conteiner__slider" />
-                      <h2 className="data-range-conteiner__name">Дальность полета</h2>
+                      <input
+                        type="range"
+                        className="data-range-conteiner__slider"
+                      />
+                      <h2 className="data-range-conteiner__name">
+                        Дальность полета
+                      </h2>
                     </div>
                     <div className="data-range-conteiner">
                       <div className="data-range-conteiner__picture-percentages-box">
                         <div className="data-conteiner__img-engine"></div>
-                        <h1 className="data-range-conteiner__percentages">73%</h1>
+                        <h1 className="data-range-conteiner__percentages">
+                          73%
+                        </h1>
                       </div>
-                      <input type="range" className="data-range-conteiner__slider" />
-                      <h2 className="data-range-conteiner__name">Полезная нагрузка</h2>
+                      <input
+                        type="range"
+                        className="data-range-conteiner__slider"
+                      />
+                      <h2 className="data-range-conteiner__name">
+                        Полезная нагрузка
+                      </h2>
                     </div>
                     <div className="data-range-conteiner">
                       <div className="data-range-conteiner__picture-percentages-box">
                         <div className="data-conteiner__img-engine"></div>
-                        <h1 className="data-range-conteiner__percentages">73%</h1>
+                        <h1 className="data-range-conteiner__percentages">
+                          73%
+                        </h1>
                       </div>
-                      <input type="range" className="data-range-conteiner__slider" />
-                      <h2 className="data-range-conteiner__name">Полезная нагрузка</h2>
+                      <input
+                        type="range"
+                        className="data-range-conteiner__slider"
+                      />
+                      <h2 className="data-range-conteiner__name">
+                        Полезная нагрузка
+                      </h2>
                     </div>
                   </div>
 
@@ -195,17 +187,29 @@ const handleOnHelicopterClick = () => setIsOnHelicopterClick(true);
                     <div className="data-range-conteiner">
                       <div className="data-range-conteiner__picture-percentages-box">
                         <div className="data-conteiner__img-engine"></div>
-                        <h1 className="data-range-conteiner__percentages">73%</h1>
+                        <h1 className="data-range-conteiner__percentages">
+                          73%
+                        </h1>
                       </div>
-                      <input type="range" className="data-range-conteiner__slider" />
-                      <h2 className="data-range-conteiner__name">Стоимость владения</h2>
+                      <input
+                        type="range"
+                        className="data-range-conteiner__slider"
+                      />
+                      <h2 className="data-range-conteiner__name">
+                        Стоимость владения
+                      </h2>
                     </div>
                     <div className="data-range-conteiner">
                       <div className="data-range-conteiner__picture-percentages-box">
                         <div className="data-conteiner__img-engine"></div>
-                        <h1 className="data-range-conteiner__percentages">73%</h1>
+                        <h1 className="data-range-conteiner__percentages">
+                          73%
+                        </h1>
                       </div>
-                      <input type="range" className="data-range-conteiner__slider" />
+                      <input
+                        type="range"
+                        className="data-range-conteiner__slider"
+                      />
                       <h2 className="data-range-conteiner__name">Надежность</h2>
                     </div>
                   </div>
@@ -214,260 +218,186 @@ const handleOnHelicopterClick = () => setIsOnHelicopterClick(true);
             </section>
 
             <section className="section-content">
-              <h1 className="section-content__name">Ограничивающие параметры</h1>
-
+              <h1 className="section-content__name">
+                Ограничивающие параметры
+              </h1>
 
               <div className="box-two-containers">
                 <div className="data-conteiner">
-                  {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
-                    <h2 className="data-conteiner__name">Температура застывания</h2>
+                    <h2 className="data-conteiner__name">
+                      Температура застывания
+                    </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
 
                 <div className="data-conteiner">
-                  {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
                     <h2 className="data-conteiner__name">Плотность</h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
               </div>
               <div className="box-two-containers">
                 <div className="data-conteiner">
-                  {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
                     <h2 className="data-conteiner__name">Вязкость при -20С</h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
 
                 <div className="data-conteiner">
-                  {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
-                    <h2 className="data-conteiner__name">Массовая теплота сгорания, кДж/кг</h2>
+                    <h2 className="data-conteiner__name">
+                      Массовая теплота сгорания, кДж/кг
+                    </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
               </div>
               <div className="box-two-containers">
                 <div className="data-conteiner">
-                  {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
-                    <h2 className="data-conteiner__name">Температура застывания</h2>
+                    <h2 className="data-conteiner__name">
+                      Температура застывания
+                    </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
 
                 <div className="data-conteiner">
-                  {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
                     <h2 className="data-conteiner__name">Плотность</h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
               </div>
               <div className="box-two-containers">
                 <div className="data-conteiner">
-                  {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
-                    <h2 className="data-conteiner__name">Температура застывания</h2>
+                    <h2 className="data-conteiner__name">
+                      Температура застывания
+                    </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
 
                 <div className="data-conteiner">
-                  {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
                     <h2 className="data-conteiner__name">Плотность</h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
               </div>
               <div className="box-two-containers">
                 <div className="data-conteiner">
-                  {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
-                    <h2 className="data-conteiner__name">Температура застывания</h2>
+                    <h2 className="data-conteiner__name">
+                      Температура застывания
+                    </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
 
                 <div className="data-conteiner">
-                  {/* <img
-                    className="aircraft-engine__image"
-                    // src={currentUser?.avatar}
-                    alt="Изображение двигателя"
-                  /> */}
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
                     <h2 className="data-conteiner__name">Плотность</h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
               </div>
-
             </section>
 
             <section className="section-content">
               <h1 className="section-content__name">Характеристики топлива </h1>
 
-
               <div className="box-two-containers">
                 <div className="data-conteiner">
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
-                    <h2 className="data-conteiner__name">Температура застывания</h2>
+                    <h2 className="data-conteiner__name">
+                      Температура застывания
+                    </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
 
                 <div className="data-conteiner">
                   <div className="data-conteiner__img-name-container">
                     <div className="data-conteiner__img-conteiner">
-                      <div className="data-conteiner__img-engine">
-                      </div>
+                      <div className="data-conteiner__img-engine"></div>
                     </div>
-                    <h2 className="data-conteiner__name">Температура застывания</h2>
+                    <h2 className="data-conteiner__name">
+                      Температура застывания
+                    </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    
-                    <div className="data-conteiner__aircraft-engine-list">
-                    </div>
-                    
+                    <div className="data-conteiner__airplane-engine-list"></div>
                   </div>
                 </div>
               </div>
@@ -475,33 +405,23 @@ const handleOnHelicopterClick = () => setIsOnHelicopterClick(true);
             <button
               className="calculate-button"
               type="button"
-            // onClick={onEditAvatar}
-
+              // onClick={onEditAvatar}
             >
-              Произвести расчет <img src={arrow} className="calculate-button__arrow" alt="BigCo Inc. logo" /></button>
-
-
-
-
-
-
-
-
-
+              Произвести расчет{" "}
+              <img
+                src={arrow}
+                className="calculate-button__arrow"
+                alt="BigCo Inc. logo"
+              />
+            </button>
 
             {/* <label>
               Имя:
               <input type="text" value={this.state.value} onChange={this.handleChange} />
             </label>
             <input type="submit" value="Отправить" /> */}
-
           </form>
-          <footer className="footer">
-
-            2025. Все права защищены
-
-          </footer>
-
+          <footer className="footer">2025. Все права защищены</footer>
         </main>
       </div>
     </div>

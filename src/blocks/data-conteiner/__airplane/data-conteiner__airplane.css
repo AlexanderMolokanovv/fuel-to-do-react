@@ -1,6 +1,6 @@
-.data-conteiner__aircraft_active {
+.data-conteiner__airplane {
     /* background: linear-gradient(226.17deg, rgb(11, 50, 255) 0%,rgb(188, 47, 255) 98.278%); */
-    background-image: url(../../../../components/images/aircraft-act.svg);
+    background-image: url(../../../components/images/airplane.svg);
     
     background-size: 100%;
     background-position: center;
@@ -14,6 +14,10 @@
     width: 70px;
     height: 60px;
     border-radius: 12px;
-      }
+  
+    
+}
 
-      .data-conteiner__aircraft_active:hover { opacity: 0.8;}
+
+
+.data-conteiner__airplane:hover { opacity: 0.8;}

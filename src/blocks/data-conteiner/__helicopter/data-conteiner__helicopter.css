@@ -1,5 +1,5 @@
-.data-conteiner__halicopter {
-    background-image: url(../../../components/images/halicopter.svg);
+.data-conteiner__helicopter {
+    background-image: url(../../../components/images/helicopter.svg);
     /* background-size: 40%; */
     background-position: center;
     cursor: pointer;
@@ -19,4 +19,4 @@
 }
 
 
-.data-conteiner__halicopter:hover { opacity: 0.8;}
+.data-conteiner__helicopter:hover { opacity: 0.8;}
