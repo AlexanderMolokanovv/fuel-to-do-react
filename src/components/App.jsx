@@ -4,17 +4,8 @@ import arrow from "./images/arrow.svg";
 
 function App() {
   // хуки
-  // const [isOnHelicopterClick, setIsOnHelicopterClick] = useState(false);
-
-  // const handleOnHelicopterClick = () => setIsOnHelicopterClick(true);
-
-  // useEffect(() => {
-  //     if (isOnHelicopterClick) {
-  //       document.addEventListener("keydown", handleEscClose);
-  //     }
-  //     return () => document.removeEventListener("keydown", handleEscClose);
-  //   }, [isOnHelicopterClick]);
-
+  
+  
   const [activeVehicle, setActiveVehicle] = useState(null);
 
   const handleVehicleClick = (vehicleId) => {
@@ -32,12 +23,22 @@ function App() {
     }
   };
 
+
+  const [formData, setFormData] = useState({
+  aircraftMass: '',
+});
+
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setFormData((prev) => ({ ...prev, [name]: value }));
+};
+
+
+
   return (
-    // <div className="App">
     <div className="whole-page">
       <div className="page">
         <Header
-        // <Header onSignOut={onSignOut} />
         />
         <main className="main-content">
           <form>
@@ -89,7 +90,7 @@ function App() {
                       </div>
                       <h2 className="data-conteiner__name">Выбор двигателя</h2>
                     </div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
                 <div className="box-two-containers">
@@ -102,7 +103,15 @@ function App() {
                         Масса летательного аппарата
                       </h2>
                     </div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    {/* <div className="data-conteiner__input"></div> */}
+                    <input
+    type="number"
+    name="aircraftMass"
+    value={formData.aircraftMass}
+    onChange={handleInputChange}
+    className="data-conteiner__input"
+    placeholder="Введите массу, кг"
+  />
                   </div>
 
                   <div className="data-conteiner">
@@ -112,7 +121,7 @@ function App() {
                       </div>
                       <h2 className="data-conteiner__name">Объем бака</h2>
                     </div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                   <div className="data-conteiner">
                     <div className="data-conteiner__img-name-container">
@@ -123,7 +132,7 @@ function App() {
                         Полезная нагрузка
                       </h2>
                     </div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
 
@@ -233,8 +242,8 @@ function App() {
                     </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
 
@@ -246,8 +255,8 @@ function App() {
                     <h2 className="data-conteiner__name">Плотность</h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
               </div>
@@ -260,8 +269,8 @@ function App() {
                     <h2 className="data-conteiner__name">Вязкость при -20С</h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
 
@@ -275,8 +284,8 @@ function App() {
                     </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
               </div>
@@ -291,8 +300,8 @@ function App() {
                     </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
 
@@ -304,8 +313,8 @@ function App() {
                     <h2 className="data-conteiner__name">Плотность</h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
               </div>
@@ -320,8 +329,8 @@ function App() {
                     </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
 
@@ -333,8 +342,8 @@ function App() {
                     <h2 className="data-conteiner__name">Плотность</h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
               </div>
@@ -349,8 +358,8 @@ function App() {
                     </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
 
@@ -362,8 +371,8 @@ function App() {
                     <h2 className="data-conteiner__name">Плотность</h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
               </div>
@@ -383,7 +392,7 @@ function App() {
                     </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
 
@@ -397,7 +406,7 @@ function App() {
                     </h2>
                   </div>
                   <div className="data-conteiner__two-inputs-container">
-                    <div className="data-conteiner__airplane-engine-list"></div>
+                    <div className="data-conteiner__input"></div>
                   </div>
                 </div>
               </div>
