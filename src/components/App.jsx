@@ -1,5 +1,5 @@
 import Header from "./Header";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import arrow from "./images/arrow.svg";
 
 function App() {
@@ -33,7 +33,11 @@ const handleInputChange = (e) => {
   setFormData((prev) => ({ ...prev, [name]: value }));
 };
 
+ const [width, setWidth] = useState(100);
 
+ const changeWidth = (event) => {
+    setWidth(event.target.value);
+  };
 
   return (
     <div className="whole-page">
@@ -149,12 +153,19 @@ const handleInputChange = (e) => {
                       <div className="data-range-conteiner__picture-percentages-box">
                         <div className="data-conteiner__img-engine"></div>
                         <h1 className="data-range-conteiner__percentages">
-                          73%
+                          {`${width}%`}
                         </h1>
                       </div>
                       <input
                         type="range"
                         className="data-range-conteiner__slider"
+
+ onChange={changeWidth}
+        min={0}
+        max={100}
+        step={1}
+        value={width}
+
                       />
                       <h2 className="data-range-conteiner__name">
                         Дальность полета
