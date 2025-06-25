@@ -26,6 +26,7 @@ function App() {
 
   const [formData, setFormData] = useState({
   aircraftMass: '',
+  engineType: '', // Для хранения выбранного двигателя
 });
 
 const handleInputChange = (e) => {
@@ -37,7 +38,24 @@ const handleInputChange = (e) => {
 
  const changeWidth = (event) => {
     setWidth(event.target.value);
+  
+  
+  // Внутри App.jsx, секция "Выбор двигателя"
+// const [formDataa, setFormData] = useState({
+//   engineType: '', // Для хранения выбранного двигателя
+// });
+
+// const handleInputChange = (e) => {
+//   const { name, value } = e.target;
+//   setFormData((prev) => ({ ...prev, [name]: value }));
+// };
+  
+  
+  
+  
   };
+
+  
 
   return (
     <div className="whole-page">
@@ -93,8 +111,23 @@ const handleInputChange = (e) => {
                         <div className="data-conteiner__img-engine"></div>
                       </div>
                       <h2 className="data-conteiner__name">Выбор двигателя</h2>
-                    </div>
-                    <div className="data-conteiner__input"></div>
+{/* Выпадающий список */}
+                    <select
+                      name="engineType"
+                      value={formData.engineType}
+                      onChange={handleInputChange}
+                      className="data-conteiner__select data-conteiner__select--engine"
+                      required
+                    >
+                      <option value="" disabled>
+                        Выберите тип двигателя
+                      </option>
+                      <option value="turbofan">Турбовентиляторный</option>
+                      <option value="turboprop">Турбовинтовой</option>
+                      <option value="piston">Поршневой</option>
+                    </select>
+                  </div>
+                    {/* <div className="data-conteiner__input"></div> */}
                   </div>
                 </div>
                 <div className="box-two-containers">

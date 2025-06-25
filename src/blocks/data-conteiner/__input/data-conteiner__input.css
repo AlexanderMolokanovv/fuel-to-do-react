@@ -1,23 +1,15 @@
 .data-conteiner__input {
 padding: 0;
-margin: 0;
-width: 150px;
-height: 40px;
-/* box-sizing: border-box; */
-   
-border: 1px solid rgb(231, 231, 231);
-
-
-
-
-box-sizing: border-box;
-border: 1px solid rgb(230, 230, 230);
-border-radius: 8px;
-box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-background: rgb(255, 255, 255);
-padding-left: 8px;
-margin-left: 8px;
-
-    
+  margin: 0;
+  width: 150px;
+  height: 40px;
+  border: 1px solid rgb(231, 231, 231);
+  box-sizing: border-box;
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  background: rgb(255, 255, 255);
+  padding-left: 8px;
+  margin-left: 8px;
 
 }
