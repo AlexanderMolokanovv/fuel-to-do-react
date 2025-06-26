@@ -1,5 +1,5 @@
 import Header from "./Header";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import arrow from "./images/arrow.svg";
 
 function App() {
@@ -25,15 +25,37 @@ function App() {
 
 
   const [formData, setFormData] = useState({
-    aircraftMass: '',
-  });
+  aircraftMass: '',
+  engineType: '', // Для хранения выбранного двигателя
+});
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setFormData((prev) => ({ ...prev, [name]: value }));
+};
+
+ const [width, setWidth] = useState(100);
+
+ const changeWidth = (event) => {
+    setWidth(event.target.value);
+  
+  
+  // Внутри App.jsx, секция "Выбор двигателя"
+// const [formDataa, setFormData] = useState({
+//   engineType: '', // Для хранения выбранного двигателя
+// });
+
+// const handleInputChange = (e) => {
+//   const { name, value } = e.target;
+//   setFormData((prev) => ({ ...prev, [name]: value }));
+// };
+  
+  
+  
+  
   };
 
-
+  
 
   return (
     <div className="whole-page">
@@ -89,8 +111,23 @@ function App() {
                         <div className="data-conteiner__img-engine"></div>
                       </div>
                       <h2 className="data-conteiner__name">Выбор двигателя</h2>
-                    </div>
-                    <div className="data-conteiner__input"></div>
+{/* Выпадающий список */}
+                    <select
+                      name="engineType"
+                      value={formData.engineType}
+                      onChange={handleInputChange}
+                      className="data-conteiner__select data-conteiner__select--engine"
+                      required
+                    >
+                      <option value="" disabled>
+                        Выберите тип двигателя
+                      </option>
+                      <option value="turbofan">Турбовентиляторный</option>
+                      <option value="turboprop">Турбовинтовой</option>
+                      <option value="piston">Поршневой</option>
+                    </select>
+                  </div>
+                    {/* <div className="data-conteiner__input"></div> */}
                   </div>
                 </div>
                 <div className="box-two-containers">
@@ -149,12 +186,19 @@ function App() {
                       <div className="data-range-conteiner__picture-percentages-box">
                         <div className="data-conteiner__img-engine"></div>
                         <h1 className="data-range-conteiner__percentages">
-                          73%
+                          {`${width}%`}
                         </h1>
                       </div>
                       <input
                         type="range"
                         className="data-range-conteiner__slider"
+
+ onChange={changeWidth}
+        min={0}
+        max={100}
+        step={1}
+        value={width}
+
                       />
                       <h2 className="data-range-conteiner__name">
                         Дальность полета

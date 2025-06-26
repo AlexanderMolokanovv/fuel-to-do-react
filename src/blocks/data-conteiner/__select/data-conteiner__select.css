@@ -1,0 +1,20 @@
+.data-conteiner__select {
+
+    width: 150px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  background: rgb(255, 255, 255);
+  padding: 8px 30px 8px 8px; /* Место для стрелки справа */
+  margin-left: 8px;
+  appearance: none; /* Убираем стандартную стрелку */
+  cursor: pointer;
+  font-size: 16px; /* Для согласованности с инпутами */
+}
+
+.data-conteiner__select:focus {
+  outline: none;
+  border-color: #007bff; /* Подсветка при фокусе */
+}
