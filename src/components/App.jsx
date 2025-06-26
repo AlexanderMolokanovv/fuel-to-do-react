@@ -4,8 +4,8 @@ import arrow from "./images/arrow.svg";
 
 function App() {
   // хуки
-  
-  
+
+
   const [activeVehicle, setActiveVehicle] = useState(null);
 
   const handleVehicleClick = (vehicleId) => {
@@ -25,13 +25,13 @@ function App() {
 
 
   const [formData, setFormData] = useState({
-  aircraftMass: '',
-});
+    aircraftMass: '',
+  });
 
-const handleInputChange = (e) => {
-  const { name, value } = e.target;
-  setFormData((prev) => ({ ...prev, [name]: value }));
-};
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
 
 
@@ -105,13 +105,13 @@ const handleInputChange = (e) => {
                     </div>
                     {/* <div className="data-conteiner__input"></div> */}
                     <input
-    type="number"
-    name="aircraftMass"
-    value={formData.aircraftMass}
-    onChange={handleInputChange}
-    className="data-conteiner__input"
-    placeholder="Введите массу, кг"
-  />
+                      type="number"
+                      name="aircraftMass"
+                      value={formData.aircraftMass}
+                      onChange={handleInputChange}
+                      className="data-conteiner__input"
+                      placeholder="Введите массу, кг"
+                    />
                   </div>
 
                   <div className="data-conteiner">
@@ -414,7 +414,7 @@ const handleInputChange = (e) => {
             <button
               className="calculate-button"
               type="button"
-              // onClick={onEditAvatar}
+            // onClick={onEditAvatar}
             >
               Произвести расчет{" "}
               <img
