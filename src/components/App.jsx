@@ -11,6 +11,10 @@ const navigate = useNavigate();
 
   // хуки
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ed086f3fb790518b18c9fddfaa5655706bf41117
   const [activeVehicle, setActiveVehicle] = useState(null);
 
   const handleVehicleClick = (vehicleId) => {
@@ -480,7 +484,7 @@ const handleSubmit = async (e) => {
             <button
               className="calculate-button"
               type="button"
-              // onClick={onEditAvatar}
+            // onClick={onEditAvatar}
             >
               Произвести расчет{" "}
               <img
