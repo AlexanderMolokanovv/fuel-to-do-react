@@ -1,6 +1,8 @@
 .data-conteiner__select {
 
-    width: 150px;
+  padding: 0;
+    margin: 0;
+    width: 250px;
   height: 40px;
   box-sizing: border-box;
   border: 1px solid rgb(230, 230, 230);
@@ -12,6 +14,12 @@
   appearance: none; /* Убираем стандартную стрелку */
   cursor: pointer;
   font-size: 16px; /* Для согласованности с инпутами */
+
+
+  /* padding-left: 8px; */
+
+
+
 }
 
 .data-conteiner__select:focus {

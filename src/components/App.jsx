@@ -1,11 +1,16 @@
 import Header from "./Header";
+import ResultsPage from './ResultsPage';
 import React, { useState } from "react";
 import arrow from "./images/arrow.svg";
 
+import { Routes, Route, useNavigate } from 'react-router-dom';
+
 function App() {
+
+const navigate = useNavigate();
+
   // хуки
-  
-  
+
   const [activeVehicle, setActiveVehicle] = useState(null);
 
   const handleVehicleClick = (vehicleId) => {
@@ -23,45 +28,64 @@ function App() {
     }
   };
 
-
   const [formData, setFormData] = useState({
-  aircraftMass: '',
-  engineType: '', // Для хранения выбранного двигателя
-});
+    aircraftMass: "",
+    engineType: "", // Для хранения выбранного двигателя
+  });
 
-const handleInputChange = (e) => {
-  const { name, value } = e.target;
-  setFormData((prev) => ({ ...prev, [name]: value }));
-};
-
- const [width, setWidth] = useState(100);
-
- const changeWidth = (event) => {
-    setWidth(event.target.value);
-  
-  
-  // Внутри App.jsx, секция "Выбор двигателя"
-// const [formDataa, setFormData] = useState({
-//   engineType: '', // Для хранения выбранного двигателя
-// });
-
-// const handleInputChange = (e) => {
-//   const { name, value } = e.target;
-//   setFormData((prev) => ({ ...prev, [name]: value }));
-// };
-  
-  
-  
-  
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  
+  const [width, setWidth] = useState(100);
+
+  const changeWidth = (event) => {
+    setWidth(event.target.value);
+
+    // Внутри App.jsx, секция "Выбор двигателя"
+    // const [formDataa, setFormData] = useState({
+    //   engineType: '', // Для хранения выбранного двигателя
+    // });
+
+    // const handleInputChange = (e) => {
+    //   const { name, value } = e.target;
+    //   setFormData((prev) => ({ ...prev, [name]: value }));
+    // };
+  };
+
+
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Заглушка для серверных данных
+    const serverData = {
+      fuelEfficiency: 0.85, // КПД топлива
+      maxRange: 1200, // Дальность полёта, км
+      cost: 500000, // Стоимость, руб
+    };
+    try {
+      console.log('Отправка на сервер:', { ...formData, vehicleType: activeVehicle });
+      // const response = await apii.calculateFuel({ ...formData, vehicleType: activeVehicle });
+      // navigate('/results', { state: { ...formData, vehicleType: activeVehicle, ...response } });
+      navigate('/results', { state: { ...formData, vehicleType: activeVehicle, ...serverData } });
+    } catch (error) {
+      console.error('Ошибка API:', error);
+    }
+  };
+
+
+
+
+
 
   return (
     <div className="whole-page">
       <div className="page">
-        <Header
-        />
+        <Header />
+        <Routes>
+            <Route 
+             path="/"
+            element={
         <main className="main-content">
           <form>
             <section className="section-content">
@@ -111,22 +135,22 @@ const handleInputChange = (e) => {
                         <div className="data-conteiner__img-engine"></div>
                       </div>
                       <h2 className="data-conteiner__name">Выбор двигателя</h2>
-{/* Выпадающий список */}
-                    <select
-                      name="engineType"
-                      value={formData.engineType}
-                      onChange={handleInputChange}
-                      className="data-conteiner__select data-conteiner__select--engine"
-                      required
-                    >
-                      <option value="" disabled>
-                        Выберите тип двигателя
-                      </option>
-                      <option value="turbofan">Турбовентиляторный</option>
-                      <option value="turboprop">Турбовинтовой</option>
-                      <option value="piston">Поршневой</option>
-                    </select>
-                  </div>
+                      {/* Выпадающий список */}
+                    </div>
+                      <select
+                        name="engineType"
+                        value={formData.engineType}
+                        onChange={handleInputChange}
+                        className="data-conteiner__select data-conteiner__select--engine"
+                        required
+                      >
+                        <option value="" disabled>
+                          Выберите тип двигателя
+                        </option>
+                        <option value="turbofan">Турбовентиляторный</option>
+                        <option value="turboprop">Турбовинтовой</option>
+                        <option value="piston">Поршневой</option>
+                      </select>
                     {/* <div className="data-conteiner__input"></div> */}
                   </div>
                 </div>
@@ -142,13 +166,13 @@ const handleInputChange = (e) => {
                     </div>
                     {/* <div className="data-conteiner__input"></div> */}
                     <input
-    type="number"
-    name="aircraftMass"
-    value={formData.aircraftMass}
-    onChange={handleInputChange}
-    className="data-conteiner__input"
-    placeholder="Введите массу, кг"
-  />
+                      type="number"
+                      name="aircraftMass"
+                      value={formData.aircraftMass}
+                      onChange={handleInputChange}
+                      className="data-conteiner__input"
+                      placeholder="Введите массу, кг"
+                    />
                   </div>
 
                   <div className="data-conteiner">
@@ -192,13 +216,11 @@ const handleInputChange = (e) => {
                       <input
                         type="range"
                         className="data-range-conteiner__slider"
-
- onChange={changeWidth}
-        min={0}
-        max={100}
-        step={1}
-        value={width}
-
+                        onChange={changeWidth}
+                        min={0}
+                        max={100}
+                        step={1}
+                        value={width}
                       />
                       <h2 className="data-range-conteiner__name">
                         Дальность полета
@@ -476,6 +498,10 @@ const handleInputChange = (e) => {
           </form>
           <footer className="footer">2025. Все права защищены</footer>
         </main>
+        }
+          />
+          <Route path="/results" element={<ResultsPage />} />
+    </Routes>
       </div>
     </div>
   );
