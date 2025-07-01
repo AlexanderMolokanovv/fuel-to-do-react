@@ -1,0 +1,12 @@
+.res-content__name {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0%;
+    text-align: center;
+    padding-left: 8px;
+    color: rgb(56, 56, 56);
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+}

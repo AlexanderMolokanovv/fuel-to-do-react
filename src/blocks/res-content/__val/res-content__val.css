@@ -1,0 +1,9 @@
+.res-content__val {
+    color: rgb(56, 56, 56);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0%;
+    text-align: right;
+    /* align-self: flex-end */
+}
