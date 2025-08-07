@@ -8,7 +8,7 @@ function Header() {
          
 
           <h1 className="header__name">Нейросетевой проектирование топлив для летательных аппаратов</h1>
-          <h1 className="header__name">Результаты расчета</h1>
+          {/* <h1 className="header__name">Результаты расчета</h1> */}
 
         </header>
   );

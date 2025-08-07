@@ -1,16 +1,19 @@
 import Header from "./Header";
-import ResultsPage from './ResultsPage';
+import ResultsPage from "./ResultsPage";
 import React, { useState } from "react";
 import arrow from "./images/arrow.svg";
 
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from "react-router-dom";
+
+
+
+
+
 
 function App() {
-
   const navigate = useNavigate();
 
   // хуки
-
 
   const [activeVehicle, setActiveVehicle] = useState(null);
 
@@ -55,7 +58,6 @@ function App() {
     // };
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Заглушка для серверных данных
@@ -65,19 +67,19 @@ function App() {
       cost: 500000, // Стоимость, руб
     };
     try {
-      console.log('Отправка на сервер:', { ...formData, vehicleType: activeVehicle });
+      console.log("Отправка на сервер:", {
+        ...formData,
+        vehicleType: activeVehicle,
+      });
       // const response = await apii.calculateFuel({ ...formData, vehicleType: activeVehicle });
       // navigate('/results', { state: { ...formData, vehicleType: activeVehicle, ...response } });
-      navigate('/results', { state: { ...formData, vehicleType: activeVehicle, ...serverData } });
+      navigate("/results", {
+        state: { ...formData, vehicleType: activeVehicle, ...serverData },
+      });
     } catch (error) {
-      console.error('Ошибка API:', error);
+      console.error("Ошибка API:", error);
     }
   };
-
-
-
-
-
 
   return (
     <div className="whole-page">
@@ -135,7 +137,9 @@ function App() {
                             <div className="data-conteiner__img-conteiner">
                               <div className="data-conteiner__img-engine"></div>
                             </div>
-                            <h2 className="data-conteiner__name">Выбор двигателя</h2>
+                            <h2 className="data-conteiner__name">
+                              Выбор двигателя
+                            </h2>
                             {/* Выпадающий список */}
                           </div>
                           <select
@@ -286,7 +290,9 @@ function App() {
                               type="range"
                               className="data-range-conteiner__slider"
                             />
-                            <h2 className="data-range-conteiner__name">Надежность</h2>
+                            <h2 className="data-range-conteiner__name">
+                              Надежность
+                            </h2>
                           </div>
                         </div>
                       </div>
@@ -333,7 +339,9 @@ function App() {
                           <div className="data-conteiner__img-conteiner">
                             <div className="data-conteiner__img-engine"></div>
                           </div>
-                          <h2 className="data-conteiner__name">Вязкость при -20С</h2>
+                          <h2 className="data-conteiner__name">
+                            Вязкость при -20С
+                          </h2>
                         </div>
                         <div className="data-conteiner__two-inputs-container">
                           <div className="data-conteiner__input"></div>
@@ -445,55 +453,50 @@ function App() {
                     </div>
                   </section>
 
+                  <header className="header">
+                    <div className="header__logo"></div>
+                    <h1 className="header__name">Результаты расчета</h1>
+                  </header>
+
                   <section className="section-content">
                     <h1 className="section-content__name">Состав топлива </h1>
 
                     <div className="box-two-containers">
                       <div className="res-content">
-                        <h2 className="res-content__name">
-                          Компонент 1
-                        </h2>
+                        <h2 className="res-content__name">Компонент 1</h2>
                         <h2 className="res-content__val">74%</h2>
                       </div>
                       <div className="res-content">
-                        <h2 className="res-content__name">
-                          Компонент 2
-                        </h2>
+                        <h2 className="res-content__name">Компонент 2</h2>
                         <h2 className="res-content__val">74%</h2>
                       </div>
                     </div>
                     <div className="box-two-containers">
                       <div className="res-content">
-                        <h2 className="res-content__name">
-                          Компонент 3
-                        </h2>
+                        <h2 className="res-content__name">Компонент 3</h2>
                         <h2 className="res-content__val">74%</h2>
                       </div>
                       <div className="res-content">
-                        <h2 className="res-content__name">
-                          Компонент 4
-                        </h2>
+                        <h2 className="res-content__name">Компонент 4</h2>
                         <h2 className="res-content__val">74%</h2>
                       </div>
                     </div>
                     <div className="box-two-containers">
                       <div className="res-content">
-                        <h2 className="res-content__name">
-                          Компонент 5
-                        </h2>
+                        <h2 className="res-content__name">Компонент 5</h2>
                         <h2 className="res-content__val">74%</h2>
                       </div>
                       <div className="res-content">
-                        <h2 className="res-content__name">
-                          Компонент 6
-                        </h2>
+                        <h2 className="res-content__name">Компонент 6</h2>
                         <h2 className="res-content__val">74%</h2>
                       </div>
                     </div>
                   </section>
 
                   <section className="section-content">
-                    <h1 className="section-content__name">Характеристики топлива </h1>
+                    <h1 className="section-content__name">
+                      Характеристики топлива{" "}
+                    </h1>
                     <div className="box-two-containers">
                       <div className="data-conteiner">
                         <div className="data-conteiner__img-name-container">
@@ -516,11 +519,11 @@ function App() {
                             Температура застывания
                           </h2>
                         </div>
-                        
+
                         <h2 className="res-content__val">55</h2>
                       </div>
                     </div>
-                    
+
                     <div className="box-two-containers">
                       <div className="data-conteiner">
                         <div className="data-conteiner__img-name-container">
@@ -543,7 +546,7 @@ function App() {
                             Температура застывания
                           </h2>
                         </div>
-                        
+
                         <h2 className="res-content__val">74</h2>
                       </div>
                     </div>
@@ -569,11 +572,11 @@ function App() {
                             Температура застывания
                           </h2>
                         </div>
-                        
+
                         <h2 className="res-content__val">74</h2>
                       </div>
                     </div>
-                    
+
                     <div className="box-two-containers">
                       <div className="data-conteiner">
                         <div className="data-conteiner__img-name-container">
@@ -596,11 +599,11 @@ function App() {
                             Температура застывания
                           </h2>
                         </div>
-                        
+
                         <h2 className="res-content__val">45</h2>
                       </div>
                     </div>
-                    
+
                     <div className="box-two-containers">
                       <div className="data-conteiner">
                         <div className="data-conteiner__img-name-container">
@@ -623,8 +626,34 @@ function App() {
                             Температура застывания
                           </h2>
                         </div>
-                        
+
                         <h2 className="res-content__val">142</h2>
+                      </div>
+                    </div>
+                  </section>
+                  <section className="section-content">
+                    <h1 className="section-content__name">Графики</h1>
+                    <div className="box-two-containers">
+                      <div className="data-conteiner">
+                        <div className="data-conteiner__img-name-container">
+                          <h2 className="res-content__name">
+                            Название графика
+                          </h2>
+                          <div className="data-conteiner__img-conteiner">
+                            <div className="data-conteiner__img-engine"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="data-conteiner">
+                        <div className="data-conteiner__img-name-container">
+                          <h2 className="res-content__name">
+                            Название графика
+                          </h2>
+                          <div className="data-conteiner__img-conteiner">
+                            <div className="data-conteiner__img-engine"></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </section>
@@ -632,7 +661,7 @@ function App() {
                   <button
                     className="calculate-button"
                     type="button"
-                  // onClick={onEditAvatar}
+                    // onClick={onEditAvatar}
                   >
                     Произвести расчет{" "}
                     <img
