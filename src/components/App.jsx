@@ -2,6 +2,7 @@ import Header from "./Header";
 import ResultsPage from "./ResultsPage";
 import React, { useState } from "react";
 import arrow from "./images/arrow.svg";
+import ChartsSection from './ChartsSection';
 
 import { Routes, Route, useNavigate } from "react-router-dom";
 
@@ -657,6 +658,9 @@ function App() {
                       </div>
                     </div>
                   </section>
+
+ <ChartsSection />
+
 
                   <button
                     className="calculate-button"
