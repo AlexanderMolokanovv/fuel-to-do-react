@@ -3,6 +3,7 @@ import ResultsPage from "./ResultsPage";
 import React, { useState } from "react";
 import arrow from "./images/arrow.svg";
 import ChartsSection from './ChartsSection';
+import SliderComponent from './SliderComponent';
 
 import { Routes, Route, useNavigate } from "react-router-dom";
 
@@ -80,6 +81,8 @@ function App() {
     } catch (error) {
       console.error("Ошибка API:", error);
     }
+
+    
   };
 
   return (
@@ -211,26 +214,14 @@ function App() {
                         {/*
                 посмотреть архив или здесь https://www.kindacode.com/article/using-range-sliders-in-react */}
 
+
+<SliderComponent/>
+
+
                         <div className="box-two-containers">
                           <div className="data-range-conteiner">
-                            <div className="data-range-conteiner__picture-percentages-box">
-                              <div className="data-conteiner__img-engine"></div>
-                              <h1 className="data-range-conteiner__percentages">
-                                {`${width}%`}
-                              </h1>
-                            </div>
-                            <input
-                              type="range"
-                              className="data-range-conteiner__slider"
-                              onChange={changeWidth}
-                              min={0}
-                              max={100}
-                              step={1}
-                              value={width}
-                            />
-                            <h2 className="data-range-conteiner__name">
-                              Дальность полета
-                            </h2>
+                                                        <SliderComponent/>
+                           
                           </div>
                           <div className="data-range-conteiner">
                             <div className="data-range-conteiner__picture-percentages-box">

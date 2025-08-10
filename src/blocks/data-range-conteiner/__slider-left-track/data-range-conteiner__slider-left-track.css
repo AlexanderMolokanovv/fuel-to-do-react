@@ -1,0 +1,10 @@
+.data-range-conteiner__slider-left-track {
+position: absolute;
+    height: 3px;
+    background: linear-gradient(to right, rgba(193, 67, 174, 1), rgba(37, 182, 222, 1));
+    border-radius: 2px 0 0 2px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}

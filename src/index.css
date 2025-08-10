@@ -46,6 +46,10 @@ code {
 @import url(./blocks/data-range-conteiner/__picture-percentages-box/data-range-conteiner__picture-percentages-box.css);
 @import url(./blocks/data-range-conteiner/__slider/data-range-conteiner__slider.css);
 @import url(./blocks/data-range-conteiner/__name/data-range-conteiner__name.css);
+@import url(./blocks/data-range-conteiner/__slider-right-track/data-range-conteiner__slider-right-track.css);
+@import url(./blocks/data-range-conteiner/__slider-left-track/data-range-conteiner__slider-left-track.css);
+@import url(./blocks/data-range-conteiner/__slider-track/data-range-conteiner__slider-track.css);
+@import url(./blocks/data-range-conteiner/__slider-input/data-range-conteiner__slider-input.css);
 @import url(./blocks/box-two-containers/box-two-containers.css);
 @import url(./blocks/airplane-engine/airplane-engine.css);
 @import url(./blocks/airplane-engine/__image/airplane-engine__image.css);

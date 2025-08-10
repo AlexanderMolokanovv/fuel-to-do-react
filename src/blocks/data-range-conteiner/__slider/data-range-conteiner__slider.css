@@ -1,39 +1,67 @@
 .data-range-conteiner__slider {
+    position: relative;
+    height: 14px; /* Соответствует высоте бегунка */
     width: 100%;
-    /* color: #000; */
-      background: #eee;
-  opacity: 0.8;
-  outline: none;
-  transition: 0.3s;
-  -webkit-appearance: none;
+    margin: 0 auto;
 }
 
 
-
-.data-range-conteiner__slider:hover {
-
-opacity: 1;
+.data-range-conteiner__slider::-webkit-slider-runnable-track {
+    height: 3px;
+    background: transparent; /* Сделаем прозрачным, чтобы использовать кастомные треки */
+    border-radius: 2px;
+    position: relative; /* Для наложения треков */
 }
+
+.data-range-conteiner__slider::-moz-range-track {
+    height: 3px;
+    background: transparent; /* Сделаем прозрачным, чтобы использовать кастомные треки */
+    border-radius: 2px;
+    position: relative; /* Для наложения треков */
+}
+
+.data-range-conteiner__slider::-ms-track {
+    height: 3px;
+    background: transparent; /* Сделаем прозрачным, чтобы использовать кастомные треки */
+    border-radius: 2px;
+    color: transparent;
+    position: relative; /* Для наложения треков */
+}
+
 
 
 .data-range-conteiner__slider::-webkit-slider-thumb {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 30px;
-  height: 30px;
-  background: #4caf50;
-  cursor: pointer;
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 1);
+    background: var(--Черный, rgba(56, 56, 56, 1)); /* Чёрный фон */
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px; /* Центрирование относительно трека */
+    transition: background 0.3s; /* Плавное изменение цвета при наведении */
+}
+
+.data-range-conteiner__slider::-webkit-slider-thumb:hover {
+    background: #0000FF; /* Синий цвет при наведении */
 }
 
 .data-range-conteiner__slider::-moz-range-thumb {
-  width: 30px;
-  height: 30px;
-  background: #4caf50;
-  cursor: pointer;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 1);
+    background: var(--Черный, rgba(56, 56, 56, 1)); /* Чёрный фон */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s; /* Плавное изменение цвета при наведении */
 }
 
-/* Style the box */
-/* .box {
-  margin-top: 50px;
-  background: #2196f3;
-} */
+.data-range-conteiner__slider::-moz-range-thumb:hover {
+    background: #0000FF; /* Синий цвет при наведении */
+}
+
+.data-range-conteiner__slider:hover {
+    opacity: 1;
+}

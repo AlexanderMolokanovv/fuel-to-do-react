@@ -1,0 +1,12 @@
+.data-range-conteiner__slider-right-track {
+  position: absolute;
+    height: 3px;
+    background: linear-gradient(to right, rgba(203, 72, 141, 1), rgba(231, 122, 61, 1));
+    border-radius: 0 2px 2px 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(100% - var(--slider-width, 0%)); /* Упрощаем calc, убираем clamp */
+    z-index: 0;
+    
+}

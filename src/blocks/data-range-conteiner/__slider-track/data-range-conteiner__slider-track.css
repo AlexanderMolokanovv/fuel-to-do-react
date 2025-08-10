@@ -1,0 +1,8 @@
+.data-range-conteiner__slider-track {
+   position: relative;
+    height: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    background: transparent;
+    overflow: hidden;
+}

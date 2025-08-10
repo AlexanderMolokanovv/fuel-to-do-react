@@ -1,28 +1,21 @@
 .data-range-conteiner {
-    margin: 0;
+   margin: 0;
     padding: 0;
     box-sizing: border-box;
     border: 1px solid rgb(231, 231, 231);
     border-radius: 20px;
     background: rgb(255, 255, 255);
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Изменено с center на flex-start */
     align-items: center;
-    gap: 20;
-    padding: 0px;
-
-
+    gap: 20px;
     min-height: 180px;
     padding-left: 66px;
     padding-right: 66px;
     margin-right: 20px;
     width: 100%;
-    align-items: center
+    position: relative;
 }
 
 .data-range-conteiner:last-child {
