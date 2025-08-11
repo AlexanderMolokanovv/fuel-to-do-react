@@ -44,6 +44,7 @@ code {
 @import url(./blocks/data-conteiner/__img-ecology/data-conteiner__img-ecology.css);
 @import url(./blocks/data-conteiner/__img-cost/data-conteiner__img-cost.css);
 @import url(./blocks/data-conteiner/__img-reliability/data-conteiner__img-reliability.css);
+@import url(./blocks/limiting-parameters-conteiner/limiting-parameters-conteiner.css);
 @import url(./blocks/data-range-conteiner/__percentages/data-range-conteiner__percentages.css);
 @import url(./blocks/cards-container/cards-container.css);
 @import url(./blocks/res-content/res-content.css);

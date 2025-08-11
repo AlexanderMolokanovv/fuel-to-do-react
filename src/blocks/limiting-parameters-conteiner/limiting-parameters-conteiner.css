@@ -1,0 +1,14 @@
+.limiting-parameters-conteiner {
+   
+      display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Exactly 3 columns */
+  gap: 20px;
+
+}
+
+
+
+
+.limiting-parameters-conteiner:last-child {
+    margin-bottom: 0;
+} 
