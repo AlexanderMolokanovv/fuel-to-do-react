@@ -39,6 +39,7 @@ code {
 @import url(./blocks/data-conteiner/__input/data-conteiner__input.css);
 @import url(./blocks/data-conteiner/__select/data-conteiner__select.css);
 @import url(./blocks/data-conteiner/__select/--engine/data-conteiner__select--engine.css);
+@import url(./blocks/cards-container/cards-container.css);
 @import url(./blocks/res-content/res-content.css);
 @import url(./blocks/res-content/__val/res-content__val.css);
 @import url(./blocks/res-content/__name/res-content__name.css);

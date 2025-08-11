@@ -1,0 +1,20 @@
+.cards-container {
+/* display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+     */
+     display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns */
+  gap: 20px;
+}
+
+
+
+.cards-container:last-child {
+    margin-bottom: 0;
+
+    /* border: 1px solid rgb(231, 231, 231); */
+ 
+} 

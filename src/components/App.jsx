@@ -2,17 +2,57 @@ import Header from "./Header";
 import ResultsPage from "./ResultsPage";
 import React, { useState } from "react";
 import arrow from "./images/arrow.svg";
-import ChartsSection from './ChartsSection';
-import SliderComponent from './SliderComponent';
+import ChartsSection from "./ChartsSection";
+import SliderComponent from "./SliderComponent";
 
 import { Routes, Route, useNavigate } from "react-router-dom";
 
-
-
-
-
-
 function App() {
+  // Функция для обработки изменения значения
+  const handleValueChange = (id, value) => {
+    console.log(`Card ID: ${id}, New Value: ${value}%`);
+    // Здесь можно добавить логику отправки на сервер
+    // fetch('/api/update', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ id, value }),
+    //   headers: { 'Content-Type': 'application/json' },
+    // });
+  };
+
+  // Данные для карточек
+  const cards = [
+    {
+      id: "range",
+      name: "Дальность полета",
+      initialValue: 49,
+      iconClass: "data-conteiner__img-engine",
+    },
+    {
+      id: "payload",
+      name: "Полезная нагрузка",
+      initialValue: 73,
+      iconClass: "data-conteiner__img-payload",
+    },
+    {
+      id: "speed",
+      name: "Скорость",
+      initialValue: 60,
+      iconClass: "data-conteiner__img-speed",
+    },
+    {
+      id: "speed",
+      name: "Скорость",
+      initialValue: 60,
+      iconClass: "data-conteiner__img-speed",
+    },
+    {
+      id: "speed",
+      name: "Скорость",
+      initialValue: 60,
+      iconClass: "data-conteiner__img-speed",
+    },
+  ];
+
   const navigate = useNavigate();
 
   // хуки
@@ -81,8 +121,6 @@ function App() {
     } catch (error) {
       console.error("Ошибка API:", error);
     }
-
-    
   };
 
   return (
@@ -211,81 +249,17 @@ function App() {
                           Характеристики летательного аппарата
                         </h1>
 
-                        {/*
-                посмотреть архив или здесь https://www.kindacode.com/article/using-range-sliders-in-react */}
-
-
-<SliderComponent/>
-
-
-                        <div className="box-two-containers">
-                          <div className="data-range-conteiner">
-                                                        <SliderComponent/>
-                           
-                          </div>
-                          <div className="data-range-conteiner">
-                            <div className="data-range-conteiner__picture-percentages-box">
-                              <div className="data-conteiner__img-engine"></div>
-                              <h1 className="data-range-conteiner__percentages">
-                                73%
-                              </h1>
-                            </div>
-                            <input
-                              type="range"
-                              className="data-range-conteiner__slider"
+                        <div className="cards-container">
+                          {cards.map((card) => (
+                            <SliderComponent
+                              key={card.id}
+                              id={card.id}
+                              name={card.name}
+                              initialValue={card.initialValue}
+                              iconClass={card.iconClass}
+                              onValueChange={handleValueChange}
                             />
-                            <h2 className="data-range-conteiner__name">
-                              Полезная нагрузка
-                            </h2>
-                          </div>
-                          <div className="data-range-conteiner">
-                            <div className="data-range-conteiner__picture-percentages-box">
-                              <div className="data-conteiner__img-engine"></div>
-                              <h1 className="data-range-conteiner__percentages">
-                                73%
-                              </h1>
-                            </div>
-                            <input
-                              type="range"
-                              className="data-range-conteiner__slider"
-                            />
-                            <h2 className="data-range-conteiner__name">
-                              Полезная нагрузка
-                            </h2>
-                          </div>
-                        </div>
-
-                        <div className="box-two-containers">
-                          <div className="data-range-conteiner">
-                            <div className="data-range-conteiner__picture-percentages-box">
-                              <div className="data-conteiner__img-engine"></div>
-                              <h1 className="data-range-conteiner__percentages">
-                                73%
-                              </h1>
-                            </div>
-                            <input
-                              type="range"
-                              className="data-range-conteiner__slider"
-                            />
-                            <h2 className="data-range-conteiner__name">
-                              Стоимость владения
-                            </h2>
-                          </div>
-                          <div className="data-range-conteiner">
-                            <div className="data-range-conteiner__picture-percentages-box">
-                              <div className="data-conteiner__img-engine"></div>
-                              <h1 className="data-range-conteiner__percentages">
-                                73%
-                              </h1>
-                            </div>
-                            <input
-                              type="range"
-                              className="data-range-conteiner__slider"
-                            />
-                            <h2 className="data-range-conteiner__name">
-                              Надежность
-                            </h2>
-                          </div>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -445,7 +419,7 @@ function App() {
                     </div>
                   </section>
 
-                          <button
+                  <button
                     className="calculate-button"
                     type="button"
                     // onClick={onEditAvatar}
@@ -457,7 +431,6 @@ function App() {
                       alt="BigCo Inc. logo"
                     />
                   </button>
-
 
                   <header className="header">
                     <div className="header__logo"></div>
@@ -637,17 +610,15 @@ function App() {
                       </div>
                     </div>
                   </section>
-                
 
- <ChartsSection />
-
+                  <ChartsSection />
 
                   <button
                     className="calculate-button"
                     type="button"
                     // onClick={onEditAvatar}
                   >
-                    Рассчитать еще {" "}
+                    Рассчитать еще{" "}
                     <img
                       src={arrow}
                       className="calculate-button__arrow"
