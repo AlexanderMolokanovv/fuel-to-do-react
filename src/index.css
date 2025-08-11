@@ -44,6 +44,16 @@ code {
 @import url(./blocks/data-conteiner/__img-ecology/data-conteiner__img-ecology.css);
 @import url(./blocks/data-conteiner/__img-cost/data-conteiner__img-cost.css);
 @import url(./blocks/data-conteiner/__img-reliability/data-conteiner__img-reliability.css);
+@import url(./blocks/data-conteiner/__img-freezing-temp/data-conteiner__img-freezing-temp.css);
+@import url(./blocks/data-conteiner/__img-density/data-conteiner__img-density.css);
+@import url(./blocks/data-conteiner/__img-viscosity/data-conteiner__img-viscosity.css);
+@import url(./blocks/data-conteiner/__img-combustion-heat/data-conteiner__img-combustion-heat.css);
+@import url(./blocks/data-conteiner/__img-cooling-resource/data-conteiner__img-cooling-resource.css);
+@import url(./blocks/data-conteiner/__img-thermal-conductivity/data-conteiner__img-thermal-conductivity.css);
+@import url(./blocks/data-conteiner/__img-heat-capacity/data-conteiner__img-heat-capacity.css);
+@import url(./blocks/data-conteiner/__img-induction-period/data-conteiner__img-induction-period.css);
+@import url(./blocks/data-conteiner/__img-burning-rate/data-conteiner__img-burning-rate.css);
+@import url(./blocks/data-conteiner/__img-vapor-pressure/data-conteiner__img-vapor-pressure.css);
 @import url(./blocks/limiting-parameters-conteiner/limiting-parameters-conteiner.css);
 @import url(./blocks/data-range-conteiner/__percentages/data-range-conteiner__percentages.css);
 @import url(./blocks/cards-container/cards-container.css);
@@ -51,6 +61,7 @@ code {
 @import url(./blocks/res-content/__val/res-content__val.css);
 @import url(./blocks/res-content/__name/res-content__name.css);
 @import url(./blocks/data-range-conteiner/data-range-conteiner.css);
+@import url(./blocks/data-range-conteiner/--two-in-a-row/data-range-conteiner--two-in-a-row.css);
 @import url(./blocks/data-range-conteiner/__picture-percentages-box/data-range-conteiner__picture-percentages-box.css);
 @import url(./blocks/data-range-conteiner/__slider/data-range-conteiner__slider.css);
 @import url(./blocks/data-range-conteiner/__name/data-range-conteiner__name.css);
@@ -65,3 +76,29 @@ code {
 @import url(./blocks/calculate-button/calculate-button.css);
 @import url(./blocks/calculate-button/__arrow/calculate-button__arrow.css);
 @import url(./blocks/footer/footer.css);
+
+
+.data-conteiner__img-freezing-temp,
+.data-conteiner__img-density,
+.data-conteiner__img-viscosity,
+.data-conteiner__img-combustion-heat,
+.data-conteiner__img-cooling-resource,
+.data-conteiner__img-thermal-conductivity,
+.data-conteiner__img-heat-capacity,
+.data-conteiner__img-induction-period,
+.data-conteiner__img-burning-rate,
+.data-conteiner__img-vapor-pressure,
+.data-conteiner__img-engine,
+.data-conteiner__img-aircraft-mass,
+.data-conteiner__img-fuel-tank-volume,
+.data-conteiner__img-payload,
+.data-conteiner__img-default {
+  padding: 0;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+}

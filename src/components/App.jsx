@@ -1,12 +1,11 @@
-import Header from "./Header";
-import ResultsPage from "./ResultsPage";
 import React, { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Header from "./Header";
+import InputComponent from "./InputComponent";
+import SliderComponent from "./SliderComponent";
+import ResultsPage from "./ResultsPage";
 import arrow from "./images/arrow.svg";
 import ChartsSection from "./ChartsSection";
-import SliderComponent from "./SliderComponent";
-import InputComponent from './InputComponent';
-
-import { Routes, Route, useNavigate } from "react-router-dom";
 
 function App() {
   // Функция для обработки изменения значения
@@ -20,7 +19,6 @@ function App() {
     // });
   };
 
-
   const handleInputValueChange = (id, value) => {
     console.log(`Input Card ID: ${id}, New Value: ${value}`);
   };
@@ -31,51 +29,110 @@ function App() {
       id: "range",
       name: "Дальность полета",
       initialValue: 49,
-      iconClass: "data-conteiner__img-range"
+      iconClass: "data-conteiner__img-range",
     },
     {
       id: "payload",
       name: "Полезная нагрузка",
       initialValue: 73,
-      iconClass: "data-conteiner__img-payload"
+      iconClass: "data-conteiner__img-payload",
     },
     {
       id: "ecology",
       name: "Экологичность",
       initialValue: 65,
-      iconClass: "data-conteiner__img-ecology"
+      iconClass: "data-conteiner__img-ecology",
     },
     {
       id: "cost",
       name: "Стоимость владения",
       initialValue: 55,
-      iconClass: "data-conteiner__img-cost"
+      iconClass: "data-conteiner__img-cost",
     },
     {
       id: "reliability",
       name: "Надежность",
       initialValue: 80,
-      iconClass: "data-conteiner__img-reliability"
-    }
-  ]
-
-
-
-  const inputCards = [
-    { id: "freezingTemp", name: "Температура застывания", initialValue: 0, unit: "°C", tooltip: "не менее" },
-    { id: "density", name: "Плотность", initialValue: 800, unit: "кг/м³", tooltip: "не более" },
-    { id: "viscosity", name: "Вязкость при -20°C", initialValue: 5, unit: "мПа·с" },
-    { id: "combustionHeat", name: "Массовая теплота сгорания", initialValue: 43000, unit: "кДж/кг" },
-    { id: "coolingResource", name: "Хладоресурс", initialValue: 2000, unit: "кДж/кг" },
-    { id: "thermalConductivity", name: "Теплопроводность", initialValue: 0.15, unit: "Вт/(М*К)", step: 0.01 },
-    { id: "heatCapacity", name: "Теплоемкость", initialValue: 2000, unit: "Дж/К" },
-    { id: "inductionPeriod", name: "Период индукции", initialValue: 600, unit: "сек" },
-    { id: "burningRate", name: "Скорость горения", initialValue: 0.5, unit: "м/с", step: 0.01 },
-    { id: "vaporPressure", name: "Давление насыщеных паров при 150°C", initialValue: 100, unit: "кПа" },
+      iconClass: "data-conteiner__img-reliability",
+    },
   ];
 
-
-
+  const inputCards = [
+    {
+      id: "freezingTemp",
+      name: "Температура застывания",
+      initialValue: 0,
+      unit: "°C",
+      tooltip: "не менее",
+      iconClass: "data-conteiner__img-freezing-temp",
+    },
+    {
+      id: "density",
+      name: "Плотность",
+      initialValue: 800,
+      unit: "кг/м³",
+      tooltip: "не более",
+      iconClass: "data-conteiner__img-density",
+    },
+    {
+      id: "viscosity",
+      name: "Вязкость при -20°C",
+      initialValue: 5,
+      unit: "мПа·с",
+      iconClass: "data-conteiner__img-viscosity",
+    },
+    {
+      id: "combustionHeat",
+      name: "Массовая теплота сгорания",
+      initialValue: 43000,
+      unit: "кДж/кг",
+      iconClass: "data-conteiner__img-combustion-heat",
+    },
+    {
+      id: "coolingResource",
+      name: "Хладоресурс",
+      initialValue: 2000,
+      unit: "кДж/кг",
+      iconClass: "data-conteiner__img-cooling-resource",
+    },
+    {
+      id: "thermalConductivity",
+      name: "Теплопроводность",
+      initialValue: 0.15,
+      unit: "Вт/(М*К)",
+      step: 0.01,
+      iconClass: "data-conteiner__img-thermal-conductivity",
+    },
+    {
+      id: "heatCapacity",
+      name: "Теплоемкость",
+      initialValue: 2000,
+      unit: "Дж/К",
+      iconClass: "data-conteiner__img-heat-capacity",
+    },
+    {
+      id: "inductionPeriod",
+      name: "Период индукции",
+      initialValue: 600,
+      unit: "сек",
+      iconClass: "data-conteiner__img-induction-period",
+    },
+    {
+      id: "burningRate",
+      name: "Скорость горения",
+      initialValue: 0.5,
+      unit: "м/с",
+      step: 0.01,
+      iconClass: "data-conteiner__img-burning-rate",
+    },
+    {
+      id: "vaporPressure",
+      name: "Давление насыщеных паров при 150°C",
+      initialValue: 100,
+      unit: "кПа",
+      iconClass: "data-conteiner__img-vapor-pressure",
+    },
+  ];
 
   const navigate = useNavigate();
 
@@ -220,11 +277,21 @@ function App() {
                             </option>
                             <option value="gasturbine">Газотурбинный</option>
                             <option value="turbojet">Турбореактивный</option>
-                            <option value="piston_gasoline">Поршневой бензин</option>
-                            <option value="piston_diesel">Поршневой дизель</option>
-                            <option value="ramjet">Прямоточный воздушно-реактивный</option>
-                            <option value="liquid_rocket">Жидкостный ракетный</option>
-                            <option value="solid_rocket">Твердотопливный ракетный</option>
+                            <option value="piston_gasoline">
+                              Поршневой бензин
+                            </option>
+                            <option value="piston_diesel">
+                              Поршневой дизель
+                            </option>
+                            <option value="ramjet">
+                              Прямоточный воздушно-реактивный
+                            </option>
+                            <option value="liquid_rocket">
+                              Жидкостный ракетный
+                            </option>
+                            <option value="solid_rocket">
+                              Твердотопливный ракетный
+                            </option>
                           </select>
                         </div>
                       </div>
@@ -257,7 +324,7 @@ function App() {
                           <input
                             type="number"
                             name="fuelTankVolume"
-                            value={formData.fuelTankVolume || ''}
+                            value={formData.fuelTankVolume || ""}
                             onChange={handleInputChange}
                             className="data-conteiner__input"
                             placeholder="Введите объем бака, л"
@@ -275,7 +342,7 @@ function App() {
                           <input
                             type="number"
                             name="payload"
-                            value={formData.payload || ''}
+                            value={formData.payload || ""}
                             onChange={handleInputChange}
                             className="data-conteiner__input"
                             placeholder="Введите полезную нагрузку, кг"
@@ -308,194 +375,30 @@ function App() {
                     <h1 className="section-content__name">
                       Ограничивающие параметры
                     </h1>
-
-                    <div className="box-two-containers">
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="data-conteiner__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-                        <div className="data-conteiner__two-inputs-container">
-                          <div className="data-conteiner__input"></div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                      </div>
-
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="data-conteiner__name">Плотность</h2>
-                        </div>
-                        <div className="data-conteiner__two-inputs-container">
-                          <div className="data-conteiner__input"></div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="box-two-containers">
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="data-conteiner__name">
-                            Вязкость при -20С
-                          </h2>
-                        </div>
-                        <div className="data-conteiner__two-inputs-container">
-                          <div className="data-conteiner__input"></div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                      </div>
-
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="data-conteiner__name">
-                            Массовая теплота сгорания, кДж/кг
-                          </h2>
-                        </div>
-                        <div className="data-conteiner__two-inputs-container">
-                          <div className="data-conteiner__input"></div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="box-two-containers">
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="data-conteiner__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-                        <div className="data-conteiner__two-inputs-container">
-                          <div className="data-conteiner__input"></div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                      </div>
-
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="data-conteiner__name">Плотность</h2>
-                        </div>
-                        <div className="data-conteiner__two-inputs-container">
-                          <div className="data-conteiner__input"></div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="box-two-containers">
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="data-conteiner__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-                        <div className="data-conteiner__two-inputs-container">
-                          <div className="data-conteiner__input"></div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                      </div>
-
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="data-conteiner__name">Плотность</h2>
-                        </div>
-                        <div className="data-conteiner__two-inputs-container">
-                          <div className="data-conteiner__input"></div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="box-two-containers">
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="data-conteiner__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-                        <div className="data-conteiner__two-inputs-container">
-                          <div className="data-conteiner__input"></div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                      </div>
-
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="data-conteiner__name">Плотность</h2>
-                        </div>
-                        <div className="data-conteiner__two-inputs-container">
-                          <div className="data-conteiner__input"></div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                      </div>
-                    </div>
                   </section>
 
-
-                  <div>
-                    {/* Slider Section */}
-                    {/* <div className="cards-container">
-        {sliderCards.map((card) => (
-          <SliderComponent
-            key={card.id}
-            id={card.id}
-            name={card.name}
-            initialValue={card.initialValue}
-            iconClass={card.iconClass}
-            onValueChange={handleSliderValueChange}
-          />
-        ))}
-      </div> */}
-                    {/* Input Section */}
-                    <div className="limiting-parameters-conteiner">
-                      {inputCards.map((card) => (
-                        <InputComponent
-                          key={card.id}
-                          id={card.id}
-                          name={card.name}
-                          initialValue={card.initialValue}
-                          unit={card.unit}
-                          tooltip={card.tooltip}
-                          onValueChange={handleInputValueChange}
-                        />
-                      ))}
-                    </div>
+                  {/* <div> */}
+                  {/* Input Section */}
+                  <div className="limiting-parameters-conteiner">
+                    {inputCards.map((card) => (
+                      <InputComponent
+                        key={card.id}
+                        id={card.id}
+                        name={card.name}
+                        initialMinValue={card.initialValue}
+                        initialMaxValue={card.initialValue}
+                        unit={card.unit}
+                        tooltip={card.tooltip}
+                        iconClass={card.iconClass}
+                        onValueChange={handleInputValueChange}
+                      />
+                    ))}
                   </div>
-
-
-
 
                   <button
                     className="calculate-button"
                     type="button"
-                  // onClick={onEditAvatar}
+                    // onClick={onEditAvatar}
                   >
                     Произвести расчет{" "}
                     <img
@@ -689,7 +592,7 @@ function App() {
                   <button
                     className="calculate-button"
                     type="button"
-                  // onClick={onEditAvatar}
+                    // onClick={onEditAvatar}
                   >
                     Рассчитать еще{" "}
                     <img

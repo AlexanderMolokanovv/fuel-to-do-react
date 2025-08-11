@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-const InputComponent = ({ id, name, initialMinValue, initialMaxValue, unit, tooltip, onValueChange }) => {
-  const [minValue, setMinValue] = useState(initialMinValue);
-  const [maxValue, setMaxValue] = useState(initialMaxValue);
+const InputComponent = ({ id, name, initialMinValue, initialMaxValue, unit, tooltip, iconClass, step, onValueChange }) => {
+  const [minValue, setMinValue] = useState(initialMinValue || '');
+  const [maxValue, setMaxValue] = useState(initialMaxValue || '');
 
   const handleMinChange = (e) => {
     const newValue = e.target.value;
@@ -25,41 +25,42 @@ const InputComponent = ({ id, name, initialMinValue, initialMaxValue, unit, tool
     // });
   }, [minValue, maxValue, id]);
 
+  // Определяем шаг для инпутов: используем prop step, если он есть, иначе проверяем unit
+  const inputStep = step || (unit && (unit.includes('Вт') || unit.includes('м/с')) ? 0.01 : 1);
+
   return (
-    // <div className="limiting-parameters-conteiner">
-      <div className="data-range-conteiner">
-        <div className="data-conteiner__img-name-container">
-          <div className="data-conteiner__img-conteiner">
-            <div className="data-conteiner__img-engine"></div>
-          </div>
-          <h2 className="data-conteiner__name">{name}, {unit}</h2>
+    <div className="data-conteiner">
+      <div className="data-conteiner__img-name-container">
+        <div className="data-conteiner__img-conteiner">
+          <div className={iconClass || 'data-conteiner__img-default'}></div>
         </div>
-        <div className="data-conteiner__two-inputs-container">
-          <div className="data-conteiner__input-field" data-tooltip={tooltip}>
-            <input
-              type="number"
-              className="data-conteiner__input"
-              value={minValue}
-              onChange={handleMinChange}
-              step={unit.includes('Вт') || unit.includes('м/с') ? 0.01 : 1}
-              min={0}
-              placeholder="Min"
-            />
-          </div>
-          <div className="data-conteiner__input-field" data-tooltip={tooltip}>
-            <input
-              type="number"
-              className="data-conteiner__input"
-              value={maxValue}
-              onChange={handleMaxChange}
-              step={unit.includes('Вт') || unit.includes('м/с') ? 0.01 : 1}
-              min={0}
-              placeholder="Max"
-            />
-          </div>
+        <h2 className="data-conteiner__name">{name}{unit ? `, ${unit}` : ''}</h2>
+      </div>
+      <div className="data-conteiner__two-inputs-container">
+        <div className="data-conteiner__input-field" {...(tooltip ? { 'data-tooltip': tooltip } : {})}>
+          <input
+            type="number"
+            className="data-conteiner__input"
+            value={minValue}
+            onChange={handleMinChange}
+            step={inputStep}
+            min={0}
+            placeholder="Min"
+          />
+        </div>
+        <div className="data-conteiner__input-field" {...(tooltip ? { 'data-tooltip': tooltip } : {})}>
+          <input
+            type="number"
+            className="data-conteiner__input"
+            value={maxValue}
+            onChange={handleMaxChange}
+            step={inputStep}
+            min={0}
+            placeholder="Max"
+          />
         </div>
       </div>
-    // </div>
+    </div>
   );
 };
 

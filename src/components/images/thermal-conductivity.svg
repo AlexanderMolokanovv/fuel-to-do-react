@@ -1,0 +1,7 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24.000000" height="24.000000" fill="none">
+	<rect id="streamline:hot-spring" width="24.000000" height="24.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)" fill-opacity="0" />
+	<g id="Group">
+		<path id="Vector" d="M20.5714 12C21.2885 12.372 21.9002 12.9189 22.3497 13.5902C22.7992 14.2614 23.072 15.0353 23.1428 15.84C23.1428 19.1486 18.1543 21.84 12 21.84C5.84569 21.84 0.857117 19.1657 0.857117 15.8571C0.925172 15.0494 1.19668 14.272 1.64633 13.5976C2.09597 12.9231 2.70911 12.3735 3.42855 12" fill-rule="nonzero" stroke="rgb(156.188,156.188,156.188)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+		<path id="Vector" d="M6.99426 3.85711C3.56569 8.14282 10.4228 9.85711 6.99426 14.1428M12 2.14282C8.5714 6.42854 15.4285 11.5714 12 15.8571M17.0057 3.85711C13.5771 8.14282 20.4343 9.85711 17.0057 14.1428" fill-rule="nonzero" stroke="rgb(156.188,156.188,156.188)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+	</g>
+</svg>
