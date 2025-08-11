@@ -1,0 +1,6 @@
+
+.cards-container--two-in-a-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 20px !important;
+}

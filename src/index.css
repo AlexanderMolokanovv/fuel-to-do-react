@@ -22,6 +22,7 @@ code {
 @import url(./blocks/page/page.css);
 @import url(./blocks/section-content/__name/section-content__name.css);
 @import url(./blocks/data-conteiner/data-conteiner.css);
+@import url(./blocks/cards-container/--two-in-a-row/cards-container--two-in-a-row.css);
 @import url(./blocks/graf-conteiner/graf-conteiner.css);
 @import url(./blocks/data-conteiner/__buttons/data-conteiner__buttons.css);
 @import url(./blocks/data-conteiner/__two-inputs-container/data-conteiner__two-inputs-container.css);

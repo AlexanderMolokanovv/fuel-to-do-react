@@ -6,6 +6,8 @@ import SliderComponent from "./SliderComponent";
 import ResultsPage from "./ResultsPage";
 import arrow from "./images/arrow.svg";
 import ChartsSection from "./ChartsSection";
+import FuelComponent from "./FuelComponent";
+import FuelPropertyComponent from './FuelPropertyComponent';
 
 function App() {
   // Функция для обработки изменения значения
@@ -133,6 +135,28 @@ function App() {
       iconClass: "data-conteiner__img-vapor-pressure",
     },
   ];
+
+  const fuelComponents = [
+    { id: "component1", name: "Компонент 1", value: 44, unit: "%" },
+    { id: "component2", name: "Компонент 2", value: 20, unit: "%" },
+    { id: "component3", name: "Компонент 3", value: 15, unit: "%" },
+    { id: "component4", name: "Компонент 4", value: 10, unit: "%" },
+    { id: "component5", name: "Компонент 5", value: 8, unit: "%" },
+    { id: "component6", name: "Компонент 6", value: 3, unit: "%" },
+  ];
+
+  const fuelProperties = [
+  { id: "freezingTemp", name: "Температура застывания", value: -47, unit: "°C", iconClass: "data-conteiner__img-freezing-temp" },
+  { id: "density", name: "Плотность", value: 800, unit: "кг/м³", iconClass: "data-conteiner__img-density" },
+  { id: "viscosity", name: "Вязкость при -20°C", value: 8, unit: "мПа·с", iconClass: "data-conteiner__img-viscosity" },
+  { id: "combustionHeat", name: "Массовая теплота сгорания", value: 43100, unit: "кДж/кг", iconClass: "data-conteiner__img-combustion-heat" },
+  { id: "coolingResource", name: "Хладоресурс", value: 2100, unit: "кДж/кг", iconClass: "data-conteiner__img-cooling-resource" },
+  { id: "thermalConductivity", name: "Теплопроводность", value: 0.15, unit: "Вт/(М*К)", iconClass: "data-conteiner__img-thermal-conductivity" },
+  { id: "heatCapacity", name: "Теплоемкость", value: 2000, unit: "Дж/К", iconClass: "data-conteiner__img-heat-capacity" },
+  { id: "inductionPeriod", name: "Период индукции", value: 600, unit: "сек", iconClass: "data-conteiner__img-induction-period" },
+  { id: "burningRate", name: "Скорость горения", value: 0.2, unit: "м/с", iconClass: "data-conteiner__img-burning-rate" },
+  { id: "vaporPressure", name: "Давление насыщеных паров при 150°C", value: 10, unit: "кПа", iconClass: "data-conteiner__img-vapor-pressure" },
+];
 
   const navigate = useNavigate();
 
@@ -413,181 +437,40 @@ function App() {
                     <h1 className="header__name">Результаты расчета</h1>
                   </header>
 
-                  <section className="section-content">
-                    <h1 className="section-content__name">Состав топлива </h1>
-
-                    <div className="box-two-containers">
-                      <div className="res-content">
-                        <h2 className="res-content__name">Компонент 1</h2>
-                        <h2 className="res-content__val">74%</h2>
-                      </div>
-                      <div className="res-content">
-                        <h2 className="res-content__name">Компонент 2</h2>
-                        <h2 className="res-content__val">74%</h2>
-                      </div>
-                    </div>
-                    <div className="box-two-containers">
-                      <div className="res-content">
-                        <h2 className="res-content__name">Компонент 3</h2>
-                        <h2 className="res-content__val">74%</h2>
-                      </div>
-                      <div className="res-content">
-                        <h2 className="res-content__name">Компонент 4</h2>
-                        <h2 className="res-content__val">74%</h2>
-                      </div>
-                    </div>
-                    <div className="box-two-containers">
-                      <div className="res-content">
-                        <h2 className="res-content__name">Компонент 5</h2>
-                        <h2 className="res-content__val">74%</h2>
-                      </div>
-                      <div className="res-content">
-                        <h2 className="res-content__name">Компонент 6</h2>
-                        <h2 className="res-content__val">74%</h2>
-                      </div>
+                    <section className="section-content">
+                    <h1 className="section-content__name">Состав топлива</h1>
+                    <div className="cards-container cards-container--two-in-a-row">
+                      {fuelComponents.map((component, index) => (
+                        <FuelComponent
+                          key={component.id}
+                          name={component.name}
+                          value={component.value}
+                          unit={component.unit}
+                          index={index}
+                        />
+                      ))}
                     </div>
                   </section>
 
-                  <section className="section-content">
-                    <h1 className="section-content__name">
-                      Характеристики топлива{" "}
-                    </h1>
-                    <div className="box-two-containers">
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="res-content__name">
-                            Температура застывания
-                          </h2>
+<section className="section-content">
+                        <h1 className="section-content__name">Характеристики топлива</h1>
+                        <div className="cards-container cards-container--two-in-a-row">
+                          {fuelProperties.map((property) => (
+                            <FuelPropertyComponent
+                              key={property.id}
+                              name={property.name}
+                              value={property.value}
+                              unit={property.unit}
+                              iconClass={property.iconClass}
+                            />
+                          ))}
                         </div>
-                        <h2 className="res-content__val">74</h2>
-                      </div>
-
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="res-content__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-
-                        <h2 className="res-content__val">55</h2>
-                      </div>
-                    </div>
-
-                    <div className="box-two-containers">
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="res-content__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-                        <h2 className="res-content__val">44</h2>
-                      </div>
-
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="res-content__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-
-                        <h2 className="res-content__val">74</h2>
-                      </div>
-                    </div>
-                    <div className="box-two-containers">
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="res-content__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-                        <h2 className="res-content__val">741</h2>
-                      </div>
-
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="res-content__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-
-                        <h2 className="res-content__val">74</h2>
-                      </div>
-                    </div>
-
-                    <div className="box-two-containers">
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="res-content__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-                        <h2 className="res-content__val">562</h2>
-                      </div>
-
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="res-content__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-
-                        <h2 className="res-content__val">45</h2>
-                      </div>
-                    </div>
-
-                    <div className="box-two-containers">
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="res-content__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-                        <h2 className="res-content__val">14</h2>
-                      </div>
-
-                      <div className="data-conteiner">
-                        <div className="data-conteiner__img-name-container">
-                          <div className="data-conteiner__img-conteiner">
-                            <div className="data-conteiner__img-engine"></div>
-                          </div>
-                          <h2 className="res-content__name">
-                            Температура застывания
-                          </h2>
-                        </div>
-
-                        <h2 className="res-content__val">142</h2>
-                      </div>
-                    </div>
-                  </section>
+                      </section>
+                
 
                   <ChartsSection />
+
+               
 
                   <button
                     className="calculate-button"
