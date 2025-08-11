@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import arrow from "./images/arrow.svg";
 import ChartsSection from "./ChartsSection";
 import SliderComponent from "./SliderComponent";
+import InputComponent from './InputComponent';
 
 import { Routes, Route, useNavigate } from "react-router-dom";
 
@@ -17,6 +18,11 @@ function App() {
     //   body: JSON.stringify({ id, value }),
     //   headers: { 'Content-Type': 'application/json' },
     // });
+  };
+
+
+  const handleInputValueChange = (id, value) => {
+    console.log(`Input Card ID: ${id}, New Value: ${value}`);
   };
 
   // Данные для карточек
@@ -52,6 +58,24 @@ function App() {
     iconClass: "data-conteiner__img-reliability"
   }
 ]
+
+
+
+const inputCards = [
+    { id: "freezingTemp", name: "Температура застывания", initialValue: 0, unit: "°C", tooltip: "не менее" },
+    { id: "density", name: "Плотность", initialValue: 800, unit: "кг/м³", tooltip: "не более" },
+    { id: "viscosity", name: "Вязкость при -20°C", initialValue: 5, unit: "мПа·с" },
+    { id: "combustionHeat", name: "Массовая теплота сгорания", initialValue: 43000, unit: "кДж/кг" },
+    { id: "coolingResource", name: "Хладоресурс", initialValue: 2000, unit: "кДж/кг" },
+    { id: "thermalConductivity", name: "Теплопроводность", initialValue: 0.15, unit: "Вт/(М*К)", step: 0.01 },
+    { id: "heatCapacity", name: "Теплоемкость", initialValue: 2000, unit: "Дж/К" },
+    { id: "inductionPeriod", name: "Период индукции", initialValue: 600, unit: "сек" },
+    { id: "burningRate", name: "Скорость горения", initialValue: 0.5, unit: "м/с", step: 0.01 },
+    { id: "vaporPressure", name: "Давление насыщеных паров при 150°C", initialValue: 100, unit: "кПа" },
+  ];
+
+
+
 
   const navigate = useNavigate();
 
@@ -185,68 +209,83 @@ function App() {
                             {/* Выпадающий список */}
                           </div>
                           <select
-                            name="engineType"
-                            value={formData.engineType}
-                            onChange={handleInputChange}
-                            className="data-conteiner__select data-conteiner__select--engine"
-                            required
-                          >
-                            <option value="" disabled>
-                              Выберите тип двигателя
-                            </option>
-                            <option value="turbofan">Турбовентиляторный</option>
-                            <option value="turboprop">Турбовинтовой</option>
-                            <option value="piston">Поршневой</option>
-                          </select>
-                          {/* <div className="data-conteiner__input"></div> */}
+                name="engineType"
+                value={formData.engineType}
+                onChange={handleInputChange}
+                className="data-conteiner__select data-conteiner__select--engine appearance-none pr-8"
+                required
+              >
+                <option value="" disabled>
+                  Выберите тип двигателя
+                </option>
+                <option value="gasturbine">Газотурбинный</option>
+                <option value="turbojet">Турбореактивный</option>
+                <option value="piston_gasoline">Поршневой бензин</option>
+                <option value="piston_diesel">Поршневой дизель</option>
+                <option value="ramjet">Прямоточный воздушно-реактивный</option>
+                <option value="liquid_rocket">Жидкостный ракетный</option>
+                <option value="solid_rocket">Твердотопливный ракетный</option>
+              </select>
                         </div>
                       </div>
                       <div className="box-two-containers">
-                        <div className="data-conteiner">
-                          <div className="data-conteiner__img-name-container">
-                            <div className="data-conteiner__img-conteiner">
-                              <div className="data-conteiner__img-engine"></div>
-                            </div>
-                            <h2 className="data-conteiner__name">
-                              Масса летательного аппарата
-                            </h2>
-                          </div>
-                          {/* <div className="data-conteiner__input"></div> */}
-                          <input
-                            type="number"
-                            name="aircraftMass"
-                            value={formData.aircraftMass}
-                            onChange={handleInputChange}
-                            className="data-conteiner__input"
-                            placeholder="Введите массу, кг"
-                          />
-                        </div>
-
-                        <div className="data-conteiner">
-                          <div className="data-conteiner__img-name-container">
-                            <div className="data-conteiner__img-conteiner">
-                              <div className="data-conteiner__img-engine"></div>
-                            </div>
-                            <h2 className="data-conteiner__name">Объем бака</h2>
-                          </div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                        <div className="data-conteiner">
-                          <div className="data-conteiner__img-name-container">
-                            <div className="data-conteiner__img-conteiner">
-                              <div className="data-conteiner__img-lode"></div>
-                            </div>
-                            <h2 className="data-conteiner__name">
-                              Полезная нагрузка
-                            </h2>
-                          </div>
-                          <div className="data-conteiner__input"></div>
-                        </div>
-                      </div>
+          <div className="data-conteiner">
+            <div className="data-conteiner__img-name-container">
+              <div className="data-conteiner__img-conteiner">
+                <div className="data-conteiner__img-engine"></div>
+              </div>
+              <h2 className="data-conteiner__name">
+                Масса летательного аппарата
+              </h2>
+            </div>
+            <input
+              type="number"
+              name="aircraftMass"
+              value={formData.aircraftMass}
+              onChange={handleInputChange}
+              className="data-conteiner__input"
+              placeholder="Введите массу, кг"
+            />
+          </div>
+          <div className="data-conteiner">
+            <div className="data-conteiner__img-name-container">
+              <div className="data-conteiner__img-conteiner">
+                <div className="data-conteiner__img-engine"></div>
+              </div>
+              <h2 className="data-conteiner__name">Объем бака</h2>
+            </div>
+            <input
+              type="number"
+              name="fuelTankVolume"
+              value={formData.fuelTankVolume || ''}
+              onChange={handleInputChange}
+              className="data-conteiner__input"
+              placeholder="Введите объем бака, л"
+            />
+          </div>
+          <div className="data-conteiner">
+            <div className="data-conteiner__img-name-container">
+              <div className="data-conteiner__img-conteiner">
+                <div className="data-conteiner__img-lode"></div>
+              </div>
+              <h2 className="data-conteiner__name">
+                Полезная нагрузка
+              </h2>
+            </div>
+            <input
+              type="number"
+              name="payload"
+              value={formData.payload || ''}
+              onChange={handleInputChange}
+              className="data-conteiner__input"
+              placeholder="Введите полезную нагрузку, кг"
+            />
+          </div>
+        </div>
 
                       <div className="airplane-weight">
                         <h1 className="section-content__name">
-                          Характеристики летательного аппарата
+                          WSM коэффициенты
                         </h1>
 
                         <div className="cards-container">
@@ -418,6 +457,40 @@ function App() {
                       </div>
                     </div>
                   </section>
+
+
+                  <div>
+      {/* Slider Section */}
+      {/* <div className="cards-container">
+        {sliderCards.map((card) => (
+          <SliderComponent
+            key={card.id}
+            id={card.id}
+            name={card.name}
+            initialValue={card.initialValue}
+            iconClass={card.iconClass}
+            onValueChange={handleSliderValueChange}
+          />
+        ))}
+      </div> */}
+      {/* Input Section */}
+      <div className="cards-container">
+        {inputCards.map((card) => (
+          <InputComponent
+            key={card.id}
+            id={card.id}
+            name={card.name}
+            initialValue={card.initialValue}
+            unit={card.unit}
+            tooltip={card.tooltip}
+            onValueChange={handleInputValueChange}
+          />
+        ))}
+      </div>
+    </div>
+
+
+
 
                   <button
                     className="calculate-button"
