@@ -1,10 +1,13 @@
 .data-range-conteiner__name {
+    margin: 0;
+    padding: 0;
     font-size: 20px;
     font-weight: 400;
     line-height: 23px;
-    letter-spacing: 0%;
+    /* letter-spacing: 0%; */
     text-align: center;
     padding-left: 8px;
-    margin-top: 20px;
+    margin-top: 5px;
     color: rgb(156, 156, 156);
+    margin-bottom: 16px;
     }

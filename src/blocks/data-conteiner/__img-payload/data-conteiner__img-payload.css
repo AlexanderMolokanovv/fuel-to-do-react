@@ -1,0 +1,17 @@
+.data-conteiner__img-payload {
+  padding: 0;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+}
+
+
+
+.data-conteiner__img-payload {
+  background-image: url(../../../components/images/payload.svg);
+}
+

@@ -21,37 +21,37 @@ function App() {
 
   // Данные для карточек
   const cards = [
-    {
-      id: "range",
-      name: "Дальность полета",
-      initialValue: 49,
-      iconClass: "data-conteiner__img-engine",
-    },
-    {
-      id: "payload",
-      name: "Полезная нагрузка",
-      initialValue: 73,
-      iconClass: "data-conteiner__img-payload",
-    },
-    {
-      id: "speed",
-      name: "Скорость",
-      initialValue: 60,
-      iconClass: "data-conteiner__img-speed",
-    },
-    {
-      id: "speed",
-      name: "Скорость",
-      initialValue: 60,
-      iconClass: "data-conteiner__img-speed",
-    },
-    {
-      id: "speed",
-      name: "Скорость",
-      initialValue: 60,
-      iconClass: "data-conteiner__img-speed",
-    },
-  ];
+  {
+    id: "range",
+    name: "Дальность полета",
+    initialValue: 49,
+    iconClass: "data-conteiner__img-range"
+  },
+  {
+    id: "payload",
+    name: "Полезная нагрузка",
+    initialValue: 73,
+    iconClass: "data-conteiner__img-payload"
+  },
+  {
+    id: "ecology",
+    name: "Экологичность",
+    initialValue: 65,
+    iconClass: "data-conteiner__img-ecology"
+  },
+  {
+    id: "cost",
+    name: "Стоимость владения",
+    initialValue: 55,
+    iconClass: "data-conteiner__img-cost"
+  },
+  {
+    id: "reliability",
+    name: "Надежность",
+    initialValue: 80,
+    iconClass: "data-conteiner__img-reliability"
+  }
+]
 
   const navigate = useNavigate();
 

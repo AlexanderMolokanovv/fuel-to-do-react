@@ -39,6 +39,12 @@ code {
 @import url(./blocks/data-conteiner/__input/data-conteiner__input.css);
 @import url(./blocks/data-conteiner/__select/data-conteiner__select.css);
 @import url(./blocks/data-conteiner/__select/--engine/data-conteiner__select--engine.css);
+@import url(./blocks/data-conteiner/__img-range/data-conteiner__img-range.css);
+@import url(./blocks/data-conteiner/__img-payload/data-conteiner__img-payload.css);
+@import url(./blocks/data-conteiner/__img-ecology/data-conteiner__img-ecology.css);
+@import url(./blocks/data-conteiner/__img-cost/data-conteiner__img-cost.css);
+@import url(./blocks/data-conteiner/__img-reliability/data-conteiner__img-reliability.css);
+@import url(./blocks/data-range-conteiner/__percentages/data-range-conteiner__percentages.css);
 @import url(./blocks/cards-container/cards-container.css);
 @import url(./blocks/res-content/res-content.css);
 @import url(./blocks/res-content/__val/res-content__val.css);
