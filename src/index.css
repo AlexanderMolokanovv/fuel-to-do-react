@@ -1,82 +1,69 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "MADE-Regular-EVO", 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;  
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}  */ 
-
-
-@import url(./vendor/normalize.css);
-@import url(./vendor/fonts.css);
-@import url(./blocks/whole-page/whole-page.css);
+@import url(./blocks/airplane-engine/airplane-engine.css);
+@import url(./blocks/airplane-engine/__image/airplane-engine__image.css);
+@import url(./blocks/box-two-containers/box-two-containers.css);
+@import url(./blocks/calculate-button/calculate-button.css);
+@import url(./blocks/calculate-button/__arrow/calculate-button__arrow.css);
+@import url(./blocks/cards-container/cards-container.css);
+@import url(./blocks/cards-container/--two-in-a-row/cards-container--two-in-a-row.css);
+@import url(./blocks/data-conteiner/data-conteiner.css);
+@import url(./blocks/data-conteiner/__airplane/data-conteiner__airplane.css);
+@import url(./blocks/data-conteiner/__airplane/--active/data-conteiner__airplane--active.css);
+@import url(./blocks/data-conteiner/__buttons/data-conteiner__buttons.css);
+@import url(./blocks/data-conteiner/__helicopter/data-conteiner__helicopter.css);
+@import url(./blocks/data-conteiner/__helicopter/--active/data-conteiner__helicopter--active.css);
+@import url(./blocks/data-conteiner/__img-conteiner/data-conteiner__img-conteiner.css);
+@import url(./blocks/data-conteiner/__img-cost/data-conteiner__img-cost.css);
+@import url(./blocks/data-conteiner/__img-density/data-conteiner__img-density.css);
+@import url(./blocks/data-conteiner/__img-ecology/data-conteiner__img-ecology.css);
+@import url(./blocks/data-conteiner/__img-engine/data-conteiner__img-engine.css);
+@import url(./blocks/data-conteiner/__img-aircraft-mass/data-conteiner__img-aircraft-mass.css);
+@import url(./blocks/data-conteiner/__img-burning-rate/data-conteiner__img-burning-rate.css);
+@import url(./blocks/data-conteiner/__img-combustion-heat/data-conteiner__img-combustion-heat.css);
+@import url(./blocks/data-conteiner/__img-cooling-resource/data-conteiner__img-cooling-resource.css);
+@import url(./blocks/data-conteiner/__img-freezing-temp/data-conteiner__img-freezing-temp.css);
+@import url(./blocks/data-conteiner/__img-fuel-tank-volume/data-conteiner__img-fuel-tank-volume.css);
+@import url(./blocks/data-conteiner/__img-heat-capacity/data-conteiner__img-heat-capacity.css);
+@import url(./blocks/data-conteiner/__img-induction-period/data-conteiner__img-induction-period.css);
+@import url(./blocks/data-conteiner/__img-lode/data-conteiner__img-lode.css);
+@import url(./blocks/data-conteiner/__img-name-container/data-conteiner__img-name-container.css);
+@import url(./blocks/data-conteiner/__img-payload/data-conteiner__img-payload.css);
+@import url(./blocks/data-conteiner/__img-range/data-conteiner__img-range.css);
+@import url(./blocks/data-conteiner/__img-reliability/data-conteiner__img-reliability.css);
+@import url(./blocks/data-conteiner/__img-thermal-conductivity/data-conteiner__img-thermal-conductivity.css);
+@import url(./blocks/data-conteiner/__img-vapor-pressure/data-conteiner__img-vapor-pressure.css);
+@import url(./blocks/data-conteiner/__img-viscosity/data-conteiner__img-viscosity.css);
+@import url(./blocks/data-conteiner/__input/data-conteiner__input.css);
+@import url(./blocks/data-conteiner/__name/data-conteiner__name.css);
+@import url(./blocks/data-conteiner/__rocket/data-conteiner__rocket.css);
+@import url(./blocks/data-conteiner/__rocket/--active/data-conteiner__rocket--active.css);
+@import url(./blocks/data-conteiner/__select/data-conteiner__select.css);
+@import url(./blocks/data-conteiner/__select/--engine/data-conteiner__select--engine.css);
+@import url(./blocks/data-conteiner/__two-inputs-container/data-conteiner__two-inputs-container.css);
+@import url(./blocks/data-range-conteiner/data-range-conteiner.css);
+@import url(./blocks/data-range-conteiner/--two-in-a-row/data-range-conteiner--two-in-a-row.css);
+@import url(./blocks/data-range-conteiner/__name/data-range-conteiner__name.css);
+@import url(./blocks/data-range-conteiner/__percentages/data-range-conteiner__percentages.css);
+@import url(./blocks/data-range-conteiner/__picture-percentages-box/data-range-conteiner__picture-percentages-box.css);
+@import url(./blocks/data-range-conteiner/__slider/data-range-conteiner__slider.css);
+@import url(./blocks/data-range-conteiner/__slider-input/data-range-conteiner__slider-input.css);
+@import url(./blocks/data-range-conteiner/__slider-left-track/data-range-conteiner__slider-left-track.css);
+@import url(./blocks/data-range-conteiner/__slider-right-track/data-range-conteiner__slider-right-track.css);
+@import url(./blocks/data-range-conteiner/__slider-track/data-range-conteiner__slider-track.css);
+@import url(./blocks/footer/footer.css);
+@import url(./blocks/graf-conteiner/graf-conteiner.css);
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
 @import url(./blocks/header/__name/header__name.css);
-@import url(./blocks/page/page.css);
-@import url(./blocks/section-content/__name/section-content__name.css);
-@import url(./blocks/data-conteiner/data-conteiner.css);
-@import url(./blocks/cards-container/--two-in-a-row/cards-container--two-in-a-row.css);
-@import url(./blocks/graf-conteiner/graf-conteiner.css);
-@import url(./blocks/data-conteiner/__buttons/data-conteiner__buttons.css);
-@import url(./blocks/data-conteiner/__two-inputs-container/data-conteiner__two-inputs-container.css);
-@import url(./blocks/data-conteiner/__airplane/data-conteiner__airplane.css);
-@import url(./blocks/data-conteiner/__airplane/--active/data-conteiner__airplane--active.css);
-@import url(./blocks/data-conteiner/__img-engine/data-conteiner__img-engine.css);
-@import url(./blocks/data-conteiner/__img-lode/data-conteiner__img-lode.css);
-@import url(./blocks/data-conteiner/__img-name-container/data-conteiner__img-name-container.css);
-@import url(./blocks/data-conteiner/__img-conteiner/data-conteiner__img-conteiner.css);
-@import url(./blocks/data-conteiner/__rocket/data-conteiner__rocket.css);
-@import url(./blocks/data-conteiner/__rocket/--active/data-conteiner__rocket--active.css);
-@import url(./blocks/data-conteiner/__helicopter/data-conteiner__helicopter.css);
-@import url(./blocks/data-conteiner/__helicopter/--active/data-conteiner__helicopter--active.css);
-@import url(./blocks/data-conteiner/__name/data-conteiner__name.css);
-@import url(./blocks/data-conteiner/__input/data-conteiner__input.css);
-@import url(./blocks/data-conteiner/__select/data-conteiner__select.css);
-@import url(./blocks/data-conteiner/__select/--engine/data-conteiner__select--engine.css);
-@import url(./blocks/data-conteiner/__img-range/data-conteiner__img-range.css);
-@import url(./blocks/data-conteiner/__img-payload/data-conteiner__img-payload.css);
-@import url(./blocks/data-conteiner/__img-ecology/data-conteiner__img-ecology.css);
-@import url(./blocks/data-conteiner/__img-cost/data-conteiner__img-cost.css);
-@import url(./blocks/data-conteiner/__img-reliability/data-conteiner__img-reliability.css);
-@import url(./blocks/data-conteiner/__img-freezing-temp/data-conteiner__img-freezing-temp.css);
-@import url(./blocks/data-conteiner/__img-density/data-conteiner__img-density.css);
-@import url(./blocks/data-conteiner/__img-viscosity/data-conteiner__img-viscosity.css);
-@import url(./blocks/data-conteiner/__img-combustion-heat/data-conteiner__img-combustion-heat.css);
-@import url(./blocks/data-conteiner/__img-cooling-resource/data-conteiner__img-cooling-resource.css);
-@import url(./blocks/data-conteiner/__img-thermal-conductivity/data-conteiner__img-thermal-conductivity.css);
-@import url(./blocks/data-conteiner/__img-heat-capacity/data-conteiner__img-heat-capacity.css);
-@import url(./blocks/data-conteiner/__img-induction-period/data-conteiner__img-induction-period.css);
-@import url(./blocks/data-conteiner/__img-burning-rate/data-conteiner__img-burning-rate.css);
-@import url(./blocks/data-conteiner/__img-vapor-pressure/data-conteiner__img-vapor-pressure.css);
 @import url(./blocks/limiting-parameters-conteiner/limiting-parameters-conteiner.css);
-@import url(./blocks/data-range-conteiner/__percentages/data-range-conteiner__percentages.css);
-@import url(./blocks/cards-container/cards-container.css);
-@import url(./blocks/res-content/res-content.css);
-@import url(./blocks/res-content/__val/res-content__val.css);
-@import url(./blocks/res-content/__name/res-content__name.css);
-@import url(./blocks/data-range-conteiner/data-range-conteiner.css);
-@import url(./blocks/data-range-conteiner/--two-in-a-row/data-range-conteiner--two-in-a-row.css);
-@import url(./blocks/data-range-conteiner/__picture-percentages-box/data-range-conteiner__picture-percentages-box.css);
-@import url(./blocks/data-range-conteiner/__slider/data-range-conteiner__slider.css);
-@import url(./blocks/data-range-conteiner/__name/data-range-conteiner__name.css);
-@import url(./blocks/data-range-conteiner/__slider-right-track/data-range-conteiner__slider-right-track.css);
-@import url(./blocks/data-range-conteiner/__slider-left-track/data-range-conteiner__slider-left-track.css);
-@import url(./blocks/data-range-conteiner/__slider-track/data-range-conteiner__slider-track.css);
-@import url(./blocks/data-range-conteiner/__slider-input/data-range-conteiner__slider-input.css);
-@import url(./blocks/box-two-containers/box-two-containers.css);
-@import url(./blocks/airplane-engine/airplane-engine.css);
-@import url(./blocks/airplane-engine/__image/airplane-engine__image.css);
 @import url(./blocks/main-content/main-content.css);
-@import url(./blocks/calculate-button/calculate-button.css);
-@import url(./blocks/calculate-button/__arrow/calculate-button__arrow.css);
-@import url(./blocks/footer/footer.css);
+@import url(./blocks/page/page.css);
+@import url(./blocks/res-content/res-content.css);
+@import url(./blocks/res-content/__name/res-content__name.css);
+@import url(./blocks/res-content/__val/res-content__val.css);
+@import url(./blocks/section-content/__name/section-content__name.css);
+@import url(./blocks/whole-page/whole-page.css);
+@import url(./vendor/fonts.css);
+@import url(./vendor/normalize.css);
 
 
 .data-conteiner__img-freezing-temp,
@@ -93,7 +80,10 @@ code {
 .data-conteiner__img-aircraft-mass,
 .data-conteiner__img-fuel-tank-volume,
 .data-conteiner__img-payload,
-.data-conteiner__img-default {
+.data-conteiner__img-default,
+.data-conteiner__img-engine,
+.data-conteiner__img-fuel-tank-volume,
+.data-conteiner__img-payload  {
   padding: 0;
   margin: 0;
   width: 24px;
