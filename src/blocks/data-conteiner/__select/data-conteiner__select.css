@@ -1,28 +1,24 @@
 .data-conteiner__select {
 
-  padding: 0;
-    margin: 0;
-    width: 250px;
-  height: 40px;
+width: 332px; /* Соответствует Figma */
+  height: 48px; /* Высота поля выбора, а не всего списка (272px для меню не управляется в <select>) */
   box-sizing: border-box;
   border: 1px solid rgb(230, 230, 230);
-  border-radius: 8px;
+  border-radius: 8px; /* Закругления для контейнера */
   box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   background: rgb(255, 255, 255);
-  padding: 8px 30px 8px 8px; /* Место для стрелки справа */
+  padding: 0 12px; /* Отступы из Figma: 0 12px */
   margin-left: 8px;
   appearance: none; /* Убираем стандартную стрелку */
   cursor: pointer;
-  font-size: 16px; /* Для согласованности с инпутами */
-
-
-  /* padding-left: 8px; */
-
-
+  font-size: 16px;
+  color: #333;
+  display: flex; /* Для согласованности с Figma, хотя <select> игнорирует flex для содержимого */
+  align-items: center; /* Центрирование текста по вертикали */
 
 }
 
 .data-conteiner__select:focus {
-  outline: none;
+ outline: none;
   border-color: #007bff; /* Подсветка при фокусе */
 }

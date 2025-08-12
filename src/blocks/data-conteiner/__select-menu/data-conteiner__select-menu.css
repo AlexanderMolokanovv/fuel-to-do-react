@@ -1,0 +1,14 @@
+.data-conteiner__select-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 332px;
+  max-height: 272px; /* Высота меню из Figma */
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid rgb(230, 230, 230);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 12px;
+  overflow-y: auto;
+  z-index: 10;
+}

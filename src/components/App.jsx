@@ -7,8 +7,15 @@ import ResultsPage from "./ResultsPage";
 import arrow from "./images/arrow.svg";
 import ChartsSection from "./ChartsSection";
 import FuelComponent from "./FuelComponent";
-import FuelPropertyComponent from './FuelPropertyComponent';
-import { cards, inputCards, fuelComponents, fuelProperties, additionalFields } from './constants'
+import FuelPropertyComponent from "./FuelPropertyComponent";
+import CustomSelect from "./CustomSelect";
+import {
+  cards,
+  inputCards,
+  fuelComponents,
+  fuelProperties,
+  additionalFields,
+} from "./constants";
 
 function App() {
   // Функция для обработки изменения значения
@@ -25,8 +32,6 @@ function App() {
   const handleInputValueChange = (id, value) => {
     console.log(`Input Card ID: ${id}, New Value: ${value}`);
   };
-
- 
 
   const navigate = useNavigate();
 
@@ -172,32 +177,39 @@ function App() {
                             <option value="gasturbine">Газотурбинный</option>
                             <option value="turbojet">Турбореактивный</option>
                             <option value="piston_gasoline">
-                              Поршневой бензин
+                              {" "}
+                              Поршневой бензин{" "}
                             </option>
                             <option value="piston_diesel">
-                              Поршневой дизель
+                              {" "}
+                              Поршневой дизель{" "}
                             </option>
                             <option value="ramjet">
-                              Прямоточный воздушно-реактивный
+                              {" "}
+                              Прямоточный воздушно-реактивный{" "}
                             </option>
                             <option value="liquid_rocket">
-                              Жидкостный ракетный
+                              {" "}
+                              Жидкостный ракетный{" "}
                             </option>
                             <option value="solid_rocket">
-                              Твердотопливный ракетный
+                              {" "}
+                              Твердотопливный ракетный{" "}
                             </option>
                           </select>
                         </div>
                       </div>
-                     
-                     
                       <div className="box-two-containers">
                         <div className="data-conteiner">
                           <div className="data-conteiner__img-name-container">
                             <div className="data-conteiner__img-conteiner">
-                              <div className={additionalFields[1].iconClass}></div>
+                              <div
+                                className={additionalFields[1].iconClass}
+                              ></div>
                             </div>
-                            <h2 className="data-conteiner__name">{additionalFields[1].name}</h2>
+                            <h2 className="data-conteiner__name">
+                              {additionalFields[1].name}
+                            </h2>
                           </div>
                           <input
                             type="number"
@@ -211,9 +223,13 @@ function App() {
                         <div className="data-conteiner">
                           <div className="data-conteiner__img-name-container">
                             <div className="data-conteiner__img-conteiner">
-                              <div className={additionalFields[2].iconClass}></div>
+                              <div
+                                className={additionalFields[2].iconClass}
+                              ></div>
                             </div>
-                            <h2 className="data-conteiner__name">{additionalFields[2].name}</h2>
+                            <h2 className="data-conteiner__name">
+                              {additionalFields[2].name}
+                            </h2>
                           </div>
                           <input
                             type="number"
@@ -227,9 +243,13 @@ function App() {
                         <div className="data-conteiner">
                           <div className="data-conteiner__img-name-container">
                             <div className="data-conteiner__img-conteiner">
-                              <div className={additionalFields[3].iconClass}></div>
+                              <div
+                                className={additionalFields[3].iconClass}
+                              ></div>
                             </div>
-                            <h2 className="data-conteiner__name">{additionalFields[3].name}</h2>
+                            <h2 className="data-conteiner__name">
+                              {additionalFields[3].name}
+                            </h2>
                           </div>
                           <input
                             type="number"
@@ -305,7 +325,7 @@ function App() {
                     <h1 className="header__name">Результаты расчета</h1>
                   </header>
 
-                    <section className="section-content">
+                  <section className="section-content">
                     <h1 className="section-content__name">Состав топлива</h1>
                     <div className="cards-container cards-container--two-in-a-row">
                       {fuelComponents.map((component, index) => (
@@ -320,25 +340,24 @@ function App() {
                     </div>
                   </section>
 
-<section className="section-content">
-                        <h1 className="section-content__name">Характеристики топлива</h1>
-                        <div className="cards-container cards-container--two-in-a-row">
-                          {fuelProperties.map((property) => (
-                            <FuelPropertyComponent
-                              key={property.id}
-                              name={property.name}
-                              value={property.value}
-                              unit={property.unit}
-                              iconClass={property.iconClass}
-                            />
-                          ))}
-                        </div>
-                      </section>
-                
+                  <section className="section-content">
+                    <h1 className="section-content__name">
+                      Характеристики топлива
+                    </h1>
+                    <div className="cards-container cards-container--two-in-a-row">
+                      {fuelProperties.map((property) => (
+                        <FuelPropertyComponent
+                          key={property.id}
+                          name={property.name}
+                          value={property.value}
+                          unit={property.unit}
+                          iconClass={property.iconClass}
+                        />
+                      ))}
+                    </div>
+                  </section>
 
                   <ChartsSection />
-
-               
 
                   <button
                     className="calculate-button"

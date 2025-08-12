@@ -1,0 +1,21 @@
+.data-conteiner__select-control {
+    width: 100%;
+  height: 48px; /* Высота поля выбора */
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  background: rgb(255, 255, 255);
+  padding: 0 12px; /* Отступы из Figma */
+  font-size: 16px;
+  line-height: 48px; /* Центрирование текста */
+  cursor: pointer;
+  background-image: url("/src/components/images/arrow-angel.svg"); /* Проверьте путь */
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+}
+
+.data-conteiner__select-control:focus {
+  outline: none;
+  border-color: #007bff;
+}

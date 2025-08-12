@@ -1,0 +1,26 @@
+.data-conteiner__select-option {
+ padding: 8px 12px;
+  border-radius: 8px; /* Закругления для каждого пункта */
+  margin-bottom: 8px; /* Gap из Figma */
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+.data-conteiner__select-option:hover {
+  background: rgba(220, 223, 255, 1); /* Цвет при наведении */
+  border-radius: 8px;
+}
+
+.data-conteiner__select-option.selected {
+  background: rgba(245, 245, 245, 1); /* Цвет выбранного пункта */
+  border-radius: 8px;
+}
+
+.data-conteiner__select-option.disabled {
+  color: #999;
+  cursor: not-allowed;
+}
+/* 
+@import url(./blocks/data-conteiner/__select-option/_selected/data-conteiner__select-option_selected.css);
+@import url(./blocks/data-conteiner/__select-option/_disabled/data-conteiner__select-option_disabled.css); */

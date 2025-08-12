@@ -1,6 +1,13 @@
 .data-conteiner__select--engine {
-    /* background-image: url('./images/arrow.svg'); Ваша стрелка */
-  background-repeat: no-repeat;
+    /* background-image: url('../../../../components/images/arrow-angel.svg'); 
+      background-repeat: no-repeat;
   background-position: right 10px center;
-  background-size: 12px; /* Размер стрелки, настройте под ваш SVG */
+  background-size: 20px;  */
+
+
+ position: relative;
+  width: 332px; /* Из Figma */
+  margin-left: 8px;
+
+
 }

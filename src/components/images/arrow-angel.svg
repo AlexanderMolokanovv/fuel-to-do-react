@@ -1,0 +1,14 @@
+<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.000000" height="20.000000" fill="none" customFrame="#000000" mask="url(#mask_0)">
+	<defs>
+		<filter id="pixso_custom_mask_type_alpha">
+			<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0 " />
+		</filter>
+	</defs>
+	<mask id="mask_0" width="20.000000" height="20.000000" x="0.000000" y="0.000000" maskUnits="objectBoundingBox">
+		<g filter="url(#pixso_custom_mask_type_alpha)">
+			<rect id="Bounding box" width="20.000000" height="20.000000" x="0.000000" y="0.000000" fill="rgb(217,217,217)" transform="matrix(1,0,0,-1,0,20)" />
+		</g>
+	</mask>
+	<rect id="Icon / expand_more" width="20.000000" height="20.000000" x="0.000000" y="0.000000" transform="matrix(1,0,0,-1,0,20)" />
+	<path id="Vector" d="M4.64583 5.45833C4.53472 5.45833 4.43056 5.44097 4.33333 5.40625C4.23611 5.37153 4.14583 5.3125 4.0625 5.22917L0.229167 1.39583C0.0763889 1.24306 0 1.04861 0 0.8125C0 0.576389 0.0763889 0.381944 0.229167 0.229167C0.381945 0.0763889 0.576389 0 0.8125 0C1.04861 0 1.24306 0.0763889 1.39583 0.229167L4.64583 3.47917L7.89583 0.229167C8.04861 0.0763889 8.24306 0 8.47917 0C8.71528 0 8.90972 0.0763889 9.0625 0.229167C9.21528 0.381944 9.29167 0.576389 9.29167 0.8125C9.29167 1.04861 9.21528 1.24306 9.0625 1.39583L5.22917 5.22917C5.14583 5.3125 5.05556 5.37153 4.95833 5.40625C4.86111 5.44097 4.75695 5.45833 4.64583 5.45833Z" fill="rgb(26,26,26)" fill-rule="nonzero" transform="matrix(1,0,0,-1,5.35413,13)" />
+</svg>
