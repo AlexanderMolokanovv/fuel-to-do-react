@@ -9,7 +9,7 @@
   font-size: 16px;
   line-height: 48px; /* Центрирование текста */
   cursor: pointer;
-  background-image: url("/src/components/images/arrow-angel.svg"); /* Проверьте путь */
+  background-image: url('../../../components/images/arrow-angel.svg'); /* Проверьте путь */
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 20px;

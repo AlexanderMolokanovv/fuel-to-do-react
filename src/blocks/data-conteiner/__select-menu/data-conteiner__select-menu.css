@@ -2,7 +2,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  width: 332px;
+  width: 300px;
   max-height: 272px; /* Высота меню из Figma */
   border-radius: 8px;
   background: #fff;
@@ -11,4 +11,5 @@
   padding: 0 12px;
   overflow-y: auto;
   z-index: 10;
+  margin-top: 6px;
 }

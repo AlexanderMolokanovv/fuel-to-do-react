@@ -164,7 +164,7 @@ function App() {
                             </h2>
                             {/* Выпадающий список */}
                           </div>
-                          <select
+                          {/* <select
                             name="engineType"
                             value={formData.engineType}
                             onChange={handleInputChange}
@@ -196,7 +196,9 @@ function App() {
                               {" "}
                               Твердотопливный ракетный{" "}
                             </option>
-                          </select>
+                          </select> */}
+
+<CustomSelect formData={formData} handleInputChange={handleInputChange} />
                         </div>
                       </div>
                       <div className="box-two-containers">
