@@ -102,6 +102,9 @@ function App() {
       console.error("Ошибка API:", error);
     }
   };
+  const handleRecalculate = () => {
+    navigate("/");
+  };
 
   return (
     <div className="whole-page">
@@ -112,7 +115,7 @@ function App() {
             path="/"
             element={
               <main className="main-content">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <section className="section-content">
                     <h1 className="section-content__name">
                       Характеристики летательного аппарата
@@ -164,41 +167,10 @@ function App() {
                             </h2>
                             {/* Выпадающий список */}
                           </div>
-                          {/* <select
-                            name="engineType"
-                            value={formData.engineType}
-                            onChange={handleInputChange}
-                            className="data-conteiner__select data-conteiner__select--engine appearance-none pr-8"
-                            required
-                          >
-                            <option value="" disabled>
-                              Выберите тип двигателя
-                            </option>
-                            <option value="gasturbine">Газотурбинный</option>
-                            <option value="turbojet">Турбореактивный</option>
-                            <option value="piston_gasoline">
-                              {" "}
-                              Поршневой бензин{" "}
-                            </option>
-                            <option value="piston_diesel">
-                              {" "}
-                              Поршневой дизель{" "}
-                            </option>
-                            <option value="ramjet">
-                              {" "}
-                              Прямоточный воздушно-реактивный{" "}
-                            </option>
-                            <option value="liquid_rocket">
-                              {" "}
-                              Жидкостный ракетный{" "}
-                            </option>
-                            <option value="solid_rocket">
-                              {" "}
-                              Твердотопливный ракетный{" "}
-                            </option>
-                          </select> */}
-
-<CustomSelect formData={formData} handleInputChange={handleInputChange} />
+                          <CustomSelect
+                            formData={formData}
+                            handleInputChange={handleInputChange}
+                          />
                         </div>
                       </div>
                       <div className="box-two-containers">
@@ -309,11 +281,7 @@ function App() {
                     ))}
                   </div>
 
-                  <button
-                    className="calculate-button"
-                    type="button"
-                    // onClick={onEditAvatar}
-                  >
+                  <button className="calculate-button" type="submit">
                     Произвести расчет{" "}
                     <img
                       src={arrow}
@@ -321,65 +289,8 @@ function App() {
                       alt="BigCo Inc. logo"
                     />
                   </button>
-
-                  <header className="header">
-                    <div className="header__logo"></div>
-                    <h1 className="header__name">Результаты расчета</h1>
-                  </header>
-
-                  <section className="section-content">
-                    <h1 className="section-content__name">Состав топлива</h1>
-                    <div className="cards-container cards-container--two-in-a-row">
-                      {fuelComponents.map((component, index) => (
-                        <FuelComponent
-                          key={component.id}
-                          name={component.name}
-                          value={component.value}
-                          unit={component.unit}
-                          index={index}
-                        />
-                      ))}
-                    </div>
-                  </section>
-
-                  <section className="section-content">
-                    <h1 className="section-content__name">
-                      Характеристики топлива
-                    </h1>
-                    <div className="cards-container cards-container--two-in-a-row">
-                      {fuelProperties.map((property) => (
-                        <FuelPropertyComponent
-                          key={property.id}
-                          name={property.name}
-                          value={property.value}
-                          unit={property.unit}
-                          iconClass={property.iconClass}
-                        />
-                      ))}
-                    </div>
-                  </section>
-
-                  <ChartsSection />
-
-                  <button
-                    className="calculate-button"
-                    type="button"
-                    // onClick={onEditAvatar}
-                  >
-                    Рассчитать еще{" "}
-                    <img
-                      src={arrow}
-                      className="calculate-button__arrow"
-                      alt="BigCo Inc. logo"
-                    />
-                  </button>
-
-                  {/* <label>
-              Имя:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Отправить" /> */}
                 </form>
+
                 <footer className="footer">2025. Все права защищены</footer>
               </main>
             }
