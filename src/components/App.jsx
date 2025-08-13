@@ -5,105 +5,95 @@ import InputComponent from "./InputComponent";
 import SliderComponent from "./SliderComponent";
 import ResultsPage from "./ResultsPage";
 import arrow from "./images/arrow.svg";
-import ChartsSection from "./ChartsSection";
-import FuelComponent from "./FuelComponent";
-import FuelPropertyComponent from "./FuelPropertyComponent";
 import CustomSelect from "./CustomSelect";
-import {
-  cards,
-  inputCards,
-  fuelComponents,
-  fuelProperties,
-  additionalFields,
-} from "./constants";
+import { cards, inputCards, additionalFields } from "./constants";
 
 function App() {
-  // Функция для обработки изменения значения
-  const handleValueChange = (id, value) => {
-    console.log(`Card ID: ${id}, New Value: ${value}%`);
-    // Здесь можно добавить логику отправки на сервер
-    // fetch('/api/update', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ id, value }),
-    //   headers: { 'Content-Type': 'application/json' },
-    // });
-  };
-
-  const handleInputValueChange = (id, value) => {
-    console.log(`Input Card ID: ${id}, New Value: ${value}`);
-  };
-
   const navigate = useNavigate();
 
-  // хуки
-
-  const [activeVehicle, setActiveVehicle] = useState(null);
-
-  const handleVehicleClick = (vehicleId) => {
-    setActiveVehicle(vehicleId);
-    sendVehicleToApi(vehicleId);
-  };
-
-  const sendVehicleToApi = async (vehicleId) => {
-    try {
-      console.log(`Отправка vehicleId ${vehicleId} на сервер`);
-      // const response = await apii.selectVehicleType(vehicleId);
-      // console.log('API response:', response);
-    } catch (error) {
-      console.error("Ошибка API:", error);
-    }
-  };
-
+  // Инициализация состояния для всех полей формы
   const [formData, setFormData] = useState({
-    aircraftMass: "",
-    engineType: "", // Для хранения выбранного двигателя
+    vehicleType: 1, // Облик летательного аппарата (по умолчанию 1 - самолет)
+    engineType: "", // Выбранный двигатель
+    aircraftMass: "", // Масса летательного аппарата
+    fuelTankVolume: "", // Объем бака
+    payload: "", // Полезная нагрузка
+    wsmCoefficients: cards.reduce((acc, card) => ({ ...acc, [card.id]: card.initialValue }), {}), // WSM коэффициенты
+    limitingParameters: inputCards.reduce((acc, card) => ({ ...acc, [card.id]: { min: card.initialValue, max: card.initialValue } }), {}), // Ограничивающие параметры
   });
 
+  // Обработка выбора летательного аппарата
+  const handleVehicleClick = (vehicleId) => {
+    setFormData((prev) => ({ ...prev, vehicleType: vehicleId }));
+  };
+
+  // Обработка изменения значений инпутов (масса, бак, нагрузка, двигатель)
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const [width, setWidth] = useState(100);
-
-  const changeWidth = (event) => {
-    setWidth(event.target.value);
-
-    // Внутри App.jsx, секция "Выбор двигателя"
-    // const [formDataa, setFormData] = useState({
-    //   engineType: '', // Для хранения выбранного двигателя
-    // });
-
-    // const handleInputChange = (e) => {
-    //   const { name, value } = e.target;
-    //   setFormData((prev) => ({ ...prev, [name]: value }));
-    // };
+  // Обработка изменения WSM коэффициентов
+  const handleValueChange = (id, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      wsmCoefficients: { ...prev.wsmCoefficients, [id]: value },
+    }));
+    console.log(`WSM Coefficient ID: ${id}, New Value: ${value}%`);
   };
 
+  // Обработка изменения ограничивающих параметров
+  const handleInputValueChange = (id, minValue, maxValue) => {
+    setFormData((prev) => ({
+      ...prev,
+      limitingParameters: {
+        ...prev.limitingParameters,
+        [id]: { min: minValue, max: maxValue },
+      },
+    }));
+    console.log(`Limiting Parameter ID: ${id}, Min: ${minValue}, Max: ${maxValue}`);
+  };
+
+  // Обработка отправки формы
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Формирование данных для отправки на сервер
+    const dataToSend = {
+      vehicleType: formData.vehicleType,
+      engineType: formData.engineType,
+      aircraftMass: parseFloat(formData.aircraftMass) || 0,
+      fuelTankVolume: parseFloat(formData.fuelTankVolume) || 0,
+      payload: parseFloat(formData.payload) || 0,
+      wsmCoefficients: Object.keys(formData.wsmCoefficients).reduce((acc, key) => ({
+        ...acc,
+        [key]: parseFloat(formData.wsmCoefficients[key]) || 0,
+      }), {}),
+      limitingParameters: Object.keys(formData.limitingParameters).reduce((acc, key) => ({
+        ...acc,
+        [key]: {
+          min: parseFloat(formData.limitingParameters[key].min) || 0,
+          max: parseFloat(formData.limitingParameters[key].max) || 0,
+        },
+      }), {}),
+    };
+
     // Заглушка для серверных данных
     const serverData = {
       fuelEfficiency: 0.85, // КПД топлива
       maxRange: 1200, // Дальность полёта, км
       cost: 500000, // Стоимость, руб
     };
+
     try {
-      console.log("Отправка на сервер:", {
-        ...formData,
-        vehicleType: activeVehicle,
-      });
-      // const response = await apii.calculateFuel({ ...formData, vehicleType: activeVehicle });
-      // navigate('/results', { state: { ...formData, vehicleType: activeVehicle, ...response } });
+      console.log("Отправка на сервер:", dataToSend);
+      // const response = await apii.calculateFuel(dataToSend);
+      // navigate('/results', { state: { ...dataToSend, ...response } });
       navigate("/results", {
-        state: { ...formData, vehicleType: activeVehicle, ...serverData },
+        state: { ...dataToSend, ...serverData },
       });
     } catch (error) {
       console.error("Ошибка API:", error);
     }
-  };
-  const handleRecalculate = () => {
-    navigate("/");
   };
 
   return (
@@ -129,17 +119,16 @@ function App() {
                           <div className="data-conteiner__buttons">
                             <button
                               className={
-                                activeVehicle === 1
+                                formData.vehicleType === 1
                                   ? "data-conteiner__airplane--active"
                                   : "data-conteiner__airplane"
                               }
                               type="button"
                               onClick={() => handleVehicleClick(1)}
                             ></button>
-                            {/* https://translated.turbopages.org/proxy_u/en-ru.ru.dcbf60f6-678fa25f-44b40967-74722d776562/https/www.geeksforgeeks.org/react-suite-dropdown-dropdown-with-icon/ */}
                             <button
                               className={
-                                activeVehicle === 2
+                                formData.vehicleType === 2
                                   ? "data-conteiner__rocket--active"
                                   : "data-conteiner__rocket"
                               }
@@ -148,7 +137,7 @@ function App() {
                             ></button>
                             <button
                               className={
-                                activeVehicle === 3
+                                formData.vehicleType === 3
                                   ? "data-conteiner__helicopter--active"
                                   : "data-conteiner__helicopter"
                               }
@@ -165,7 +154,6 @@ function App() {
                             <h2 className="data-conteiner__name">
                               Выбор двигателя
                             </h2>
-                            {/* Выпадающий список */}
                           </div>
                           <CustomSelect
                             formData={formData}
@@ -174,80 +162,38 @@ function App() {
                         </div>
                       </div>
                       <div className="box-two-containers">
-                        <div className="data-conteiner">
-                          <div className="data-conteiner__img-name-container">
-                            <div className="data-conteiner__img-conteiner">
-                              <div
-                                className={additionalFields[1].iconClass}
-                              ></div>
+                        {additionalFields.slice(1).map((field) => (
+                          <div className="data-conteiner" key={field.id}>
+                            <div className="data-conteiner__img-name-container">
+                              <div className="data-conteiner__img-conteiner">
+                                <div className={field.iconClass}></div>
+                              </div>
+                              <h2 className="data-conteiner__name">
+                                {field.name}
+                              </h2>
                             </div>
-                            <h2 className="data-conteiner__name">
-                              {additionalFields[1].name}
-                            </h2>
+                            <input
+                              type="number"
+                              name={field.id}
+                              value={formData[field.id] || ""}
+                              onChange={handleInputChange}
+                              className="data-conteiner__input"
+                              placeholder={`Значение, ${field.unit}`}
+                            />
                           </div>
-                          <input
-                            type="number"
-                            name="aircraftMass"
-                            value={formData.aircraftMass}
-                            onChange={handleInputChange}
-                            className="data-conteiner__input"
-                            placeholder="Введите массу, кг"
-                          />
-                        </div>
-                        <div className="data-conteiner">
-                          <div className="data-conteiner__img-name-container">
-                            <div className="data-conteiner__img-conteiner">
-                              <div
-                                className={additionalFields[2].iconClass}
-                              ></div>
-                            </div>
-                            <h2 className="data-conteiner__name">
-                              {additionalFields[2].name}
-                            </h2>
-                          </div>
-                          <input
-                            type="number"
-                            name="fuelTankVolume"
-                            value={formData.fuelTankVolume || ""}
-                            onChange={handleInputChange}
-                            className="data-conteiner__input"
-                            placeholder="Введите объем бака, л"
-                          />
-                        </div>
-                        <div className="data-conteiner">
-                          <div className="data-conteiner__img-name-container">
-                            <div className="data-conteiner__img-conteiner">
-                              <div
-                                className={additionalFields[3].iconClass}
-                              ></div>
-                            </div>
-                            <h2 className="data-conteiner__name">
-                              {additionalFields[3].name}
-                            </h2>
-                          </div>
-                          <input
-                            type="number"
-                            name="payload"
-                            value={formData.payload || ""}
-                            onChange={handleInputChange}
-                            className="data-conteiner__input"
-                            placeholder="Введите полезную нагрузку, кг"
-                          />
-                        </div>
+                        ))}
                       </div>
-
                       <div className="airplane-weight">
                         <h1 className="section-content__name">
                           WSM коэффициенты
                         </h1>
-
                         <div className="cards-container">
                           {cards.map((card) => (
                             <SliderComponent
                               key={card.id}
                               id={card.id}
                               name={card.name}
-                              initialValue={card.initialValue}
+                              initialValue={formData.wsmCoefficients[card.id] || card.initialValue}
                               iconClass={card.iconClass}
                               onValueChange={handleValueChange}
                             />
@@ -256,31 +202,26 @@ function App() {
                       </div>
                     </div>
                   </section>
-
                   <section className="section-content">
                     <h1 className="section-content__name">
                       Ограничивающие параметры
                     </h1>
+                    <div className="limiting-parameters-conteiner">
+                      {inputCards.map((card) => (
+                        <InputComponent
+                          key={card.id}
+                          id={card.id}
+                          name={card.name}
+                          initialMinValue={formData.limitingParameters[card.id]?.min || card.initialValue}
+                          initialMaxValue={formData.limitingParameters[card.id]?.max || card.initialValue}
+                          unit={card.unit}
+                          tooltip={card.tooltip}
+                          iconClass={card.iconClass}
+                          onValueChange={handleInputValueChange}
+                        />
+                      ))}
+                    </div>
                   </section>
-
-                  {/* <div> */}
-                  {/* Input Section */}
-                  <div className="limiting-parameters-conteiner">
-                    {inputCards.map((card) => (
-                      <InputComponent
-                        key={card.id}
-                        id={card.id}
-                        name={card.name}
-                        initialMinValue={card.initialValue}
-                        initialMaxValue={card.initialValue}
-                        unit={card.unit}
-                        tooltip={card.tooltip}
-                        iconClass={card.iconClass}
-                        onValueChange={handleInputValueChange}
-                      />
-                    ))}
-                  </div>
-
                   <button className="calculate-button" type="submit">
                     Произвести расчет{" "}
                     <img
@@ -290,7 +231,6 @@ function App() {
                     />
                   </button>
                 </form>
-
                 <footer className="footer">2025. Все права защищены</footer>
               </main>
             }
