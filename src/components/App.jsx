@@ -7,6 +7,7 @@ import ResultsPage from "./ResultsPage";
 import arrow from "./images/arrow.svg";
 import CustomSelect from "./CustomSelect";
 import { cards, inputCards, additionalFields } from "./constants";
+import apii from "../api/api.js";
 
 function App() {
   const navigate = useNavigate();
@@ -57,6 +58,10 @@ function App() {
   // Обработка отправки формы
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.engineType || !formData.aircraftMass) {
+    alert("Заполните все обязательные поля!");
+    return;
+  }
     // Формирование данных для отправки на сервер
     const dataToSend = {
       vehicleType: formData.vehicleType,
@@ -77,23 +82,25 @@ function App() {
       }), {}),
     };
 
-    // Заглушка для серверных данных
-    const serverData = {
-      fuelEfficiency: 0.85, // КПД топлива
-      maxRange: 1200, // Дальность полёта, км
-      cost: 500000, // Стоимость, руб
-    };
+    // // Заглушка для серверных данных
+    // const serverData = {
+    //   fuelEfficiency: 0.85, // КПД топлива
+    //   maxRange: 1200, // Дальность полёта, км
+    //   cost: 500000, // Стоимость, руб
+    // };
 
     try {
-      console.log("Отправка на сервер:", dataToSend);
-      // const response = await apii.calculateFuel(dataToSend);
-      // navigate('/results', { state: { ...dataToSend, ...response } });
-      navigate("/results", {
-        state: { ...dataToSend, ...serverData },
+  console.log("Отправка на сервер:", dataToSend);
+    const response = await apii.calculateFuel(dataToSend);
+    console.log("Ответ сервера:", response);
+    navigate("/results", {
+      state: { ...dataToSend, ...response },
       });
     } catch (error) {
       console.error("Ошибка API:", error);
     }
+
+
   };
 
   return (
