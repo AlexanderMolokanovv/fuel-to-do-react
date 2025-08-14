@@ -1,6 +1,5 @@
 exports.calculateFuelEfficiency = (data) => {
-  // Пример расчета, замените на реальную логику
-  const fuelEfficiency = 0.85;
+  const fuelEfficiency = 0.85; // Replace with actual logic
   const maxRange = data.aircraftMass * 0.5;
   const cost = data.payload * 1000;
   return { fuelEfficiency, maxRange, cost };

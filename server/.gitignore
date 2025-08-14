@@ -2,5 +2,6 @@ node_modules/
 .env
 error.log
 request.log
+combined.log
 package-lock.json
 

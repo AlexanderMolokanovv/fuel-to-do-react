@@ -5,7 +5,7 @@ describe("POST /api/calculate", () => {
   let server;
 
   beforeAll((done) => {
-    server = app.listen(0, () => done()); // Use port 0 for dynamic allocation
+    server = app.listen(0, () => done());
   });
 
   afterAll((done) => {
