@@ -1,0 +1,2 @@
+#!/bin/bash
+([ -d ./server ] && find ./server -maxdepth 1 -type f -name "*.json" ! -name "package-lock.json" -printf "\nФайл: %p\n" -exec cat {} \; -printf "\n") && find ./server -path ./server/node_modules -prune -o -type f \( -name "*.css" -o -name "*.jsx" -o -name "*.js" \) -printf "\nФайл: %p\n" -exec cat {} \; -printf "\n" > server.txt

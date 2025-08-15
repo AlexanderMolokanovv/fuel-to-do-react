@@ -1,0 +1,110 @@
+
+Файл: ./server/controllers/calculateController.js
+const { calculateFuelEfficiency } = require("../utils/calculations");
+
+exports.calculate = async (req, res) => {
+  try {
+    const data = req.body;
+    const result = calculateFuelEfficiency(data);
+    res.json(result);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+
+Файл: ./server/middleware/validateInput.js
+module.exports = (req, res, next) => {
+  const { vehicleType, engineType, aircraftMass } = req.body;
+  if (!vehicleType || !engineType || !aircraftMass) {
+    return res.status(400).json({ error: "Missing required fields" });
+  }
+  next();
+};
+
+
+Файл: ./server/routes/calculateRoutes.js
+const express = require("express");
+const router = express.Router();
+const calculateController = require("../controllers/calculateController");
+const validateInput = require("../middleware/validateInput");
+
+router.post("/calculate", validateInput, calculateController.calculate);
+
+module.exports = router;
+
+
+Файл: ./server/server.js
+const express = require("express");
+const cors = require("cors");
+const winston = require("winston");
+const calculateRoutes = require("./routes/calculateRoutes");
+
+const logger = winston.createLogger({
+  level: "info",
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.File({ filename: "error.log", level: "error" }),
+    new winston.transports.File({ filename: "combined.log" }),
+    new winston.transports.Console()
+  ]
+});
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+app.use("/api", calculateRoutes);
+
+module.exports = app;
+
+if (require.main === module) {
+  const PORT = process.env.PORT || 3001;
+  app.listen(PORT, () => logger.info(`Server running on port ${PORT}`));
+}
+
+Файл: ./server/tests/calculate.test.js
+const request = require("supertest");
+const app = require("../server");
+
+describe("POST /api/calculate", () => {
+  let server;
+
+  beforeAll((done) => {
+    server = app.listen(0, () => done());
+  });
+
+  afterAll((done) => {
+    server.close(() => done());
+  });
+
+  it("should return calculation results", async () => {
+    const response = await request(app)
+      .post("/api/calculate")
+      .send({
+        vehicleType: 1,
+        engineType: "jet",
+        aircraftMass: 1000,
+        fuelTankVolume: 500,
+        payload: 200,
+        wsmCoefficients: { coeff1: 50 },
+        limitingParameters: { param1: { min: 10, max: 20 } }
+      })
+      .expect(200);
+    expect(response.body).toHaveProperty("fuelEfficiency");
+  });
+});
+
+
+Файл: ./server/utils/calculations.js
+exports.calculateFuelEfficiency = (data) => {
+  const fuelEfficiency = 0.85; // Replace with actual logic
+  const maxRange = data.aircraftMass * 0.5;
+  const cost = data.payload * 1000;
+  return { fuelEfficiency, maxRange, cost };
+};
+

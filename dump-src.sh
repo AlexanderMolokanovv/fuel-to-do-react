@@ -1,0 +1,2 @@
+#!/bin/bash
+([ -d . ] && find . -maxdepth 1 -type f -name "*.json" ! -name "package-lock.json" -printf "\nФайл: %p\n" -exec cat {} \; -printf "\n") && find ./src -type f \( -name "*.css" -o -name "*.jsx" -o -name "*.js" \) -printf "\nФайл: %p\n" -exec cat {} \; -printf "\n" > src.txt
