@@ -22,3 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vercel
+
+Топливный подбор
+Топливный подбор3
+*.pdf
+*.jpg
+*.fig
