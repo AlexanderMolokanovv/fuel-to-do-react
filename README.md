@@ -25,8 +25,8 @@
 
 ## Ссылки
 
-- **Текущий деплой**: [fuel-to-do-react-4myswvw5i-alexandermolokanovvs-projects.vercel.app](https://fuel-to-do-react-4myswvw5i-alexandermolokanovvs-projects.vercel.app/)
-- **Репозиторий**: [github.com/AlexanderMolokanovv/fuel-to-do-react](https://github.com/AlexanderMolokanovv/fuel-to-do-react)
+- **Текущий деплой**: [Vercel](https://fuel-to-do-react-4myswvw5i-alexandermolokanovvs-projects.vercel.app/)
+- **Репозиторий**: [GitHub](https://github.com/AlexanderMolokanovv/fuel-to-do-react)
 - **IP-адрес сервера**: `158.160.55.39` (для будущего деплоя)
 
 ## Описание
@@ -38,8 +38,8 @@
 - Отправлять данные на сервер для расчета характеристик топлива.
 - Просматривать результаты, включая КПД топлива, дальность полета, стоимость и графики зависимости вязкости и теплоемкости от температуры.
 
-![Скриншот интерфейса](https://1drv.ms/i/c/c13b7c80493a17f0/EfaQTFNW4YpMtUvXXhTVU4UBfSTnG699lDASY3cfk-dzNw?e=MUWItr)
-![Скриншот результатов](https://1drv.ms/i/c/c13b7c80493a17f0/ESi21MLEEPlGvWvNRKsy7A8BxdH7eWDHW4oElRMCpYv-fw?e=HHx8W0)
+![Скриншот интерфейса](./assets/interface.png, ./assets/NP-1.png)
+![Скриншот результатов](./assets/interface.png, ./assets/NP-2.png)
 
 ## Структура проекта
 
