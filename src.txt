@@ -2,10 +2,11 @@
 Файл: ./src/api/api.js
 import axios from "axios";
 
-const apii = {
+const api = {
   calculateFuel: async (data) => {
     try {
-      const response = await axios.post("/api/calculate", data, {
+      const API_URL = process.env.NODE_ENV === "production" ? "/api/calculate" : "http://localhost:3001/api/calculate";
+      const response = await axios.post(API_URL, data, {
         headers: { "Content-Type": "application/json" },
       });
       return response.data;
@@ -16,7 +17,7 @@ const apii = {
   },
 };
 
-export default apii;
+export default api;
 
 Файл: ./src/App.test.js
 import { render, screen } from '@testing-library/react';
@@ -1192,100 +1193,139 @@ import ResultsPage from "./ResultsPage";
 import arrow from "./images/arrow.svg";
 import CustomSelect from "./CustomSelect";
 import { cards, inputCards, additionalFields } from "./constants";
-import apii from "../api/api.js";
+import api from "../api/api";
 
 function App() {
   const navigate = useNavigate();
 
-  // Инициализация состояния для всех полей формы
+  // Initialize form state
   const [formData, setFormData] = useState({
-    vehicleType: 1, // Облик летательного аппарата (по умолчанию 1 - самолет)
-    engineType: "", // Выбранный двигатель
-    aircraftMass: "", // Масса летательного аппарата
-    fuelTankVolume: "", // Объем бака
-    payload: "", // Полезная нагрузка
-    wsmCoefficients: cards.reduce((acc, card) => ({ ...acc, [card.id]: card.initialValue }), {}), // WSM коэффициенты
-    limitingParameters: inputCards.reduce((acc, card) => ({ ...acc, [card.id]: { min: card.initialValue, max: card.initialValue } }), {}), // Ограничивающие параметры
+    vehicleType: 'airplane',
+    engineType: "gasturbine",
+    aircraftMass: "",
+    fuelTankVolume: "",
+    payload: "",
+    wsmCoefficients: cards.reduce((acc, card) => ({ ...acc, [card.id]: card.initialValue }), {}),
+    limitingParameters: inputCards.reduce((acc, card) => ({
+      ...acc,
+      [card.id]: { min: card.initialMin, max: card.initialMax }
+    }), {})
   });
 
-  // Обработка выбора летательного аппарата
+  // Handle vehicle type selection
   const handleVehicleClick = (vehicleId) => {
-    setFormData((prev) => ({ ...prev, vehicleType: vehicleId }));
+    const vehicleMap = {
+      1: 'airplane',
+      2: 'rocket',
+      3: 'helicopter'
+    };
+    setFormData((prev) => ({ ...prev, vehicleType: vehicleMap[vehicleId] }));
   };
 
-  // Обработка изменения значений инпутов (масса, бак, нагрузка, двигатель)
+  // Handle input changes (for aircraftMass, fuelTankVolume, payload, engineType)
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Обработка изменения WSM коэффициентов
+  // Handle WSM coefficient changes
   const handleValueChange = (id, value) => {
     setFormData((prev) => ({
       ...prev,
-      wsmCoefficients: { ...prev.wsmCoefficients, [id]: value },
+      wsmCoefficients: { ...prev.wsmCoefficients, [id]: Number(value) }
     }));
     console.log(`WSM Coefficient ID: ${id}, New Value: ${value}%`);
   };
 
-  // Обработка изменения ограничивающих параметров
+  // Handle limiting parameter changes
   const handleInputValueChange = (id, minValue, maxValue) => {
     setFormData((prev) => ({
       ...prev,
       limitingParameters: {
         ...prev.limitingParameters,
-        [id]: { min: minValue, max: maxValue },
-      },
+        [id]: { min: Number(minValue), max: Number(maxValue) }
+      }
     }));
     console.log(`Limiting Parameter ID: ${id}, Min: ${minValue}, Max: ${maxValue}`);
   };
 
-  // Обработка отправки формы
+  // Handle form submission with validation
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.engineType || !formData.aircraftMass) {
-    alert("Заполните все обязательные поля!");
-    return;
-  }
-    // Формирование данных для отправки на сервер
-    const dataToSend = {
-      vehicleType: formData.vehicleType,
-      engineType: formData.engineType,
-      aircraftMass: parseFloat(formData.aircraftMass) || 0,
-      fuelTankVolume: parseFloat(formData.fuelTankVolume) || 0,
-      payload: parseFloat(formData.payload) || 0,
-      wsmCoefficients: Object.keys(formData.wsmCoefficients).reduce((acc, key) => ({
-        ...acc,
-        [key]: parseFloat(formData.wsmCoefficients[key]) || 0,
-      }), {}),
-      limitingParameters: Object.keys(formData.limitingParameters).reduce((acc, key) => ({
-        ...acc,
-        [key]: {
-          min: parseFloat(formData.limitingParameters[key].min) || 0,
-          max: parseFloat(formData.limitingParameters[key].max) || 0,
-        },
-      }), {}),
-    };
-
-    // // Заглушка для серверных данных
-    // const serverData = {
-    //   fuelEfficiency: 0.85, // КПД топлива
-    //   maxRange: 1200, // Дальность полёта, км
-    //   cost: 500000, // Стоимость, руб
-    // };
-
     try {
-  console.log("Отправка на сервер:", dataToSend);
-    const response = await apii.calculateFuel(dataToSend);
-    console.log("Ответ сервера:", response);
-    navigate("/results", {
-      state: { ...dataToSend, ...response },
+      // Form validation
+      const errors = [];
+      
+      if (!formData.vehicleType) errors.push('Не выбран тип летательного аппарата');
+      if (!formData.engineType) errors.push('Не выбран тип двигателя');
+      if (formData.aircraftMass === '' || isNaN(parseFloat(formData.aircraftMass)) || parseFloat(formData.aircraftMass) <= 0) {
+        errors.push('Масса летательного аппарата должна быть числом больше 0');
+      }
+      if (formData.fuelTankVolume === '' || isNaN(parseFloat(formData.fuelTankVolume)) || parseFloat(formData.fuelTankVolume) <= 0) {
+        errors.push('Объем бака должен быть числом больше 0');
+      }
+      if (formData.payload === '' || isNaN(parseFloat(formData.payload)) || parseFloat(formData.payload) <= 0) {
+        errors.push('Полезная нагрузка должна быть числом больше 0');
+      }
+
+      const wsmFields = ['range', 'payload', 'ecology', 'cost', 'reliability'];
+      wsmFields.forEach(field => {
+        if (!formData.wsmCoefficients[field] || formData.wsmCoefficients[field] < 0 || formData.wsmCoefficients[field] > 100) {
+          errors.push(`WSM-коэффициент "${field}" должен быть от 0 до 100`);
+        }
       });
+
+      const paramFields = [
+        'freezingTemp', 'density', 'viscosity', 'combustionHeat', 'coolingResource',
+        'thermalConductivity', 'heatCapacity', 'inductionPeriod', 'burningRate', 'vaporPressure'
+      ];
+      paramFields.forEach(field => {
+        if (formData.limitingParameters[field].min === '' || formData.limitingParameters[field].max === '') {
+          errors.push(`Ограничивающие параметры для "${field}" должны содержать min и max`);
+        } else if (isNaN(parseFloat(formData.limitingParameters[field].min)) || isNaN(parseFloat(formData.limitingParameters[field].max))) {
+          errors.push(`Ограничивающие параметры для "${field}" должны быть числами`);
+        } else if (parseFloat(formData.limitingParameters[field].min) > parseFloat(formData.limitingParameters[field].max)) {
+          errors.push(`Минимальное значение "${field}" не может быть больше максимального`);
+        } else if (
+          !['freezingTemp', 'viscosity', 'thermalConductivity', 'vaporPressure'].includes(field) &&
+          (parseFloat(formData.limitingParameters[field].min) <= 0 || parseFloat(formData.limitingParameters[field].max) <= 0)
+        ) {
+          errors.push(`Ограничивающие параметры для "${field}" должны быть больше 0`);
+        }
+      });
+
+      if (errors.length > 0) {
+        throw new Error(`Ошибки в форме: ${errors.join('; ')}`);
+      }
+
+      // Prepare data for server
+      const dataToSend = {
+        vehicleType: formData.vehicleType,
+        engineType: formData.engineType,
+        aircraftMass: parseFloat(formData.aircraftMass),
+        fuelTankVolume: parseFloat(formData.fuelTankVolume),
+        payload: parseFloat(formData.payload),
+        wsmCoefficients: Object.keys(formData.wsmCoefficients).reduce((acc, key) => ({
+          ...acc,
+          [key]: parseFloat(formData.wsmCoefficients[key])
+        }), {}),
+        limitingParameters: Object.keys(formData.limitingParameters).reduce((acc, key) => ({
+          ...acc,
+          [key]: {
+            min: parseFloat(formData.limitingParameters[key].min),
+            max: parseFloat(formData.limitingParameters[key].max)
+          }
+        }), {})
+      };
+
+      console.log("Отправка на сервер:", JSON.stringify(dataToSend, null, 2));
+      const response = await api.calculateFuel(dataToSend);
+      console.log("Ответ сервера:", response);
+      navigate("/results", { state: response });
     } catch (error) {
       console.error("Ошибка API:", error);
+      alert(`Ошибка: ${error.message}`);
     }
-
-
   };
 
   return (
@@ -1311,7 +1351,7 @@ function App() {
                           <div className="data-conteiner__buttons">
                             <button
                               className={
-                                formData.vehicleType === 1
+                                formData.vehicleType === 'airplane'
                                   ? "data-conteiner__airplane--active"
                                   : "data-conteiner__airplane"
                               }
@@ -1320,7 +1360,7 @@ function App() {
                             ></button>
                             <button
                               className={
-                                formData.vehicleType === 2
+                                formData.vehicleType === 'rocket'
                                   ? "data-conteiner__rocket--active"
                                   : "data-conteiner__rocket"
                               }
@@ -1329,7 +1369,7 @@ function App() {
                             ></button>
                             <button
                               className={
-                                formData.vehicleType === 3
+                                formData.vehicleType === 'helicopter'
                                   ? "data-conteiner__helicopter--active"
                                   : "data-conteiner__helicopter"
                               }
@@ -1354,7 +1394,7 @@ function App() {
                         </div>
                       </div>
                       <div className="box-two-containers">
-                        {additionalFields.slice(1).map((field) => (
+                        {additionalFields.map((field) => (
                           <div className="data-conteiner" key={field.id}>
                             <div className="data-conteiner__img-name-container">
                               <div className="data-conteiner__img-conteiner">
@@ -1404,8 +1444,8 @@ function App() {
                           key={card.id}
                           id={card.id}
                           name={card.name}
-                          initialMinValue={formData.limitingParameters[card.id]?.min || card.initialValue}
-                          initialMaxValue={formData.limitingParameters[card.id]?.max || card.initialValue}
+                          initialMinValue={formData.limitingParameters[card.id]?.min || card.initialMin}
+                          initialMaxValue={formData.limitingParameters[card.id]?.max || card.initialMax}
                           unit={card.unit}
                           tooltip={card.tooltip}
                           iconClass={card.iconClass}
@@ -1440,25 +1480,9 @@ export default App;
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-const ChartsSection = () => {
-  const viscosityData = [
-    { temp: 230, sample1: 50, sample2: 45, sample3: 40, sample4: 35, sample5: 30, sample6: 25 },
-    { temp: 240, sample1: 42, sample2: 38, sample3: 34, sample4: 30, sample5: 26, sample6: 22 },
-    { temp: 250, sample1: 35, sample2: 32, sample3: 28, sample4: 25, sample5: 22, sample6: 19 },
-    { temp: 260, sample1: 28, sample2: 26, sample3: 22, sample4: 20, sample5: 18, sample6: 16 },
-    { temp: 270, sample1: 22, sample2: 20, sample3: 18, sample4: 16, sample5: 14, sample6: 13 },
-    { temp: 280, sample1: 16, sample2: 15, sample3: 14, sample4: 12, sample5: 11, sample6: 10 },
-    { temp: 290, sample1: 12, sample2: 11, sample3: 10, sample4: 9, sample5: 8, sample6: 7 },
-  ];
-
-  const heatCapacityData = [
-    { temp: 250, sample1: 1.5, sample2: 1.6, sample3: 1.7, sample4: 1.8, sample5: 1.9, sample6: 2.0 },
-    { temp: 300, sample1: 1.6, sample2: 1.7, sample3: 1.8, sample4: 1.9, sample5: 2.0, sample6: 2.1 },
-    { temp: 350, sample1: 1.7, sample2: 1.8, sample3: 1.9, sample4: 2.0, sample5: 2.1, sample6: 2.2 },
-    { temp: 400, sample1: 1.8, sample2: 1.9, sample3: 2.0, sample4: 2.1, sample5: 2.2, sample6: 2.3 },
-    { temp: 450, sample1: 1.9, sample2: 2.0, sample3: 2.1, sample4: 2.2, sample5: 2.3, sample6: 2.4 },
-    { temp: 500, sample1: 2.0, sample2: 2.1, sample3: 2.2, sample4: 2.3, sample5: 2.4, sample6: 2.5 },
-  ];
+function ChartsSection({ graphData }) {
+  const viscosityData = graphData?.viscosity || [];
+  const heatCapacityData = graphData?.heatCapacity || [];
 
   return (
     <section className="charts-section py-8 bg-gray-100">
@@ -1468,177 +1492,77 @@ const ChartsSection = () => {
           <h2 className="res-content__name">Вязкость</h2>
           <LineChart width={500} height={300} data={viscosityData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="temp" />
-            <YAxis />
+            <XAxis dataKey="temp" label={{ value: 'Температура (°C)', position: 'insideBottomRight', offset: -10 }} />
+            <YAxis label={{ value: 'Вязкость (мПа·с)', angle: -90, position: 'insideLeft' }} />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="sample1" stroke="#8884d8" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="sample2" stroke="#82ca9d" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="sample3" stroke="#ff7300" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="sample4" stroke="#ffbb78" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="sample5" stroke="#00c49f" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="sample6" stroke="#d0ed57" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample1" stroke="#8884d8" activeDot={{ r: 8 }} name="JP-8" />
+            <Line type="monotone" dataKey="sample2" stroke="#82ca9d" activeDot={{ r: 8 }} name="Ethanol" />
+            <Line type="monotone" dataKey="sample3" stroke="#ff7300" activeDot={{ r: 8 }} name="TS-1" />
+            <Line type="monotone" dataKey="sample4" stroke="#ffbb78" activeDot={{ r: 8 }} name="OME1" />
+            <Line type="monotone" dataKey="sample5" stroke="#00c49f" activeDot={{ r: 8 }} name="Propanol" />
+            <Line type="monotone" dataKey="sample6" stroke="#d0ed57" activeDot={{ r: 8 }} name="Methanol" />
           </LineChart>
         </div>
         <div className="graf-conteiner">
           <h2 className="res-content__name">Теплоемкость</h2>
           <LineChart width={500} height={300} data={heatCapacityData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="temp" />
-            <YAxis />
+            <XAxis dataKey="temp" label={{ value: 'Условная точка', position: 'insideBottomRight', offset: -10 }} />
+            <YAxis label={{ value: 'Теплоемкость (кДж/К)', angle: -90, position: 'insideLeft' }} />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="sample1" stroke="#8884d8" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="sample2" stroke="#82ca9d" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="sample3" stroke="#ff7300" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="sample4" stroke="#ffbb78" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="sample5" stroke="#00c49f" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="sample6" stroke="#d0ed57" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample1" stroke="#8884d8" activeDot={{ r: 8 }} name="JP-8" />
+            <Line type="monotone" dataKey="sample2" stroke="#82ca9d" activeDot={{ r: 8 }} name="Ethanol" />
+            <Line type="monotone" dataKey="sample3" stroke="#ff7300" activeDot={{ r: 8 }} name="TS-1" />
+            <Line type="monotone" dataKey="sample4" stroke="#ffbb78" activeDot={{ r: 8 }} name="OME1" />
+            <Line type="monotone" dataKey="sample5" stroke="#00c49f" activeDot={{ r: 8 }} name="Propanol" />
+            <Line type="monotone" dataKey="sample6" stroke="#d0ed57" activeDot={{ r: 8 }} name="Methanol" />
           </LineChart>
         </div>
       </div>
     </section>
   );
-};
+}
 
 export default ChartsSection;
 
 Файл: ./src/components/constants.js
- // Данные для карточек
-  const cards = [
-    {
-      id: "range",
-      name: "Дальность полета",
-      initialValue: 49,
-      iconClass: "data-conteiner__img-range",
-    },
-    {
-      id: "payload",
-      name: "Полезная нагрузка",
-      initialValue: 73,
-      iconClass: "data-conteiner__img-payload",
-    },
-    {
-      id: "ecology",
-      name: "Экологичность",
-      initialValue: 65,
-      iconClass: "data-conteiner__img-ecology",
-    },
-    {
-      id: "cost",
-      name: "Стоимость владения",
-      initialValue: 55,
-      iconClass: "data-conteiner__img-cost",
-    },
-    {
-      id: "reliability",
-      name: "Надежность",
-      initialValue: 80,
-      iconClass: "data-conteiner__img-reliability",
-    },
-  ];
+const cards = [
+  { id: 'range', name: 'Дальность полета', initialValue: 50, iconClass: 'data-conteiner__img-range' },
+  { id: 'payload', name: 'Полезная нагрузка', initialValue: 50, iconClass: 'data-conteiner__img-payload' },
+  { id: 'ecology', name: 'Экологичность', initialValue: 50, iconClass: 'data-conteiner__img-ecology' },
+  { id: 'cost', name: 'Стоимость владения', initialValue: 50, iconClass: 'data-conteiner__img-cost' },
+  { id: 'reliability', name: 'Надежность', initialValue: 50, iconClass: 'data-conteiner__img-reliability' }
+];
 
-  const inputCards = [
-    {
-      id: "freezingTemp",
-      name: "Температура застывания",
-      unit: "°C",
-      iconClass: "data-conteiner__img-freezing-temp",
-    },
-    {
-      id: "density",
-      name: "Плотность",
-      unit: "кг/м³",
-      iconClass: "data-conteiner__img-density",
-    },
-    {
-      id: "viscosity",
-      name: "Вязкость при -20°C",
-      unit: "мПа·с",
-      iconClass: "data-conteiner__img-viscosity",
-    },
-    {
-      id: "combustionHeat",
-      name: "Массовая теплота сгорания",
-      unit: "кДж/кг",
-      iconClass: "data-conteiner__img-combustion-heat",
-    },
-    {
-      id: "coolingResource",
-      name: "Хладоресурс",
-      unit: "кДж/кг",
-      iconClass: "data-conteiner__img-cooling-resource",
-    },
-    {
-      id: "thermalConductivity",
-      name: "Теплопроводность",
-      unit: "Вт/(М*К)",
-      iconClass: "data-conteiner__img-thermal-conductivity",
-    },
-    {
-      id: "heatCapacity",
-      name: "Теплоемкость",
-      unit: "Дж/К",
-      iconClass: "data-conteiner__img-heat-capacity",
-    },
-    {
-      id: "inductionPeriod",
-      name: "Период индукции",
-      unit: "сек",
-      iconClass: "data-conteiner__img-induction-period",
-    },
-    {
-      id: "burningRate",
-      name: "Скорость горения",
-      unit: "м/с",
-      iconClass: "data-conteiner__img-burning-rate",
-    },
-    {
-      id: "vaporPressure",
-      name: "Давление насыщеных паров при 150°C",
-      unit: "кПа",
-      iconClass: "data-conteiner__img-vapor-pressure",
-    },
-  ];
-
-  const fuelComponents = [
-    { id: "component1", name: "Компонент 1", value: 44, unit: "%" },
-    { id: "component2", name: "Компонент 2", value: 20, unit: "%" },
-    { id: "component3", name: "Компонент 3", value: 15, unit: "%" },
-    { id: "component4", name: "Компонент 4", value: 10, unit: "%" },
-    { id: "component5", name: "Компонент 5", value: 8, unit: "%" },
-    { id: "component6", name: "Компонент 6", value: 3, unit: "%" },
-  ];
-
-  const fuelProperties = [
-  { id: "freezingTemp", name: "Температура застывания", value: -47, unit: "°C", iconClass: "data-conteiner__img-freezing-temp" },
-  { id: "density", name: "Плотность", value: 800, unit: "кг/м³", iconClass: "data-conteiner__img-density" },
-  { id: "viscosity", name: "Вязкость при -20°C", value: 8, unit: "мПа·с", iconClass: "data-conteiner__img-viscosity" },
-  { id: "combustionHeat", name: "Массовая теплота сгорания", value: 43100, unit: "кДж/кг", iconClass: "data-conteiner__img-combustion-heat" },
-  { id: "coolingResource", name: "Хладоресурс", value: 2100, unit: "кДж/кг", iconClass: "data-conteiner__img-cooling-resource" },
-  { id: "thermalConductivity", name: "Теплопроводность", value: 0.15, unit: "Вт/(М*К)", iconClass: "data-conteiner__img-thermal-conductivity" },
-  { id: "heatCapacity", name: "Теплоемкость", value: 2000, unit: "Дж/К", iconClass: "data-conteiner__img-heat-capacity" },
-  { id: "inductionPeriod", name: "Период индукции", value: 600, unit: "сек", iconClass: "data-conteiner__img-induction-period" },
-  { id: "burningRate", name: "Скорость горения", value: 0.2, unit: "м/с", iconClass: "data-conteiner__img-burning-rate" },
-  { id: "vaporPressure", name: "Давление насыщеных паров при 150°C", value: 10, unit: "кПа", iconClass: "data-conteiner__img-vapor-pressure" },
+const inputCards = [
+  { id: 'freezingTemp', name: 'Температура застывания', initialMin: -100, initialMax: -20, unit: '°C', iconClass: 'data-conteiner__img-freezing-temp', tooltip: 'Температура застывания топлива (°C)' },
+  { id: 'density', name: 'Плотность', initialMin: 600, initialMax: 1000, unit: 'кг/м³', iconClass: 'data-conteiner__img-density', tooltip: 'Плотность топлива (кг/м³)' },
+  { id: 'viscosity', name: 'Вязкость при -20°C', initialMin: 0.1, initialMax: 10, unit: 'мПа·с', iconClass: 'data-conteiner__img-viscosity', tooltip: 'Вязкость при -20°C (мПа·с)' },
+  { id: 'combustionHeat', name: 'Массовая теплота сгорания', initialMin: 15000, initialMax: 50000, unit: 'кДж/кг', iconClass: 'data-conteiner__img-combustion-heat', tooltip: 'Массовая теплота сгорания (кДж/кг)' },
+  { id: 'coolingResource', name: 'Хладоресурс', initialMin: 1000, initialMax: 3000, unit: 'кДж/кг', iconClass: 'data-conteiner__img-cooling-resource', tooltip: 'Хладоресурс (кДж/кг)' },
+  { id: 'thermalConductivity', name: 'Теплопроводность', initialMin: 0.05, initialMax: 0.3, unit: 'Вт/(м·К)', iconClass: 'data-conteiner__img-thermal-conductivity', tooltip: 'Теплопроводность (Вт/(м·К))' },
+  { id: 'heatCapacity', name: 'Теплоемкость', initialMin: 1000, initialMax: 5000, unit: 'Дж/К', iconClass: 'data-conteiner__img-heat-capacity', tooltip: 'Теплоемкость (Дж/К)' },
+  { id: 'inductionPeriod', name: 'Период индукции', initialMin: 200, initialMax: 800, unit: 'сек', iconClass: 'data-conteiner__img-induction-period', tooltip: 'Период индукции (сек)' },
+  { id: 'burningRate', name: 'Скорость горения', initialMin: 0.05, initialMax: 2, unit: 'м/с', iconClass: 'data-conteiner__img-burning-rate', tooltip: 'Скорость горения (м/с)' },
+  { id: 'vaporPressure', name: 'Давление насыщенных паров при 150°C', initialMin: 0.1, initialMax: 100, unit: 'кПа', iconClass: 'data-conteiner__img-vapor-pressure', tooltip: 'Давление насыщенных паров при 150°C (кПа)' }
 ];
 
 const additionalFields = [
-  { id: "engine", name: "Выбор двигателя", unit: "", iconClass: "data-conteiner__img-engine" },
-  { id: "aircraftMass", name: "Масса летательного аппарата", unit: "кг", iconClass: "data-conteiner__img-aircraft-mass" },
-  { id: "fuelTankVolume", name: "Объем бака", unit: "л", iconClass: "data-conteiner__img-fuel-tank-volume" },
-  { id: "payload", name: "Полезная нагрузка", unit: "кг", iconClass: "data-conteiner__img-payload" },
+  { id: 'aircraftMass', name: 'Масса летательного аппарата', unit: 'кг', iconClass: 'data-conteiner__img-aircraft-mass' },
+  { id: 'fuelTankVolume', name: 'Объем бака', unit: 'л', iconClass: 'data-conteiner__img-fuel-tank-volume' },
+  { id: 'payload', name: 'Полезная нагрузка', unit: 'кг', iconClass: 'data-conteiner__img-payload' }
 ];
 
-export { cards, inputCards, fuelComponents, fuelProperties, additionalFields };
+export { cards, inputCards, additionalFields };
 
 Файл: ./src/components/CustomSelect.jsx
 import { useState } from "react";
-// import "./data-conteiner__select--engine.css";
+// import '../blocks/data-conteiner/__select--engine/data-conteiner__select--engine.css';
 
 const CustomSelect = ({ formData, handleInputChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const options = [
     { value: "", label: "Выберите тип двигателя", disabled: true },
     { value: "gasturbine", label: "Газотурбинный" },
@@ -1648,6 +1572,8 @@ const CustomSelect = ({ formData, handleInputChange }) => {
     { value: "ramjet", label: "Прямоточный воздушно-реактивный" },
     { value: "liquid_rocket", label: "Жидкостный ракетный" },
     { value: "solid_rocket", label: "Твердотопливный ракетный" },
+     { value: 'jet', label: 'Реактивный' },
+    { value: 'turboprop', label: 'Турбовинтовой' }
   ];
 
   const handleSelect = (option) => {
@@ -1702,6 +1628,211 @@ const FuelComponent = ({ name, value, unit, index }) => {
 
 export default FuelComponent;
 
+Файл: ./src/components/FuelForm.jsx
+import React, { useState } from 'react';
+import InputComponent from './InputComponent';
+import SliderComponent from './SliderComponent';
+import '../blocks/data-conteiner/data-conteiner.css';
+import '../blocks/data-conteiner/__two-inputs-container/data-conteiner__two-inputs-container.css';
+import '../blocks/calculate-button/calculate-button.css';
+
+function FuelForm({ onSubmit }) {
+  const [formData, setFormData] = useState({
+    vehicleType: '',
+    engineType: '',
+    aircraftMass: '',
+    fuelTankVolume: '',
+    payload: '',
+    wsmCoefficients: {
+      range: 50,
+      payload: 50,
+      ecology: 50,
+      cost: 50,
+      reliability: 50
+    },
+    limitingParameters: {
+      freezingTemp: { min: '', max: '' },
+      density: { min: '', max: '' },
+      viscosity: { min: '', max: '' },
+      combustionHeat: { min: '', max: '' },
+      coolingResource: { min: '', max: '' },
+      thermalConductivity: { min: '', max: '' },
+      heatCapacity: { min: '', max: '' },
+      inductionPeriod: { min: '', max: '' },
+      burningRate: { min: '', max: '' },
+      vaporPressure: { min: '', max: '' }
+    }
+  });
+
+  const handleInputChange = (id, value) => {
+    if (id.startsWith('wsm')) {
+      setFormData({
+        ...formData,
+        wsmCoefficients: { ...formData.wsmCoefficients, [id.replace('wsm', '').toLowerCase()]: Number(value) }
+      });
+    } else if (id.includes('Min') || id.includes('Max')) {
+      const [param, bound] = id.split(/(Min|Max)/);
+      const paramKey = param.charAt(0).toLowerCase() + param.slice(1);
+      setFormData({
+        ...formData,
+        limitingParameters: {
+          ...formData.limitingParameters,
+          [paramKey]: {
+            ...formData.limitingParameters[paramKey],
+            [bound.toLowerCase()]: value === '' ? '' : Number(value)
+          }
+        }
+      });
+    } else {
+      setFormData({ ...formData, [id]: value });
+    }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData);
+  };
+
+  return (
+    <form onSubmit={handleFormSubmit} className="fuel-form">
+      <h1 className="section-content__name">Ввод данных</h1>
+      
+      <section className="section-content">
+        <h2>Характеристики летательного аппарата</h2>
+        <InputComponent
+          id="vehicleType"
+          name="Тип аппарата"
+          initialValue={formData.vehicleType}
+          onValueChange={handleInputChange}
+          type="select"
+          options={[
+            { value: 'airplane', label: 'Самолет' },
+            { value: 'helicopter', label: 'Вертолет' },
+            { value: 'rocket', label: 'Ракета' }
+          ]}
+        />
+        <InputComponent
+          id="engineType"
+          name="Тип двигателя"
+          initialValue={formData.engineType}
+          onValueChange={handleInputChange}
+          type="select"
+          options={[
+            { value: 'jet', label: 'Реактивный' },
+            { value: 'turboprop', label: 'Турбовинтовой' }
+          ]}
+        />
+        <InputComponent
+          id="aircraftMass"
+          name="Масса аппарата (кг)"
+          initialValue={formData.aircraftMass}
+          onValueChange={handleInputChange}
+          type="number"
+          placeholder="Введите массу"
+        />
+        <InputComponent
+          id="fuelTankVolume"
+          name="Объем бака (л)"
+          initialValue={formData.fuelTankVolume}
+          onValueChange={handleInputChange}
+          type="number"
+          placeholder="Введите объем"
+        />
+        <InputComponent
+          id="payload"
+          name="Полезная нагрузка (кг)"
+          initialValue={formData.payload}
+          onValueChange={handleInputChange}
+          type="number"
+          placeholder="Введите нагрузку"
+        />
+      </section>
+
+      <section className="section-content">
+        <h2>WSM коэффициенты</h2>
+        <SliderComponent
+          id="wsmRange"
+          name="Дальность полета"
+          initialValue={formData.wsmCoefficients.range}
+          onValueChange={handleInputChange}
+          iconClass="data-conteiner__img-range"
+        />
+        <SliderComponent
+          id="wsmPayload"
+          name="Полезная нагрузка"
+          initialValue={formData.wsmCoefficients.payload}
+          onValueChange={handleInputChange}
+          iconClass="data-conteiner__img-payload"
+        />
+        <SliderComponent
+          id="wsmEcology"
+          name="Экологичность"
+          initialValue={formData.wsmCoefficients.ecology}
+          onValueChange={handleInputChange}
+          iconClass="data-conteiner__img-ecology"
+        />
+        <SliderComponent
+          id="wsmCost"
+          name="Стоимость владения"
+          initialValue={formData.wsmCoefficients.cost}
+          onValueChange={handleInputChange}
+          iconClass="data-conteiner__img-cost"
+        />
+        <SliderComponent
+          id="wsmReliability"
+          name="Надежность"
+          initialValue={formData.wsmCoefficients.reliability}
+          onValueChange={handleInputChange}
+          iconClass="data-conteiner__img-reliability"
+        />
+      </section>
+
+      <section className="section-content">
+        <h2>Ограничивающие параметры</h2>
+        {[
+          { id: 'freezingTemp', name: 'Температура застывания (°C)', unit: '°C' },
+          { id: 'density', name: 'Плотность (кг/м³)', unit: 'кг/м³' },
+          { id: 'viscosity', name: 'Вязкость при -20°C (мПа·с)', unit: 'мПа·с' },
+          { id: 'combustionHeat', name: 'Массовая теплота сгорания (кДж/кг)', unit: 'кДж/кг' },
+          { id: 'coolingResource', name: 'Хладоресурс (кДж/кг)', unit: 'кДж/кг' },
+          { id: 'thermalConductivity', name: 'Теплопроводность (Вт/(м·К))', unit: 'Вт/(м·К)' },
+          { id: 'heatCapacity', name: 'Теплоемкость (Дж/К)', unit: 'Дж/К' },
+          { id: 'inductionPeriod', name: 'Период индукции (сек)', unit: 'сек' },
+          { id: 'burningRate', name: 'Скорость горения (м/с)', unit: 'м/с' },
+          { id: 'vaporPressure', name: 'Давление насыщенных паров при 150°C (кПа)', unit: 'кПа' }
+        ].map(param => (
+          <div key={param.id} className="data-conteiner__two-inputs-container">
+            <InputComponent
+              id={`${param.id}Min`}
+              name={`${param.name} (min)`}
+              initialValue={formData.limitingParameters[param.id].min}
+              onValueChange={handleInputChange}
+              type="number"
+              placeholder="Min"
+              iconClass={`data-conteiner__img-${param.id}`}
+            />
+            <InputComponent
+              id={`${param.id}Max`}
+              name={`${param.name} (max)`}
+              initialValue={formData.limitingParameters[param.id].max}
+              onValueChange={handleInputChange}
+              type="number"
+              placeholder="Max"
+              iconClass={`data-conteiner__img-${param.id}`}
+            />
+          </div>
+        ))}
+      </section>
+
+      <button type="submit" className="calculate-button">
+        Рассчитать
+      </button>
+    </form>
+  );
+}
+
+export default FuelForm;
+
 Файл: ./src/components/FuelPropertyComponent.jsx
 import React from 'react';
 
@@ -1743,149 +1874,83 @@ function Header() {
 export default Header;
 
 Файл: ./src/components/InputComponent.jsx
-import React, { useState, useEffect } from 'react';
+// ./src/components/InputComponent.jsx
+import React, { useState } from "react";
 
-const InputComponent = ({ id, name, initialMinValue, initialMaxValue, unit, tooltip, iconClass, step, onValueChange }) => {
-  const [minValue, setMinValue] = useState(initialMinValue || '');
-  const [maxValue, setMaxValue] = useState(initialMaxValue || '');
+function InputComponent({
+  id,
+  name,
+  unit,
+  initialMinValue,
+  initialMaxValue,
+  iconClass,
+  tooltip,
+  step,
+  onValueChange,
+}) {
+  const [minValue, setMinValue] = useState(initialMinValue || "");
+  const [maxValue, setMaxValue] = useState(initialMaxValue || "");
 
   const handleMinChange = (e) => {
     const newValue = e.target.value;
     setMinValue(newValue);
-    onValueChange(id, { min: newValue, max: maxValue });
+    onValueChange(id, newValue, maxValue);
   };
 
   const handleMaxChange = (e) => {
     const newValue = e.target.value;
     setMaxValue(newValue);
-    onValueChange(id, { min: minValue, max: newValue });
+    onValueChange(id, minValue, newValue);
   };
 
-  useEffect(() => {
-    // Example: Send data to server
-    // fetch('/api/update', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ id, minValue, maxValue }),
-    //   headers: { 'Content-Type': 'application/json' },
-    // });
-  }, [minValue, maxValue, id]);
+  const inputStep = step || (
+    id === "freezingTemp" ? "any" : (
+      ["viscosity", "thermalConductivity", "vaporPressure", "burningRate"].includes(id) ? 0.01 : 1
+    )
+  );
 
-  // Определяем шаг для инпутов: используем prop step, если он есть, иначе проверяем unit
-  const inputStep = step || (unit && (unit.includes('Вт') || unit.includes('м/с')) ? 0.01 : 1);
+  // Set minimum value: only freezingTemp can be negative
+  const inputMin = id === "freezingTemp" ? -273.15 : 0;
+
+  console.log(`InputComponent ${id}: step=${inputStep}, unit=${unit}, min=${inputMin}`);
 
   return (
     <div className="data-conteiner">
       <div className="data-conteiner__img-name-container">
         <div className="data-conteiner__img-conteiner">
-          <div className={iconClass || 'data-conteiner__img-default'}></div>
+          <div className={iconClass || "data-conteiner__img-default"}></div>
         </div>
-        <h2 className="data-conteiner__name">{name}{unit ? `, ${unit}` : ''}</h2>
+        <h2 className="data-conteiner__name">{name}{unit ? `, ${unit}` : ""}</h2>
       </div>
       <div className="data-conteiner__two-inputs-container">
-        <div className="data-conteiner__input-field" {...(tooltip ? { 'data-tooltip': tooltip } : {})}>
+        <div className="data-conteiner__input-field" {...(tooltip ? { "data-tooltip": tooltip } : {})}>
           <input
             type="number"
             className="data-conteiner__input"
             value={minValue}
             onChange={handleMinChange}
             step={inputStep}
-            min={0}
+            min={inputMin}
             placeholder="Min"
           />
         </div>
-        <div className="data-conteiner__input-field" {...(tooltip ? { 'data-tooltip': tooltip } : {})}>
+        <div className="data-conteiner__input-field" {...(tooltip ? { "data-tooltip": tooltip } : {})}>
           <input
             type="number"
             className="data-conteiner__input"
             value={maxValue}
             onChange={handleMaxChange}
             step={inputStep}
-            min={0}
+            min={inputMin}
             placeholder="Max"
           />
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default InputComponent;
-
-Файл: ./src/components/Main.jsx
-// import React from "react";
-import React, { useState, useEffect } from "react";
-import { useContext } from "react";
-import {
-  Route,
-  Switch,
-  useHistory,
-} from "react-router-dom";
-
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { Card } from "./Card";
-
-export function Main({
-  onEditProfile,
-  onAddPlace,
-  onEditAvatar,
-  onCardClick,
-  cards,
-  onCardLike,
-  onCardDelete,
-  onClick
-}) {
-  const currentUser = useContext(CurrentUserContext);
-  const section = () => {
-    if (cards.length > 0) {
-      return cards.map((card) => (
-        <Card
-          card={card}
-          onCardClick={onCardClick}
-          onCardLike={onCardLike}
-          onDeleteClick={onCardDelete}
-          key={`${card._id}`}
-        />
-      ));
-    }
-  };
-
-  return (
-    <main className="content">
-      <section className="profile">
-        <div className="profile__image-wraper">
-          <img
-            className="profile__image"
-            src={currentUser?.avatar}
-            alt="Изображение профиля"
-          />
-          <button
-            className="profile__black-box"
-            type="button"
-            onClick={onEditAvatar}
-          ></button>
-        </div>
-        <div className="profile__info">
-          <h1 className="profile__name">{currentUser?.name}</h1>
-          <button
-            className="profile__edit"
-            type="button"
-            onClick={onEditProfile}
-          ></button>
-          <p className="profile__job">{currentUser?.about}</p>
-        </div>
-        <button
-          className="profile__add"
-          type="button"
-          onClick={onAddPlace}
-        ></button>
-      </section>
-
-      <section className="elements">{section()}</section>
-    </main>
-  );
-}
-export default Main;
-
 
 Файл: ./src/components/ResultsPage.jsx
 import React from "react";
@@ -1894,12 +1959,25 @@ import FuelComponent from "./FuelComponent";
 import FuelPropertyComponent from "./FuelPropertyComponent";
 import ChartsSection from "./ChartsSection";
 import arrow from "./images/arrow.svg";
-import { fuelComponents, fuelProperties } from "./constants";
 
 function ResultsPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { state } = location;
+
+  // Mapping of property keys to their units
+  const unitMap = {
+    freezingTemp: "°C",
+    density: "кг/м³",
+    viscosity: "мПа·с",
+    combustionHeat: "кДж/кг",
+    coolingResource: "кДж/кг",
+    thermalConductivity: "Вт/(м·К)",
+    heatCapacity: "Дж/К",
+    inductionPeriod: "сек",
+    burningRate: "м/с",
+    vaporPressure: "кПа"
+  };
 
   const handleRecalculate = () => {
     navigate("/");
@@ -1912,12 +1990,12 @@ function ResultsPage() {
           <section className="section-content">
             <h1 className="section-content__name">Состав топлива</h1>
             <div className="cards-container cards-container--two-in-a-row">
-              {fuelComponents.map((component, index) => (
+              {state.mixture.map((component, index) => (
                 <FuelComponent
-                  key={component.id}
+                  key={index}
                   name={component.name}
-                  value={component.value}
-                  unit={component.unit}
+                  value={component.proportion * 100} // Convert to percentage
+                  unit="%"
                   index={index}
                 />
               ))}
@@ -1927,13 +2005,13 @@ function ResultsPage() {
           <section className="section-content">
             <h1 className="section-content__name">Характеристики топлива</h1>
             <div className="cards-container cards-container--two-in-a-row">
-              {fuelProperties.map((property) => (
+              {Object.entries(state.properties).map(([key, value], index) => (
                 <FuelPropertyComponent
-                  key={property.id}
-                  name={property.name}
-                  value={property.value}
-                  unit={property.unit}
-                  iconClass={property.iconClass}
+                  key={index}
+                  name={key}
+                  value={value}
+                  unit={unitMap[key] || ""} // Use unitMap for correct units
+                  iconClass={`data-conteiner__img-${key}`}
                 />
               ))}
             </div>
@@ -1957,7 +2035,7 @@ function ResultsPage() {
             </div>
           </section>
 
-          <ChartsSection />
+          <ChartsSection graphData={state.graphData} />
         </>
       )}
 
@@ -1980,7 +2058,6 @@ function ResultsPage() {
 }
 
 export default ResultsPage;
-
 
 Файл: ./src/components/SliderComponent.jsx
 import React, { useState, useEffect } from "react";

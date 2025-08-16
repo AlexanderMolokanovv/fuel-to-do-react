@@ -1,127 +1,28 @@
- // Данные для карточек
-  const cards = [
-    {
-      id: "range",
-      name: "Дальность полета",
-      initialValue: 49,
-      iconClass: "data-conteiner__img-range",
-    },
-    {
-      id: "payload",
-      name: "Полезная нагрузка",
-      initialValue: 73,
-      iconClass: "data-conteiner__img-payload",
-    },
-    {
-      id: "ecology",
-      name: "Экологичность",
-      initialValue: 65,
-      iconClass: "data-conteiner__img-ecology",
-    },
-    {
-      id: "cost",
-      name: "Стоимость владения",
-      initialValue: 55,
-      iconClass: "data-conteiner__img-cost",
-    },
-    {
-      id: "reliability",
-      name: "Надежность",
-      initialValue: 80,
-      iconClass: "data-conteiner__img-reliability",
-    },
-  ];
+const cards = [
+  { id: 'range', name: 'Дальность полета', initialValue: 50, iconClass: 'data-conteiner__img-range' },
+  { id: 'payload', name: 'Полезная нагрузка', initialValue: 50, iconClass: 'data-conteiner__img-payload' },
+  { id: 'ecology', name: 'Экологичность', initialValue: 50, iconClass: 'data-conteiner__img-ecology' },
+  { id: 'cost', name: 'Стоимость владения', initialValue: 50, iconClass: 'data-conteiner__img-cost' },
+  { id: 'reliability', name: 'Надежность', initialValue: 50, iconClass: 'data-conteiner__img-reliability' }
+];
 
-  const inputCards = [
-    {
-      id: "freezingTemp",
-      name: "Температура застывания",
-      unit: "°C",
-      iconClass: "data-conteiner__img-freezing-temp",
-    },
-    {
-      id: "density",
-      name: "Плотность",
-      unit: "кг/м³",
-      iconClass: "data-conteiner__img-density",
-    },
-    {
-      id: "viscosity",
-      name: "Вязкость при -20°C",
-      unit: "мПа·с",
-      iconClass: "data-conteiner__img-viscosity",
-    },
-    {
-      id: "combustionHeat",
-      name: "Массовая теплота сгорания",
-      unit: "кДж/кг",
-      iconClass: "data-conteiner__img-combustion-heat",
-    },
-    {
-      id: "coolingResource",
-      name: "Хладоресурс",
-      unit: "кДж/кг",
-      iconClass: "data-conteiner__img-cooling-resource",
-    },
-    {
-      id: "thermalConductivity",
-      name: "Теплопроводность",
-      unit: "Вт/(М*К)",
-      iconClass: "data-conteiner__img-thermal-conductivity",
-    },
-    {
-      id: "heatCapacity",
-      name: "Теплоемкость",
-      unit: "Дж/К",
-      iconClass: "data-conteiner__img-heat-capacity",
-    },
-    {
-      id: "inductionPeriod",
-      name: "Период индукции",
-      unit: "сек",
-      iconClass: "data-conteiner__img-induction-period",
-    },
-    {
-      id: "burningRate",
-      name: "Скорость горения",
-      unit: "м/с",
-      iconClass: "data-conteiner__img-burning-rate",
-    },
-    {
-      id: "vaporPressure",
-      name: "Давление насыщеных паров при 150°C",
-      unit: "кПа",
-      iconClass: "data-conteiner__img-vapor-pressure",
-    },
-  ];
-
-  const fuelComponents = [
-    { id: "component1", name: "Компонент 1", value: 44, unit: "%" },
-    { id: "component2", name: "Компонент 2", value: 20, unit: "%" },
-    { id: "component3", name: "Компонент 3", value: 15, unit: "%" },
-    { id: "component4", name: "Компонент 4", value: 10, unit: "%" },
-    { id: "component5", name: "Компонент 5", value: 8, unit: "%" },
-    { id: "component6", name: "Компонент 6", value: 3, unit: "%" },
-  ];
-
-  const fuelProperties = [
-  { id: "freezingTemp", name: "Температура застывания", value: -47, unit: "°C", iconClass: "data-conteiner__img-freezing-temp" },
-  { id: "density", name: "Плотность", value: 800, unit: "кг/м³", iconClass: "data-conteiner__img-density" },
-  { id: "viscosity", name: "Вязкость при -20°C", value: 8, unit: "мПа·с", iconClass: "data-conteiner__img-viscosity" },
-  { id: "combustionHeat", name: "Массовая теплота сгорания", value: 43100, unit: "кДж/кг", iconClass: "data-conteiner__img-combustion-heat" },
-  { id: "coolingResource", name: "Хладоресурс", value: 2100, unit: "кДж/кг", iconClass: "data-conteiner__img-cooling-resource" },
-  { id: "thermalConductivity", name: "Теплопроводность", value: 0.15, unit: "Вт/(М*К)", iconClass: "data-conteiner__img-thermal-conductivity" },
-  { id: "heatCapacity", name: "Теплоемкость", value: 2000, unit: "Дж/К", iconClass: "data-conteiner__img-heat-capacity" },
-  { id: "inductionPeriod", name: "Период индукции", value: 600, unit: "сек", iconClass: "data-conteiner__img-induction-period" },
-  { id: "burningRate", name: "Скорость горения", value: 0.2, unit: "м/с", iconClass: "data-conteiner__img-burning-rate" },
-  { id: "vaporPressure", name: "Давление насыщеных паров при 150°C", value: 10, unit: "кПа", iconClass: "data-conteiner__img-vapor-pressure" },
+const inputCards = [
+  { id: 'freezingTemp', name: 'Температура застывания', initialMin: -100, initialMax: -20, unit: '°C', iconClass: 'data-conteiner__img-freezing-temp', tooltip: 'Температура застывания топлива (°C)' },
+  { id: 'density', name: 'Плотность', initialMin: 600, initialMax: 1000, unit: 'кг/м³', iconClass: 'data-conteiner__img-density', tooltip: 'Плотность топлива (кг/м³)' },
+  { id: 'viscosity', name: 'Вязкость при -20°C', initialMin: 0.1, initialMax: 10, unit: 'мПа·с', iconClass: 'data-conteiner__img-viscosity', tooltip: 'Вязкость при -20°C (мПа·с)' },
+  { id: 'combustionHeat', name: 'Массовая теплота сгорания', initialMin: 15000, initialMax: 50000, unit: 'кДж/кг', iconClass: 'data-conteiner__img-combustion-heat', tooltip: 'Массовая теплота сгорания (кДж/кг)' },
+  { id: 'coolingResource', name: 'Хладоресурс', initialMin: 1000, initialMax: 3000, unit: 'кДж/кг', iconClass: 'data-conteiner__img-cooling-resource', tooltip: 'Хладоресурс (кДж/кг)' },
+  { id: 'thermalConductivity', name: 'Теплопроводность', initialMin: 0.05, initialMax: 0.3, unit: 'Вт/(м·К)', iconClass: 'data-conteiner__img-thermal-conductivity', tooltip: 'Теплопроводность (Вт/(м·К))' },
+  { id: 'heatCapacity', name: 'Теплоемкость', initialMin: 1000, initialMax: 5000, unit: 'Дж/К', iconClass: 'data-conteiner__img-heat-capacity', tooltip: 'Теплоемкость (Дж/К)' },
+  { id: 'inductionPeriod', name: 'Период индукции', initialMin: 200, initialMax: 800, unit: 'сек', iconClass: 'data-conteiner__img-induction-period', tooltip: 'Период индукции (сек)' },
+  { id: 'burningRate', name: 'Скорость горения', initialMin: 0.05, initialMax: 2, unit: 'м/с', iconClass: 'data-conteiner__img-burning-rate', tooltip: 'Скорость горения (м/с)' },
+  { id: 'vaporPressure', name: 'Давление насыщенных паров при 150°C', initialMin: 0.1, initialMax: 100, unit: 'кПа', iconClass: 'data-conteiner__img-vapor-pressure', tooltip: 'Давление насыщенных паров при 150°C (кПа)' }
 ];
 
 const additionalFields = [
-  { id: "engine", name: "Выбор двигателя", unit: "", iconClass: "data-conteiner__img-engine" },
-  { id: "aircraftMass", name: "Масса летательного аппарата", unit: "кг", iconClass: "data-conteiner__img-aircraft-mass" },
-  { id: "fuelTankVolume", name: "Объем бака", unit: "л", iconClass: "data-conteiner__img-fuel-tank-volume" },
-  { id: "payload", name: "Полезная нагрузка", unit: "кг", iconClass: "data-conteiner__img-payload" },
+  { id: 'aircraftMass', name: 'Масса летательного аппарата', unit: 'кг', iconClass: 'data-conteiner__img-aircraft-mass' },
+  { id: 'fuelTankVolume', name: 'Объем бака', unit: 'л', iconClass: 'data-conteiner__img-fuel-tank-volume' },
+  { id: 'payload', name: 'Полезная нагрузка', unit: 'кг', iconClass: 'data-conteiner__img-payload' }
 ];
 
-export { cards, inputCards, fuelComponents, fuelProperties, additionalFields };
+export { cards, inputCards, additionalFields };

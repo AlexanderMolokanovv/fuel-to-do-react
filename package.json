@@ -22,8 +22,8 @@
     "eject": "react-scripts eject",
     "dump-src": "bash ./dump-src.sh",
     "dump-serv": "bash ./dump-serv.sh"
-   },
-    "eslintConfig": {
+  },
+  "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
@@ -42,6 +42,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.5"
   }
-}  
+}

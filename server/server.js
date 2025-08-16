@@ -1,20 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const winston = require("winston");
 const calculateRoutes = require("./routes/calculateRoutes");
-
-const logger = winston.createLogger({
-  level: "info",
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.json()
-  ),
-  transports: [
-    new winston.transports.File({ filename: "error.log", level: "error" }),
-    new winston.transports.File({ filename: "combined.log" }),
-    new winston.transports.Console()
-  ]
-});
+const logger = require("./logger");
 
 const app = express();
 

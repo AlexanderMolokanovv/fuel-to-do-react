@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apii = {
+const api = {
   calculateFuel: async (data) => {
     try {
       const API_URL = process.env.NODE_ENV === "production" ? "/api/calculate" : "http://localhost:3001/api/calculate";
@@ -15,4 +15,4 @@ const apii = {
   },
 };
 
-export default apii;
+export default api;

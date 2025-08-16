@@ -1,27 +1,28 @@
 
 Файл: ./server/controllers/calculateController.js
+// calculateController.js
 const { calculateFuelEfficiency } = require("../utils/calculations");
 
 exports.calculate = async (req, res) => {
   try {
     const data = req.body;
-    const result = calculateFuelEfficiency(data);
+    const result = await calculateFuelEfficiency(data);
     res.json(result);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
-
 Файл: ./server/middleware/validateInput.js
 module.exports = (req, res, next) => {
   const { vehicleType, engineType, aircraftMass } = req.body;
-  if (!vehicleType || !engineType || !aircraftMass) {
+  if (vehicleType == null || engineType == null || aircraftMass == null) {
+    console.log("Validation failed - Request body:", JSON.stringify(req.body, null, 2));
     return res.status(400).json({ error: "Missing required fields" });
   }
+  console.log("Validation passed - Request body:", JSON.stringify(req.body, null, 2));
   next();
 };
-
 
 Файл: ./server/routes/calculateRoutes.js
 const express = require("express");
@@ -86,25 +87,153 @@ describe("POST /api/calculate", () => {
     const response = await request(app)
       .post("/api/calculate")
       .send({
-        vehicleType: 1,
-        engineType: "jet",
+        vehicleType: "airplane",
+        engineType: "gasturbine",
         aircraftMass: 1000,
         fuelTankVolume: 500,
         payload: 200,
-        wsmCoefficients: { coeff1: 50 },
-        limitingParameters: { param1: { min: 10, max: 20 } }
+        wsmCoefficients: {
+          range: 50,
+          payload: 50,
+          ecology: 50,
+          cost: 50,
+          reliability: 50
+        },
+        limitingParameters: {
+          freezingTemp: { min: -100, max: -20 },
+          density: { min: 600, max: 1000 },
+          viscosity: { min: 0.1, max: 10 },
+          combustionHeat: { min: 15000, max: 50000 },
+          coolingResource: { min: 1000, max: 3000 },
+          thermalConductivity: { min: 0.05, max: 0.3 },
+          heatCapacity: { min: 1000, max: 5000 },
+          inductionPeriod: { min: 200, max: 800 },
+          burningRate: { min: 0.05, max: 2 },
+          vaporPressure: { min: 0.1, max: 100 }
+        }
       })
       .expect(200);
     expect(response.body).toHaveProperty("fuelEfficiency");
   });
 });
 
-
 Файл: ./server/utils/calculations.js
-exports.calculateFuelEfficiency = (data) => {
-  const fuelEfficiency = 0.85; // Replace with actual logic
-  const maxRange = data.aircraftMass * 0.5;
-  const cost = data.payload * 1000;
-  return { fuelEfficiency, maxRange, cost };
-};
+const fuelComponents = require('../data/fuelComponents.json');
 
+exports.calculateFuelEfficiency = async (data) => {
+  console.log("Received data in calculations.js:", JSON.stringify(data, null, 2));
+  const { vehicleType, engineType, aircraftMass, fuelTankVolume, payload, wsmCoefficients, limitingParameters } = data;
+
+  // Логи для проверки загрузки JSON
+  console.log("Loaded fuelComponents length:", fuelComponents.length);
+  console.log("First component example:", fuelComponents[0] ? JSON.stringify(fuelComponents[0].compatibleWith) : 'No components loaded');
+
+  // Шаг 1: Фильтрация компонентов по совместимости
+  const components = fuelComponents.filter(c => c.compatibleWith.includes(vehicleType) && c.compatibleWith.includes(engineType));
+  console.log("Filtered component names:", components.map(c => c.name));
+
+  if (!components.length) {
+    console.error(`No compatible components for vehicleType: ${vehicleType}, engineType: ${engineType}`);
+    throw new Error('No compatible fuel components found');
+  }
+
+  // Шаг 2: Упрощенная логика смеси
+  const mixture = [
+    { name: components[0]?.name || "Kerosene", proportion: 0.50 },
+    { name: components[1]?.name || "Ethanol", proportion: 0.20 },
+    { name: components[2]?.name || "TS-1", proportion: 0.15 },
+    { name: components[3]?.name || "OME1", proportion: 0.10 },
+    { name: components[4]?.name || "Propanol", proportion: 0.03 },
+    { name: components[5]?.name || "Methanol", proportion: 0.02 }
+  ].slice(0, Math.min(components.length, 6));
+  console.log("Selected mixture:", JSON.stringify(mixture, null, 2));
+
+  // Шаг 3: Рассчет свойств смеси
+  const properties = {
+    freezingTemp: 0,
+    density: 0,
+    viscosity: 0,
+    combustionHeat: 0,
+    coolingResource: 0,
+    thermalConductivity: 0,
+    heatCapacity: 0,
+    inductionPeriod: 0,
+    burningRate: 0,
+    vaporPressure: 0
+  };
+  Object.keys(properties).forEach(prop => {
+    properties[prop] = mixture.reduce((sum, m) => {
+      const comp = components.find(c => c.name === m.name) || fuelComponents.find(c => c.name === m.name);
+      return sum + (comp ? m.proportion * comp[prop] : 0);
+    }, 0);
+    console.log(`Calculated ${prop}: ${properties[prop]}`);
+  });
+
+  // Шаг 4: Проверка ограничивающих параметров
+  let valid = true;
+  const failedProperties = [];
+  Object.keys(limitingParameters).forEach(key => {
+    const { min, max } = limitingParameters[key];
+    if (isNaN(min) || isNaN(max)) {
+      console.error(`Invalid min/max for ${key}: min=${min}, max=${max}`);
+      valid = false;
+    } else if (min === max && min === 0) {
+      // Skip validation for [0, 0] ranges
+      return;
+    } else if (properties[key] < min || properties[key] > max) {
+      console.error(`Property ${key} (${properties[key]}) outside range [${min}, ${max}]`);
+      failedProperties.push({ key, value: properties[key], min, max });
+      valid = false;
+    }
+  });
+  if (!valid) {
+    console.error("Failed properties:", JSON.stringify(failedProperties, null, 2));
+    throw new Error('No valid mixture found');
+  }
+
+  // Step 5: Calculate objectives
+  const energyDensity = properties.combustionHeat / properties.density;
+  const fuelEfficiency = 0.85 + (wsmCoefficients.range / 100) * 0.15; // Simplified
+  const maxRange = (energyDensity * fuelTankVolume / aircraftMass) * 0.5; // Simplified
+  const cost = payload * 1000 * properties.density; // Simplified
+
+  // Step 6: Calculate graph data
+  const viscosityTemps = [-20, -10, 0, 10, 20, 30];
+  const viscosityData = viscosityTemps.map(temp => {
+    const dataPoint = { temp };
+    mixture.forEach((comp, i) => {
+      const component = fuelComponents.find(c => c.name === comp.name);
+      if (component) {
+        const viscosity = component.viscosity * (1 - 0.02 * (temp + 20) / 10);
+        dataPoint[`sample${i + 1}`] = Number(viscosity.toFixed(2));
+      }
+    });
+    return dataPoint;
+  });
+
+  const heatCapacityPoints = [1, 2, 3, 4, 5, 6];
+  const heatCapacityData = heatCapacityPoints.map(point => {
+    const dataPoint = { temp: point * 100 };
+    mixture.forEach((comp, i) => {
+      const component = fuelComponents.find(c => c.name === comp.name);
+      if (component) {
+        const variation = 1 + (Math.random() - 0.5) * 0.1;
+        dataPoint[`sample${i + 1}`] = Number((component.heatCapacity * variation / 1000).toFixed(2));
+      }
+    });
+    return dataPoint;
+  });
+
+  // Step 7: Return result
+  return {
+    mixture,
+    properties,
+    fuelEfficiency,
+    maxRange,
+    cost,
+    graphData: {
+      viscosity: viscosityData,
+      heatCapacity: heatCapacityData
+    }
+  };
+};

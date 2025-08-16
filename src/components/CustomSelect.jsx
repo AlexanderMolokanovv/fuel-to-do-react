@@ -1,18 +1,16 @@
+// ./src/components/CustomSelect.jsx
 import { useState } from "react";
-// import "./data-conteiner__select--engine.css";
 
 const CustomSelect = ({ formData, handleInputChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const options = [
     { value: "", label: "Выберите тип двигателя", disabled: true },
     { value: "gasturbine", label: "Газотурбинный" },
     { value: "turbojet", label: "Турбореактивный" },
     { value: "piston_gasoline", label: "Поршневой бензин" },
     { value: "piston_diesel", label: "Поршневой дизель" },
-    { value: "ramjet", label: "Прямоточный воздушно-реактивный" },
     { value: "liquid_rocket", label: "Жидкостный ракетный" },
-    { value: "solid_rocket", label: "Твердотопливный ракетный" },
+    { value: "solid_rocket", label: "Твердотопливный ракетный" }
   ];
 
   const handleSelect = (option) => {

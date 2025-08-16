@@ -7,100 +7,142 @@ import ResultsPage from "./ResultsPage";
 import arrow from "./images/arrow.svg";
 import CustomSelect from "./CustomSelect";
 import { cards, inputCards, additionalFields } from "./constants";
-import apii from "../api/api.js";
+import api from "../api/api";
 
 function App() {
   const navigate = useNavigate();
 
-  // Инициализация состояния для всех полей формы
+  // Initialize form state
   const [formData, setFormData] = useState({
-    vehicleType: 1, // Облик летательного аппарата (по умолчанию 1 - самолет)
-    engineType: "", // Выбранный двигатель
-    aircraftMass: "", // Масса летательного аппарата
-    fuelTankVolume: "", // Объем бака
-    payload: "", // Полезная нагрузка
-    wsmCoefficients: cards.reduce((acc, card) => ({ ...acc, [card.id]: card.initialValue }), {}), // WSM коэффициенты
-    limitingParameters: inputCards.reduce((acc, card) => ({ ...acc, [card.id]: { min: card.initialValue, max: card.initialValue } }), {}), // Ограничивающие параметры
+    vehicleType: 'airplane',
+    engineType: "gasturbine",
+    aircraftMass: "",
+    fuelTankVolume: "",
+    payload: "",
+    wsmCoefficients: cards.reduce((acc, card) => ({ ...acc, [card.id]: card.initialValue }), {}),
+    limitingParameters: inputCards.reduce((acc, card) => ({
+      ...acc,
+      [card.id]: { 
+        min: card.id === "freezingTemp" ? -150 : card.initialMin, // Изменено min
+        max: card.initialMax 
+      }
+    }), {})
   });
 
-  // Обработка выбора летательного аппарата
+  // Handle vehicle type selection
   const handleVehicleClick = (vehicleId) => {
-    setFormData((prev) => ({ ...prev, vehicleType: vehicleId }));
+    const vehicleMap = {
+      1: 'airplane',
+      2: 'rocket',
+      3: 'helicopter'
+    };
+    setFormData((prev) => ({ ...prev, vehicleType: vehicleMap[vehicleId] }));
   };
 
-  // Обработка изменения значений инпутов (масса, бак, нагрузка, двигатель)
+  // Handle input changes (for aircraftMass, fuelTankVolume, payload, engineType)
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Обработка изменения WSM коэффициентов
+  // Handle WSM coefficient changes
   const handleValueChange = (id, value) => {
     setFormData((prev) => ({
       ...prev,
-      wsmCoefficients: { ...prev.wsmCoefficients, [id]: value },
+      wsmCoefficients: { ...prev.wsmCoefficients, [id]: Number(value) }
     }));
     console.log(`WSM Coefficient ID: ${id}, New Value: ${value}%`);
   };
 
-  // Обработка изменения ограничивающих параметров
+  // Handle limiting parameter changes
   const handleInputValueChange = (id, minValue, maxValue) => {
     setFormData((prev) => ({
       ...prev,
       limitingParameters: {
         ...prev.limitingParameters,
-        [id]: { min: minValue, max: maxValue },
-      },
+        [id]: { min: Number(minValue), max: Number(maxValue) }
+      }
     }));
     console.log(`Limiting Parameter ID: ${id}, Min: ${minValue}, Max: ${maxValue}`);
   };
 
-  // Обработка отправки формы
+  // Handle form submission with validation
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.engineType || !formData.aircraftMass) {
-    alert("Заполните все обязательные поля!");
-    return;
-  }
-    // Формирование данных для отправки на сервер
-    const dataToSend = {
-      vehicleType: formData.vehicleType,
-      engineType: formData.engineType,
-      aircraftMass: parseFloat(formData.aircraftMass) || 0,
-      fuelTankVolume: parseFloat(formData.fuelTankVolume) || 0,
-      payload: parseFloat(formData.payload) || 0,
-      wsmCoefficients: Object.keys(formData.wsmCoefficients).reduce((acc, key) => ({
-        ...acc,
-        [key]: parseFloat(formData.wsmCoefficients[key]) || 0,
-      }), {}),
-      limitingParameters: Object.keys(formData.limitingParameters).reduce((acc, key) => ({
-        ...acc,
-        [key]: {
-          min: parseFloat(formData.limitingParameters[key].min) || 0,
-          max: parseFloat(formData.limitingParameters[key].max) || 0,
-        },
-      }), {}),
-    };
-
-    // // Заглушка для серверных данных
-    // const serverData = {
-    //   fuelEfficiency: 0.85, // КПД топлива
-    //   maxRange: 1200, // Дальность полёта, км
-    //   cost: 500000, // Стоимость, руб
-    // };
-
     try {
-  console.log("Отправка на сервер:", dataToSend);
-    const response = await apii.calculateFuel(dataToSend);
-    console.log("Ответ сервера:", response);
-    navigate("/results", {
-      state: { ...dataToSend, ...response },
+      // Form validation
+      const errors = [];
+      
+      if (!formData.vehicleType) errors.push('Не выбран тип летательного аппарата');
+      if (!formData.engineType) errors.push('Не выбран тип двигателя');
+      if (formData.aircraftMass === '' || isNaN(parseFloat(formData.aircraftMass)) || parseFloat(formData.aircraftMass) <= 0) {
+        errors.push('Масса летательного аппарата должна быть числом больше 0');
+      }
+      if (formData.fuelTankVolume === '' || isNaN(parseFloat(formData.fuelTankVolume)) || parseFloat(formData.fuelTankVolume) <= 0) {
+        errors.push('Объем бака должен быть числом больше 0');
+      }
+      if (formData.payload === '' || isNaN(parseFloat(formData.payload)) || parseFloat(formData.payload) <= 0) {
+        errors.push('Полезная нагрузка должна быть числом больше 0');
+      }
+
+      const wsmFields = ['range', 'payload', 'ecology', 'cost', 'reliability'];
+      wsmFields.forEach(field => {
+        if (!formData.wsmCoefficients[field] || formData.wsmCoefficients[field] < 0 || formData.wsmCoefficients[field] > 100) {
+          errors.push(`WSM-коэффициент "${field}" должен быть от 0 до 100`);
+        }
       });
+
+      const paramFields = [
+        'freezingTemp', 'density', 'viscosity', 'combustionHeat', 'coolingResource',
+        'thermalConductivity', 'heatCapacity', 'inductionPeriod', 'burningRate', 'vaporPressure'
+      ];
+      paramFields.forEach(field => {
+        if (formData.limitingParameters[field].min === '' || formData.limitingParameters[field].max === '') {
+          errors.push(`Ограничивающие параметры для "${field}" должны содержать min и max`);
+        } else if (isNaN(parseFloat(formData.limitingParameters[field].min)) || isNaN(parseFloat(formData.limitingParameters[field].max))) {
+          errors.push(`Ограничивающие параметры для "${field}" должны быть числами`);
+        } else if (parseFloat(formData.limitingParameters[field].min) > parseFloat(formData.limitingParameters[field].max)) {
+          errors.push(`Минимальное значение "${field}" не может быть больше максимального`);
+        } else if (
+          !['freezingTemp', 'viscosity', 'thermalConductivity', 'vaporPressure'].includes(field) &&
+          (parseFloat(formData.limitingParameters[field].min) <= 0 || parseFloat(formData.limitingParameters[field].max) <= 0)
+        ) {
+          errors.push(`Ограничивающие параметры для "${field}" должны быть больше 0`);
+        }
+      });
+
+      if (errors.length > 0) {
+        throw new Error(`Ошибки в форме: ${errors.join('; ')}`);
+      }
+
+      // Prepare data for server
+      const dataToSend = {
+        vehicleType: formData.vehicleType,
+        engineType: formData.engineType,
+        aircraftMass: parseFloat(formData.aircraftMass),
+        fuelTankVolume: parseFloat(formData.fuelTankVolume),
+        payload: parseFloat(formData.payload),
+        wsmCoefficients: Object.keys(formData.wsmCoefficients).reduce((acc, key) => ({
+          ...acc,
+          [key]: parseFloat(formData.wsmCoefficients[key])
+        }), {}),
+        limitingParameters: Object.keys(formData.limitingParameters).reduce((acc, key) => ({
+          ...acc,
+          [key]: {
+            min: parseFloat(formData.limitingParameters[key].min),
+            max: parseFloat(formData.limitingParameters[key].max)
+          }
+        }), {})
+      };
+
+      console.log("Отправка на сервер:", JSON.stringify(dataToSend, null, 2));
+      const response = await api.calculateFuel(dataToSend);
+      console.log("Ответ сервера:", response);
+      navigate("/results", { state: response });
     } catch (error) {
       console.error("Ошибка API:", error);
+      alert(`Ошибка: ${error.message}`);
     }
-
-
   };
 
   return (
@@ -126,7 +168,7 @@ function App() {
                           <div className="data-conteiner__buttons">
                             <button
                               className={
-                                formData.vehicleType === 1
+                                formData.vehicleType === 'airplane'
                                   ? "data-conteiner__airplane--active"
                                   : "data-conteiner__airplane"
                               }
@@ -135,7 +177,7 @@ function App() {
                             ></button>
                             <button
                               className={
-                                formData.vehicleType === 2
+                                formData.vehicleType === 'rocket'
                                   ? "data-conteiner__rocket--active"
                                   : "data-conteiner__rocket"
                               }
@@ -144,7 +186,7 @@ function App() {
                             ></button>
                             <button
                               className={
-                                formData.vehicleType === 3
+                                formData.vehicleType === 'helicopter'
                                   ? "data-conteiner__helicopter--active"
                                   : "data-conteiner__helicopter"
                               }
@@ -169,7 +211,7 @@ function App() {
                         </div>
                       </div>
                       <div className="box-two-containers">
-                        {additionalFields.slice(1).map((field) => (
+                        {additionalFields.map((field) => (
                           <div className="data-conteiner" key={field.id}>
                             <div className="data-conteiner__img-name-container">
                               <div className="data-conteiner__img-conteiner">
@@ -219,8 +261,8 @@ function App() {
                           key={card.id}
                           id={card.id}
                           name={card.name}
-                          initialMinValue={formData.limitingParameters[card.id]?.min || card.initialValue}
-                          initialMaxValue={formData.limitingParameters[card.id]?.max || card.initialValue}
+                          initialMinValue={formData.limitingParameters[card.id]?.min || card.initialMin}
+                          initialMaxValue={formData.limitingParameters[card.id]?.max || card.initialMax}
                           unit={card.unit}
                           tooltip={card.tooltip}
                           iconClass={card.iconClass}
