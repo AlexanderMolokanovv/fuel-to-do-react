@@ -1,12 +1,11 @@
 
-Файл: ./src/api/api.js
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/api/api.js
 import axios from "axios";
 
-const api = {
+const apii = {
   calculateFuel: async (data) => {
     try {
-      const API_URL = process.env.NODE_ENV === "production" ? "/api/calculate" : "http://localhost:3001/api/calculate";
-      const response = await axios.post(API_URL, data, {
+      const response = await axios.post("/api/calculate", data, {
         headers: { "Content-Type": "application/json" },
       });
       return response.data;
@@ -17,9 +16,9 @@ const api = {
   },
 };
 
-export default api;
+export default apii;
 
-Файл: ./src/App.test.js
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/App.test.js
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
@@ -30,7 +29,7 @@ test('renders learn react link', () => {
 });
 
 
-Файл: ./src/blocks/airplane/airplane.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/airplane/airplane.css
 .airplane {
     padding: 0;
     margin: 0;
@@ -38,7 +37,7 @@ test('renders learn react link', () => {
     flex-direction: column;
 }
 
-Файл: ./src/blocks/airplane-engine/airplane-engine.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/airplane-engine/airplane-engine.css
 .airplane-engine {
     box-sizing: border-box;
     border: 1px solid rgb(231, 231, 231);
@@ -49,7 +48,7 @@ test('renders learn react link', () => {
     align-items: center;
 }
 
-Файл: ./src/blocks/airplane-engine/__image/airplane-engine__image.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/airplane-engine/__image/airplane-engine__image.css
 .airplane-engine__image {
     background-image: url(../../../components/images/engine.svg);
     background-size: 100%;
@@ -65,7 +64,7 @@ test('renders learn react link', () => {
     border-radius: 12px;
 }
 
-Файл: ./src/blocks/box-two-containers/box-two-containers.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/box-two-containers/box-two-containers.css
 .box-two-containers {
     display: flex;
     flex-direction: row;
@@ -81,7 +80,7 @@ test('renders learn react link', () => {
  
 } 
 
-Файл: ./src/blocks/calculate-button/calculate-button.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/calculate-button/calculate-button.css
 .calculate-button {
     padding: 0;
     margin: 0;
@@ -121,7 +120,7 @@ margin-right: auto;
 
 /* изменяем гап при наведении */
 
-Файл: ./src/blocks/calculate-button/__arrow/calculate-button__arrow.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/calculate-button/__arrow/calculate-button__arrow.css
 .calculate-button__arrow {
     width: 24px;
 height: 24px;
@@ -133,7 +132,7 @@ margin: 0px 24px 0px 12px;
 
 }
 
-Файл: ./src/blocks/cards-container/--two-in-a-row/cards-container--two-in-a-row.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/cards-container/--two-in-a-row/cards-container--two-in-a-row.css
 
 .cards-container--two-in-a-row {
   display: grid !important;
@@ -141,7 +140,7 @@ margin: 0px 24px 0px 12px;
   gap: 20px !important;
 }
 
-Файл: ./src/blocks/cards-container/cards-container.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/cards-container/cards-container.css
 .cards-container {
 /* display: flex;
     flex-direction: row;
@@ -163,7 +162,7 @@ margin: 0px 24px 0px 12px;
  
 }  */
 
-Файл: ./src/blocks/data-conteiner/data-conteiner.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/data-conteiner.css
 .data-conteiner {
     margin: 0;
     padding: 0;
@@ -187,7 +186,7 @@ margin: 0px 24px 0px 12px;
     margin-right: 0;
 }
 
-Файл: ./src/blocks/data-conteiner/__airplane/--active/data-conteiner__airplane--active.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__airplane/--active/data-conteiner__airplane--active.css
 .data-conteiner__airplane--active {
     /* background: linear-gradient(226.17deg, rgb(11, 50, 255) 0%,rgb(188, 47, 255) 98.278%); */
     background-image: url(../../../../components/images/airplane-act.svg);
@@ -208,7 +207,7 @@ margin: 0px 24px 0px 12px;
 
       .data-conteiner__airplane--active:hover { opacity: 0.8;}
 
-Файл: ./src/blocks/data-conteiner/__airplane/data-conteiner__airplane.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__airplane/data-conteiner__airplane.css
 .data-conteiner__airplane {
     /* background: linear-gradient(226.17deg, rgb(11, 50, 255) 0%,rgb(188, 47, 255) 98.278%); */
     background-image: url(../../../components/images/airplane.svg);
@@ -233,7 +232,7 @@ margin: 0px 24px 0px 12px;
 
 .data-conteiner__airplane:hover { opacity: 0.8;}
 
-Файл: ./src/blocks/data-conteiner/__buttons/data-conteiner__buttons.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__buttons/data-conteiner__buttons.css
 .data-conteiner__buttons {
     margin: 0;
     padding: 0;
@@ -242,7 +241,7 @@ margin: 0px 24px 0px 12px;
     /* width: 250px; */
 }
 
-Файл: ./src/blocks/data-conteiner/__helicopter/--active/data-conteiner__helicopter--active.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__helicopter/--active/data-conteiner__helicopter--active.css
 .data-conteiner__helicopter--active {
     
         background-image: url(../../../../components/images/helicopter-act.svg);
@@ -267,7 +266,7 @@ margin: 0px 24px 0px 12px;
 
 .data-conteiner__helicopter--active:hover { opacity: 0.8;}
 
-Файл: ./src/blocks/data-conteiner/__helicopter/data-conteiner__helicopter.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__helicopter/data-conteiner__helicopter.css
 .data-conteiner__helicopter {
     background-image: url(../../../components/images/helicopter.svg);
     /* background-size: 40%; */
@@ -292,24 +291,24 @@ margin: 0px 24px 0px 12px;
 .data-conteiner__helicopter:hover { opacity: 0.8;}
 
 
-Файл: ./src/blocks/data-conteiner/__img-aircraft-mass/data-conteiner__img-aircraft-mass.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-aircraft-mass/data-conteiner__img-aircraft-mass.css
 .data-conteiner__img-aircraft-mass {
   background-image: url(../../../components/images/aircraft-mass.svg);
 }
 
 
 
-Файл: ./src/blocks/data-conteiner/__img-burning-rate/data-conteiner__img-burning-rate.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-burning-rate/data-conteiner__img-burning-rate.css
 .data-conteiner__img-burning-rate {
   background-image: url(../../../components/images/burning-rate.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-combustion-heat/data-conteiner__img-combustion-heat.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-combustion-heat/data-conteiner__img-combustion-heat.css
 .data-conteiner__img-combustion-heat {
   background-image: url(../../../components/images/combustion-heat.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-conteiner/data-conteiner__img-conteiner.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-conteiner/data-conteiner__img-conteiner.css
 .data-conteiner__img-conteiner {
  padding: 0;
  margin: 0;
@@ -318,12 +317,12 @@ margin: 0px 24px 0px 12px;
  display: block;
 }
 
-Файл: ./src/blocks/data-conteiner/__img-cooling-resource/data-conteiner__img-cooling-resource.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-cooling-resource/data-conteiner__img-cooling-resource.css
 .data-conteiner__img-cooling-resource {
   background-image: url(../../../components/images/cooling-resource.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-cost/data-conteiner__img-cost.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-cost/data-conteiner__img-cost.css
 .data-conteiner__img-cost {
   padding: 0;
   margin: 0;
@@ -339,12 +338,12 @@ margin: 0px 24px 0px 12px;
   background-image: url(../../../components/images/cost.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-density/data-conteiner__img-density.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-density/data-conteiner__img-density.css
 .data-conteiner__img-density {
   background-image: url(../../../components/images/density.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-ecology/data-conteiner__img-ecology.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-ecology/data-conteiner__img-ecology.css
 .data-conteiner__img-ecology {
   padding: 0;
   margin: 0;
@@ -362,34 +361,34 @@ margin: 0px 24px 0px 12px;
 }
 
 
-Файл: ./src/blocks/data-conteiner/__img-engine/data-conteiner__img-engine.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-engine/data-conteiner__img-engine.css
 .data-conteiner__img-engine {
   background-image: url(../../../components/images/engine.svg);
 }
 
 
-Файл: ./src/blocks/data-conteiner/__img-freezing-temp/data-conteiner__img-freezing-temp.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-freezing-temp/data-conteiner__img-freezing-temp.css
 .data-conteiner__img-freezing-temp {
   background-image: url(../../../components/images/freezing-temp.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-fuel-tank-volume/data-conteiner__img-fuel-tank-volume.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-fuel-tank-volume/data-conteiner__img-fuel-tank-volume.css
 .data-conteiner__img-fuel-tank-volume {
   background-image: url(../../../components/images/fuel-tank-volume.svg);
 }
 
 
-Файл: ./src/blocks/data-conteiner/__img-heat-capacity/data-conteiner__img-heat-capacity.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-heat-capacity/data-conteiner__img-heat-capacity.css
 .data-conteiner__img-heat-capacity {
   background-image: url(../../../components/images/heat-capacity.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-induction-period/data-conteiner__img-induction-period.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-induction-period/data-conteiner__img-induction-period.css
 .data-conteiner__img-induction-period {
   background-image: url(../../../components/images/induction-period.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-lode/data-conteiner__img-lode.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-lode/data-conteiner__img-lode.css
 .data-conteiner__img-lode {
     padding: 0;
     margin: 0;
@@ -407,7 +406,7 @@ margin: 0px 24px 0px 12px;
    
 }
 
-Файл: ./src/blocks/data-conteiner/__img-name-container/data-conteiner__img-name-container.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-name-container/data-conteiner__img-name-container.css
 .data-conteiner__img-name-container {
     padding: 0;
     margin: 0;
@@ -420,12 +419,12 @@ align-items: center;
 
 }
 
-Файл: ./src/blocks/data-conteiner/__img-payload/data-conteiner__img-payload.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-payload/data-conteiner__img-payload.css
 .data-conteiner__img-payload {
   background-image: url(../../../components/images/payload.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-range/data-conteiner__img-range.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-range/data-conteiner__img-range.css
 .data-conteiner__img-range {
   padding: 0;
   margin: 0;
@@ -443,7 +442,7 @@ align-items: center;
 
 
 
-Файл: ./src/blocks/data-conteiner/__img-reliability/data-conteiner__img-reliability.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-reliability/data-conteiner__img-reliability.css
 .data-conteiner__img-reliability {
   padding: 0;
   margin: 0;
@@ -459,22 +458,22 @@ align-items: center;
   background-image: url(../../../components/images/reliability.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-thermal-conductivity/data-conteiner__img-thermal-conductivity.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-thermal-conductivity/data-conteiner__img-thermal-conductivity.css
 .data-conteiner__img-thermal-conductivity {
   background-image: url(../../../components/images/thermal-conductivity.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-vapor-pressure/data-conteiner__img-vapor-pressure.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-vapor-pressure/data-conteiner__img-vapor-pressure.css
 .data-conteiner__img-vapor-pressure {
   background-image: url(../../../components/images/vapor-pressure.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__img-viscosity/data-conteiner__img-viscosity.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__img-viscosity/data-conteiner__img-viscosity.css
 .data-conteiner__img-viscosity {
   background-image: url(../../../components/images/viscosity.svg);
 }
 
-Файл: ./src/blocks/data-conteiner/__input/data-conteiner__input.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__input/data-conteiner__input.css
 .data-conteiner__input {
 padding: 0;
   margin: 0;
@@ -491,7 +490,7 @@ padding: 0;
 
 }
 
-Файл: ./src/blocks/data-conteiner/__name/data-conteiner__name.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__name/data-conteiner__name.css
 .data-conteiner__name {
     font-size: 20px;
 font-weight: 400;
@@ -504,7 +503,7 @@ padding-left: 8px;
 color: rgb(156, 156, 156)
 }
 
-Файл: ./src/blocks/data-conteiner/__rocket/--active/data-conteiner__rocket--active.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__rocket/--active/data-conteiner__rocket--active.css
 .data-conteiner__rocket--active {
     
         background-image: url(../../../../components/images/rocket-act.svg);
@@ -529,7 +528,7 @@ color: rgb(156, 156, 156)
 
 .data-conteiner__rocket--active:hover { opacity: 0.8;}
 
-Файл: ./src/blocks/data-conteiner/__rocket/data-conteiner__rocket.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__rocket/data-conteiner__rocket.css
 .data-conteiner__rocket {
     background-image: url(../../../components/images/rocket.svg);
     /* background-size: 40%; */
@@ -553,7 +552,7 @@ color: rgb(156, 156, 156)
 
 .data-conteiner__rocket:hover { opacity: 0.8;}
 
-Файл: ./src/blocks/data-conteiner/__select/--engine/data-conteiner__select--engine.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__select/--engine/data-conteiner__select--engine.css
 .data-conteiner__select--engine {
     /* background-image: url('../../../../components/images/arrow-angel.svg'); 
       background-repeat: no-repeat;
@@ -569,7 +568,7 @@ color: rgb(156, 156, 156)
 
 }
 
-Файл: ./src/blocks/data-conteiner/__select/data-conteiner__select.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__select/data-conteiner__select.css
 .data-conteiner__select {
 
 width: 332px; /* Соответствует Figma */
@@ -595,7 +594,7 @@ width: 332px; /* Соответствует Figma */
   border-color: #007bff; /* Подсветка при фокусе */
 }
 
-Файл: ./src/blocks/data-conteiner/__select-control/data-conteiner__select-control.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__select-control/data-conteiner__select-control.css
 .data-conteiner__select-control {
     width: 100%;
   height: 48px; /* Высота поля выбора */
@@ -618,7 +617,7 @@ width: 332px; /* Соответствует Figma */
   border-color: #007bff;
 }
 
-Файл: ./src/blocks/data-conteiner/__select-menu/data-conteiner__select-menu.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__select-menu/data-conteiner__select-menu.css
 .data-conteiner__select-menu {
   position: absolute;
   top: 100%;
@@ -635,7 +634,7 @@ width: 332px; /* Соответствует Figma */
   margin-top: 6px;
 }
 
-Файл: ./src/blocks/data-conteiner/__select-option/data-conteiner__select-option.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__select-option/data-conteiner__select-option.css
 .data-conteiner__select-option {
  padding: 8px 12px;
   border-radius: 8px; /* Закругления для каждого пункта */
@@ -663,7 +662,7 @@ width: 332px; /* Соответствует Figma */
 @import url(./blocks/data-conteiner/__select-option/_selected/data-conteiner__select-option_selected.css);
 @import url(./blocks/data-conteiner/__select-option/_disabled/data-conteiner__select-option_disabled.css); */
 
-Файл: ./src/blocks/data-conteiner/__two-inputs-container/data-conteiner__two-inputs-container.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-conteiner/__two-inputs-container/data-conteiner__two-inputs-container.css
 .data-conteiner__two-inputs-container {
     display: flex;
     flex-direction: row;
@@ -673,12 +672,12 @@ width: 332px; /* Соответствует Figma */
 
 }
 
-Файл: ./src/blocks/data-range-conteiner/--two-in-a-row/data-range-conteiner--two-in-a-row.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-range-conteiner/--two-in-a-row/data-range-conteiner--two-in-a-row.css
 .data-range-conteiner--two-in-a-row {
     max-width: 570px;
 }
 
-Файл: ./src/blocks/data-range-conteiner/data-range-conteiner.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-range-conteiner/data-range-conteiner.css
 .data-range-conteiner {
    margin: 0;
     padding: 0;
@@ -704,7 +703,7 @@ width: 332px; /* Соответствует Figma */
     margin-right: 0;
 } */
 
-Файл: ./src/blocks/data-range-conteiner/__name/data-range-conteiner__name.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-range-conteiner/__name/data-range-conteiner__name.css
 .data-range-conteiner__name {
     margin: 0;
     padding: 0;
@@ -719,12 +718,12 @@ width: 332px; /* Соответствует Figma */
     margin-bottom: 16px;
     }
 
-Файл: ./src/blocks/data-range-conteiner/__percentages/data-range-conteiner__percentages.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-range-conteiner/__percentages/data-range-conteiner__percentages.css
 .data-range-conteiner__percentages {
     margin-bottom: 5px;
 }
 
-Файл: ./src/blocks/data-range-conteiner/__picture-percentages-box/data-range-conteiner__picture-percentages-box.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-range-conteiner/__picture-percentages-box/data-range-conteiner__picture-percentages-box.css
 .data-range-conteiner__picture-percentages-box {
  display: flex;
  flex-direction: row;
@@ -734,7 +733,7 @@ width: 332px; /* Соответствует Figma */
 
 }
 
-Файл: ./src/blocks/data-range-conteiner/__slider/data-range-conteiner__slider.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-range-conteiner/__slider/data-range-conteiner__slider.css
 .data-range-conteiner__slider {
     position: relative;
     height: 14px; /* Соответствует высоте бегунка */
@@ -803,7 +802,7 @@ width: 332px; /* Соответствует Figma */
     opacity: 1;
 }
 
-Файл: ./src/blocks/data-range-conteiner/__slider-input/data-range-conteiner__slider-input.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-range-conteiner/__slider-input/data-range-conteiner__slider-input.css
 .data-range-conteiner__slider-input {
     -webkit-appearance: none;
     width: 100%;
@@ -883,7 +882,7 @@ width: 332px; /* Соответствует Figma */
     opacity: 1;
 }
 
-Файл: ./src/blocks/data-range-conteiner/__slider-left-track/data-range-conteiner__slider-left-track.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-range-conteiner/__slider-left-track/data-range-conteiner__slider-left-track.css
 .data-range-conteiner__slider-left-track {
 position: absolute;
     height: 3px;
@@ -895,7 +894,7 @@ position: absolute;
     z-index: 1;
 }
 
-Файл: ./src/blocks/data-range-conteiner/__slider-right-track/data-range-conteiner__slider-right-track.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-range-conteiner/__slider-right-track/data-range-conteiner__slider-right-track.css
 .data-range-conteiner__slider-right-track {
   position: absolute;
     height: 3px;
@@ -909,7 +908,7 @@ position: absolute;
     
 }
 
-Файл: ./src/blocks/data-range-conteiner/__slider-track/data-range-conteiner__slider-track.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/data-range-conteiner/__slider-track/data-range-conteiner__slider-track.css
 .data-range-conteiner__slider-track {
    position: relative;
     height: 16px;
@@ -919,7 +918,7 @@ position: absolute;
     overflow: hidden;
 }
 
-Файл: ./src/blocks/footer/footer.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/footer/footer.css
 .footer {
     color: rgb(156, 156, 156);
 font-family: 'MADE';
@@ -932,7 +931,7 @@ text-align: center;
 margin-top: 13px;
 }
 
-Файл: ./src/blocks/graf-conteiner/graf-conteiner.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/graf-conteiner/graf-conteiner.css
 .graf-conteiner {
   margin: 0;
   padding: 0;
@@ -957,7 +956,7 @@ margin-top: 13px;
 }
 
 
-Файл: ./src/blocks/header/header.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/header/header.css
 .header {
     display: flex;
     align-items:center;
@@ -975,7 +974,7 @@ margin-top: 13px;
     }
 } */
 
-Файл: ./src/blocks/header/__logo/header__logo.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/header/__logo/header__logo.css
 .header__logo {
     /* max-width: 70px;
     margin-bottom: 32px; */
@@ -1007,7 +1006,7 @@ height: 82.5px;
     height: 60px;
     border-radius: 12px; */
 
-Файл: ./src/blocks/header/__name/header__name.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/header/__name/header__name.css
 .header__name {
     /* text-align: center; */
 
@@ -1039,7 +1038,7 @@ height: 82.5px;
 
 }
 
-Файл: ./src/blocks/limiting-parameters-conteiner/limiting-parameters-conteiner.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/limiting-parameters-conteiner/limiting-parameters-conteiner.css
 .limiting-parameters-conteiner {
    
       display: grid;
@@ -1055,7 +1054,7 @@ height: 82.5px;
     margin-bottom: 0;
 }  */
 
-Файл: ./src/blocks/main-content/main-content.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/main-content/main-content.css
 .main-content {
     /* display: flex;
     flex-direction: column; */
@@ -1071,7 +1070,7 @@ height: 82.5px;
     }
 } */
 
-Файл: ./src/blocks/page/page.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/page/page.css
 .page {
     display: flex;
     flex-direction: column;
@@ -1088,7 +1087,7 @@ height: 82.5px;
     -webkit-box-sizing: border-box;
 }
 
-Файл: ./src/blocks/res-content/res-content.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/res-content/res-content.css
 .res-content {
     margin: 0;
     padding: 0;
@@ -1118,12 +1117,12 @@ height: 82.5px;
     margin-right: 0;
 }
 
-Файл: ./src/blocks/res-content/__container/res-content__container.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/res-content/__container/res-content__container.css
 .res-content__container {
     
 }
 
-Файл: ./src/blocks/res-content/__name/res-content__name.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/res-content/__name/res-content__name.css
 .res-content__name {
     font-size: 20px;
     font-weight: 400;
@@ -1137,7 +1136,7 @@ height: 82.5px;
     text-align: left;
 }
 
-Файл: ./src/blocks/res-content/__val/res-content__val.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/res-content/__val/res-content__val.css
 .res-content__val {
     color: rgb(56, 56, 56);
     font-size: 28px;
@@ -1148,13 +1147,13 @@ height: 82.5px;
     /* align-self: flex-end */
 }
 
-Файл: ./src/blocks/section-content/section-content.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/section-content/section-content.css
 .section-content {
    padding: 0;
    margin: 0; 
 }
 
-Файл: ./src/blocks/section-content/__name/section-content__name.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/section-content/__name/section-content__name.css
 .section-content__name {
 padding: 0;
 margin: 0;
@@ -1169,7 +1168,7 @@ color: rgb(156, 156, 156);
 width: 100%;
 }
 
-Файл: ./src/blocks/whole-page/whole-page.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/blocks/whole-page/whole-page.css
 .whole-page {
     display: flex;
     flex-direction: column;
@@ -1183,7 +1182,7 @@ width: 100%;
     ;
 }
 
-Файл: ./src/components/App.jsx
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/components/App.jsx
 import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Header from "./Header";
@@ -1193,142 +1192,100 @@ import ResultsPage from "./ResultsPage";
 import arrow from "./images/arrow.svg";
 import CustomSelect from "./CustomSelect";
 import { cards, inputCards, additionalFields } from "./constants";
-import api from "../api/api";
+import apii from "../api/api.js";
 
 function App() {
   const navigate = useNavigate();
 
-  // Initialize form state
+  // Инициализация состояния для всех полей формы
   const [formData, setFormData] = useState({
-    vehicleType: 'airplane',
-    engineType: "gasturbine",
-    aircraftMass: "",
-    fuelTankVolume: "",
-    payload: "",
-    wsmCoefficients: cards.reduce((acc, card) => ({ ...acc, [card.id]: card.initialValue }), {}),
-    limitingParameters: inputCards.reduce((acc, card) => ({
-      ...acc,
-      [card.id]: { 
-        min: card.id === "freezingTemp" ? -150 : card.initialMin, // Изменено min
-        max: card.initialMax 
-      }
-    }), {})
+    vehicleType: 1, // Облик летательного аппарата (по умолчанию 1 - самолет)
+    engineType: "", // Выбранный двигатель
+    aircraftMass: "", // Масса летательного аппарата
+    fuelTankVolume: "", // Объем бака
+    payload: "", // Полезная нагрузка
+    wsmCoefficients: cards.reduce((acc, card) => ({ ...acc, [card.id]: card.initialValue }), {}), // WSM коэффициенты
+    limitingParameters: inputCards.reduce((acc, card) => ({ ...acc, [card.id]: { min: card.initialValue, max: card.initialValue } }), {}), // Ограничивающие параметры
   });
 
-  // Handle vehicle type selection
+  // Обработка выбора летательного аппарата
   const handleVehicleClick = (vehicleId) => {
-    const vehicleMap = {
-      1: 'airplane',
-      2: 'rocket',
-      3: 'helicopter'
-    };
-    setFormData((prev) => ({ ...prev, vehicleType: vehicleMap[vehicleId] }));
+    setFormData((prev) => ({ ...prev, vehicleType: vehicleId }));
   };
 
-  // Handle input changes (for aircraftMass, fuelTankVolume, payload, engineType)
+  // Обработка изменения значений инпутов (масса, бак, нагрузка, двигатель)
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle WSM coefficient changes
+  // Обработка изменения WSM коэффициентов
   const handleValueChange = (id, value) => {
     setFormData((prev) => ({
       ...prev,
-      wsmCoefficients: { ...prev.wsmCoefficients, [id]: Number(value) }
+      wsmCoefficients: { ...prev.wsmCoefficients, [id]: value },
     }));
     console.log(`WSM Coefficient ID: ${id}, New Value: ${value}%`);
   };
 
-  // Handle limiting parameter changes
+  // Обработка изменения ограничивающих параметров
   const handleInputValueChange = (id, minValue, maxValue) => {
     setFormData((prev) => ({
       ...prev,
       limitingParameters: {
         ...prev.limitingParameters,
-        [id]: { min: Number(minValue), max: Number(maxValue) }
-      }
+        [id]: { min: minValue, max: maxValue },
+      },
     }));
     console.log(`Limiting Parameter ID: ${id}, Min: ${minValue}, Max: ${maxValue}`);
   };
 
-  // Handle form submission with validation
+  // Обработка отправки формы
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.engineType || !formData.aircraftMass) {
+    alert("Заполните все обязательные поля!");
+    return;
+  }
+    // Формирование данных для отправки на сервер
+    const dataToSend = {
+      vehicleType: formData.vehicleType,
+      engineType: formData.engineType,
+      aircraftMass: parseFloat(formData.aircraftMass) || 0,
+      fuelTankVolume: parseFloat(formData.fuelTankVolume) || 0,
+      payload: parseFloat(formData.payload) || 0,
+      wsmCoefficients: Object.keys(formData.wsmCoefficients).reduce((acc, key) => ({
+        ...acc,
+        [key]: parseFloat(formData.wsmCoefficients[key]) || 0,
+      }), {}),
+      limitingParameters: Object.keys(formData.limitingParameters).reduce((acc, key) => ({
+        ...acc,
+        [key]: {
+          min: parseFloat(formData.limitingParameters[key].min) || 0,
+          max: parseFloat(formData.limitingParameters[key].max) || 0,
+        },
+      }), {}),
+    };
+
+    // // Заглушка для серверных данных
+    // const serverData = {
+    //   fuelEfficiency: 0.85, // КПД топлива
+    //   maxRange: 1200, // Дальность полёта, км
+    //   cost: 500000, // Стоимость, руб
+    // };
+
     try {
-      // Form validation
-      const errors = [];
-      
-      if (!formData.vehicleType) errors.push('Не выбран тип летательного аппарата');
-      if (!formData.engineType) errors.push('Не выбран тип двигателя');
-      if (formData.aircraftMass === '' || isNaN(parseFloat(formData.aircraftMass)) || parseFloat(formData.aircraftMass) <= 0) {
-        errors.push('Масса летательного аппарата должна быть числом больше 0');
-      }
-      if (formData.fuelTankVolume === '' || isNaN(parseFloat(formData.fuelTankVolume)) || parseFloat(formData.fuelTankVolume) <= 0) {
-        errors.push('Объем бака должен быть числом больше 0');
-      }
-      if (formData.payload === '' || isNaN(parseFloat(formData.payload)) || parseFloat(formData.payload) <= 0) {
-        errors.push('Полезная нагрузка должна быть числом больше 0');
-      }
-
-      const wsmFields = ['range', 'payload', 'ecology', 'cost', 'reliability'];
-      wsmFields.forEach(field => {
-        if (!formData.wsmCoefficients[field] || formData.wsmCoefficients[field] < 0 || formData.wsmCoefficients[field] > 100) {
-          errors.push(`WSM-коэффициент "${field}" должен быть от 0 до 100`);
-        }
+  console.log("Отправка на сервер:", dataToSend);
+    const response = await apii.calculateFuel(dataToSend);
+    console.log("Ответ сервера:", response);
+    navigate("/results", {
+      state: { ...dataToSend, ...response },
       });
-
-      const paramFields = [
-        'freezingTemp', 'density', 'viscosity', 'combustionHeat', 'coolingResource',
-        'thermalConductivity', 'heatCapacity', 'inductionPeriod', 'burningRate', 'vaporPressure'
-      ];
-      paramFields.forEach(field => {
-        if (formData.limitingParameters[field].min === '' || formData.limitingParameters[field].max === '') {
-          errors.push(`Ограничивающие параметры для "${field}" должны содержать min и max`);
-        } else if (isNaN(parseFloat(formData.limitingParameters[field].min)) || isNaN(parseFloat(formData.limitingParameters[field].max))) {
-          errors.push(`Ограничивающие параметры для "${field}" должны быть числами`);
-        } else if (parseFloat(formData.limitingParameters[field].min) > parseFloat(formData.limitingParameters[field].max)) {
-          errors.push(`Минимальное значение "${field}" не может быть больше максимального`);
-        } else if (
-          !['freezingTemp', 'viscosity', 'thermalConductivity', 'vaporPressure'].includes(field) &&
-          (parseFloat(formData.limitingParameters[field].min) <= 0 || parseFloat(formData.limitingParameters[field].max) <= 0)
-        ) {
-          errors.push(`Ограничивающие параметры для "${field}" должны быть больше 0`);
-        }
-      });
-
-      if (errors.length > 0) {
-        throw new Error(`Ошибки в форме: ${errors.join('; ')}`);
-      }
-
-      // Prepare data for server
-      const dataToSend = {
-        vehicleType: formData.vehicleType,
-        engineType: formData.engineType,
-        aircraftMass: parseFloat(formData.aircraftMass),
-        fuelTankVolume: parseFloat(formData.fuelTankVolume),
-        payload: parseFloat(formData.payload),
-        wsmCoefficients: Object.keys(formData.wsmCoefficients).reduce((acc, key) => ({
-          ...acc,
-          [key]: parseFloat(formData.wsmCoefficients[key])
-        }), {}),
-        limitingParameters: Object.keys(formData.limitingParameters).reduce((acc, key) => ({
-          ...acc,
-          [key]: {
-            min: parseFloat(formData.limitingParameters[key].min),
-            max: parseFloat(formData.limitingParameters[key].max)
-          }
-        }), {})
-      };
-
-      console.log("Отправка на сервер:", JSON.stringify(dataToSend, null, 2));
-      const response = await api.calculateFuel(dataToSend);
-      console.log("Ответ сервера:", response);
-      navigate("/results", { state: response });
     } catch (error) {
       console.error("Ошибка API:", error);
-      alert(`Ошибка: ${error.message}`);
     }
+
+
   };
 
   return (
@@ -1354,7 +1311,7 @@ function App() {
                           <div className="data-conteiner__buttons">
                             <button
                               className={
-                                formData.vehicleType === 'airplane'
+                                formData.vehicleType === 1
                                   ? "data-conteiner__airplane--active"
                                   : "data-conteiner__airplane"
                               }
@@ -1363,7 +1320,7 @@ function App() {
                             ></button>
                             <button
                               className={
-                                formData.vehicleType === 'rocket'
+                                formData.vehicleType === 2
                                   ? "data-conteiner__rocket--active"
                                   : "data-conteiner__rocket"
                               }
@@ -1372,7 +1329,7 @@ function App() {
                             ></button>
                             <button
                               className={
-                                formData.vehicleType === 'helicopter'
+                                formData.vehicleType === 3
                                   ? "data-conteiner__helicopter--active"
                                   : "data-conteiner__helicopter"
                               }
@@ -1397,7 +1354,7 @@ function App() {
                         </div>
                       </div>
                       <div className="box-two-containers">
-                        {additionalFields.map((field) => (
+                        {additionalFields.slice(1).map((field) => (
                           <div className="data-conteiner" key={field.id}>
                             <div className="data-conteiner__img-name-container">
                               <div className="data-conteiner__img-conteiner">
@@ -1447,8 +1404,8 @@ function App() {
                           key={card.id}
                           id={card.id}
                           name={card.name}
-                          initialMinValue={formData.limitingParameters[card.id]?.min || card.initialMin}
-                          initialMaxValue={formData.limitingParameters[card.id]?.max || card.initialMax}
+                          initialMinValue={formData.limitingParameters[card.id]?.min || card.initialValue}
+                          initialMaxValue={formData.limitingParameters[card.id]?.max || card.initialValue}
                           unit={card.unit}
                           tooltip={card.tooltip}
                           iconClass={card.iconClass}
@@ -1479,13 +1436,29 @@ function App() {
 
 export default App;
 
-Файл: ./src/components/ChartsSection.jsx
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/components/ChartsSection.jsx
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-function ChartsSection({ graphData }) {
-  const viscosityData = graphData?.viscosity || [];
-  const heatCapacityData = graphData?.heatCapacity || [];
+const ChartsSection = () => {
+  const viscosityData = [
+    { temp: 230, sample1: 50, sample2: 45, sample3: 40, sample4: 35, sample5: 30, sample6: 25 },
+    { temp: 240, sample1: 42, sample2: 38, sample3: 34, sample4: 30, sample5: 26, sample6: 22 },
+    { temp: 250, sample1: 35, sample2: 32, sample3: 28, sample4: 25, sample5: 22, sample6: 19 },
+    { temp: 260, sample1: 28, sample2: 26, sample3: 22, sample4: 20, sample5: 18, sample6: 16 },
+    { temp: 270, sample1: 22, sample2: 20, sample3: 18, sample4: 16, sample5: 14, sample6: 13 },
+    { temp: 280, sample1: 16, sample2: 15, sample3: 14, sample4: 12, sample5: 11, sample6: 10 },
+    { temp: 290, sample1: 12, sample2: 11, sample3: 10, sample4: 9, sample5: 8, sample6: 7 },
+  ];
+
+  const heatCapacityData = [
+    { temp: 250, sample1: 1.5, sample2: 1.6, sample3: 1.7, sample4: 1.8, sample5: 1.9, sample6: 2.0 },
+    { temp: 300, sample1: 1.6, sample2: 1.7, sample3: 1.8, sample4: 1.9, sample5: 2.0, sample6: 2.1 },
+    { temp: 350, sample1: 1.7, sample2: 1.8, sample3: 1.9, sample4: 2.0, sample5: 2.1, sample6: 2.2 },
+    { temp: 400, sample1: 1.8, sample2: 1.9, sample3: 2.0, sample4: 2.1, sample5: 2.2, sample6: 2.3 },
+    { temp: 450, sample1: 1.9, sample2: 2.0, sample3: 2.1, sample4: 2.2, sample5: 2.3, sample6: 2.4 },
+    { temp: 500, sample1: 2.0, sample2: 2.1, sample3: 2.2, sample4: 2.3, sample5: 2.4, sample6: 2.5 },
+  ];
 
   return (
     <section className="charts-section py-8 bg-gray-100">
@@ -1495,85 +1468,186 @@ function ChartsSection({ graphData }) {
           <h2 className="res-content__name">Вязкость</h2>
           <LineChart width={500} height={300} data={viscosityData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="temp" label={{ value: 'Температура (°C)', position: 'insideBottomRight', offset: -10 }} />
-            <YAxis label={{ value: 'Вязкость (мПа·с)', angle: -90, position: 'insideLeft' }} />
+            <XAxis dataKey="temp" />
+            <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="sample1" stroke="#8884d8" activeDot={{ r: 8 }} name="JP-8" />
-            <Line type="monotone" dataKey="sample2" stroke="#82ca9d" activeDot={{ r: 8 }} name="Ethanol" />
-            <Line type="monotone" dataKey="sample3" stroke="#ff7300" activeDot={{ r: 8 }} name="TS-1" />
-            <Line type="monotone" dataKey="sample4" stroke="#ffbb78" activeDot={{ r: 8 }} name="OME1" />
-            <Line type="monotone" dataKey="sample5" stroke="#00c49f" activeDot={{ r: 8 }} name="Propanol" />
-            <Line type="monotone" dataKey="sample6" stroke="#d0ed57" activeDot={{ r: 8 }} name="Methanol" />
+            <Line type="monotone" dataKey="sample1" stroke="#8884d8" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample2" stroke="#82ca9d" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample3" stroke="#ff7300" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample4" stroke="#ffbb78" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample5" stroke="#00c49f" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample6" stroke="#d0ed57" activeDot={{ r: 8 }} />
           </LineChart>
         </div>
         <div className="graf-conteiner">
           <h2 className="res-content__name">Теплоемкость</h2>
           <LineChart width={500} height={300} data={heatCapacityData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="temp" label={{ value: 'Условная точка', position: 'insideBottomRight', offset: -10 }} />
-            <YAxis label={{ value: 'Теплоемкость (кДж/К)', angle: -90, position: 'insideLeft' }} />
+            <XAxis dataKey="temp" />
+            <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="sample1" stroke="#8884d8" activeDot={{ r: 8 }} name="JP-8" />
-            <Line type="monotone" dataKey="sample2" stroke="#82ca9d" activeDot={{ r: 8 }} name="Ethanol" />
-            <Line type="monotone" dataKey="sample3" stroke="#ff7300" activeDot={{ r: 8 }} name="TS-1" />
-            <Line type="monotone" dataKey="sample4" stroke="#ffbb78" activeDot={{ r: 8 }} name="OME1" />
-            <Line type="monotone" dataKey="sample5" stroke="#00c49f" activeDot={{ r: 8 }} name="Propanol" />
-            <Line type="monotone" dataKey="sample6" stroke="#d0ed57" activeDot={{ r: 8 }} name="Methanol" />
+            <Line type="monotone" dataKey="sample1" stroke="#8884d8" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample2" stroke="#82ca9d" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample3" stroke="#ff7300" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample4" stroke="#ffbb78" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample5" stroke="#00c49f" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sample6" stroke="#d0ed57" activeDot={{ r: 8 }} />
           </LineChart>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default ChartsSection;
 
-Файл: ./src/components/constants.js
-const cards = [
-  { id: 'range', name: 'Дальность полета', initialValue: 50, iconClass: 'data-conteiner__img-range' },
-  { id: 'payload', name: 'Полезная нагрузка', initialValue: 50, iconClass: 'data-conteiner__img-payload' },
-  { id: 'ecology', name: 'Экологичность', initialValue: 50, iconClass: 'data-conteiner__img-ecology' },
-  { id: 'cost', name: 'Стоимость владения', initialValue: 50, iconClass: 'data-conteiner__img-cost' },
-  { id: 'reliability', name: 'Надежность', initialValue: 50, iconClass: 'data-conteiner__img-reliability' }
-];
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/components/constants.js
+ // Данные для карточек
+  const cards = [
+    {
+      id: "range",
+      name: "Дальность полета",
+      initialValue: 49,
+      iconClass: "data-conteiner__img-range",
+    },
+    {
+      id: "payload",
+      name: "Полезная нагрузка",
+      initialValue: 73,
+      iconClass: "data-conteiner__img-payload",
+    },
+    {
+      id: "ecology",
+      name: "Экологичность",
+      initialValue: 65,
+      iconClass: "data-conteiner__img-ecology",
+    },
+    {
+      id: "cost",
+      name: "Стоимость владения",
+      initialValue: 55,
+      iconClass: "data-conteiner__img-cost",
+    },
+    {
+      id: "reliability",
+      name: "Надежность",
+      initialValue: 80,
+      iconClass: "data-conteiner__img-reliability",
+    },
+  ];
 
-const inputCards = [
-  { id: 'freezingTemp', name: 'Температура застывания', initialMin: -100, initialMax: -20, unit: '°C', iconClass: 'data-conteiner__img-freezing-temp', tooltip: 'Температура застывания топлива (°C)' },
-  { id: 'density', name: 'Плотность', initialMin: 600, initialMax: 1000, unit: 'кг/м³', iconClass: 'data-conteiner__img-density', tooltip: 'Плотность топлива (кг/м³)' },
-  { id: 'viscosity', name: 'Вязкость при -20°C', initialMin: 0.1, initialMax: 10, unit: 'мПа·с', iconClass: 'data-conteiner__img-viscosity', tooltip: 'Вязкость при -20°C (мПа·с)' },
-  { id: 'combustionHeat', name: 'Массовая теплота сгорания', initialMin: 15000, initialMax: 50000, unit: 'кДж/кг', iconClass: 'data-conteiner__img-combustion-heat', tooltip: 'Массовая теплота сгорания (кДж/кг)' },
-  { id: 'coolingResource', name: 'Хладоресурс', initialMin: 1000, initialMax: 3000, unit: 'кДж/кг', iconClass: 'data-conteiner__img-cooling-resource', tooltip: 'Хладоресурс (кДж/кг)' },
-  { id: 'thermalConductivity', name: 'Теплопроводность', initialMin: 0.05, initialMax: 0.3, unit: 'Вт/(м·К)', iconClass: 'data-conteiner__img-thermal-conductivity', tooltip: 'Теплопроводность (Вт/(м·К))' },
-  { id: 'heatCapacity', name: 'Теплоемкость', initialMin: 1000, initialMax: 5000, unit: 'Дж/К', iconClass: 'data-conteiner__img-heat-capacity', tooltip: 'Теплоемкость (Дж/К)' },
-  { id: 'inductionPeriod', name: 'Период индукции', initialMin: 200, initialMax: 800, unit: 'сек', iconClass: 'data-conteiner__img-induction-period', tooltip: 'Период индукции (сек)' },
-  { id: 'burningRate', name: 'Скорость горения', initialMin: 0.05, initialMax: 2, unit: 'м/с', iconClass: 'data-conteiner__img-burning-rate', tooltip: 'Скорость горения (м/с)' },
-  { id: 'vaporPressure', name: 'Давление насыщенных паров при 150°C', initialMin: 0.1, initialMax: 100, unit: 'кПа', iconClass: 'data-conteiner__img-vapor-pressure', tooltip: 'Давление насыщенных паров при 150°C (кПа)' }
+  const inputCards = [
+    {
+      id: "freezingTemp",
+      name: "Температура застывания",
+      unit: "°C",
+      iconClass: "data-conteiner__img-freezing-temp",
+    },
+    {
+      id: "density",
+      name: "Плотность",
+      unit: "кг/м³",
+      iconClass: "data-conteiner__img-density",
+    },
+    {
+      id: "viscosity",
+      name: "Вязкость при -20°C",
+      unit: "мПа·с",
+      iconClass: "data-conteiner__img-viscosity",
+    },
+    {
+      id: "combustionHeat",
+      name: "Массовая теплота сгорания",
+      unit: "кДж/кг",
+      iconClass: "data-conteiner__img-combustion-heat",
+    },
+    {
+      id: "coolingResource",
+      name: "Хладоресурс",
+      unit: "кДж/кг",
+      iconClass: "data-conteiner__img-cooling-resource",
+    },
+    {
+      id: "thermalConductivity",
+      name: "Теплопроводность",
+      unit: "Вт/(М*К)",
+      iconClass: "data-conteiner__img-thermal-conductivity",
+    },
+    {
+      id: "heatCapacity",
+      name: "Теплоемкость",
+      unit: "Дж/К",
+      iconClass: "data-conteiner__img-heat-capacity",
+    },
+    {
+      id: "inductionPeriod",
+      name: "Период индукции",
+      unit: "сек",
+      iconClass: "data-conteiner__img-induction-period",
+    },
+    {
+      id: "burningRate",
+      name: "Скорость горения",
+      unit: "м/с",
+      iconClass: "data-conteiner__img-burning-rate",
+    },
+    {
+      id: "vaporPressure",
+      name: "Давление насыщеных паров при 150°C",
+      unit: "кПа",
+      iconClass: "data-conteiner__img-vapor-pressure",
+    },
+  ];
+
+  const fuelComponents = [
+    { id: "component1", name: "Компонент 1", value: 44, unit: "%" },
+    { id: "component2", name: "Компонент 2", value: 20, unit: "%" },
+    { id: "component3", name: "Компонент 3", value: 15, unit: "%" },
+    { id: "component4", name: "Компонент 4", value: 10, unit: "%" },
+    { id: "component5", name: "Компонент 5", value: 8, unit: "%" },
+    { id: "component6", name: "Компонент 6", value: 3, unit: "%" },
+  ];
+
+  const fuelProperties = [
+  { id: "freezingTemp", name: "Температура застывания", value: -47, unit: "°C", iconClass: "data-conteiner__img-freezing-temp" },
+  { id: "density", name: "Плотность", value: 800, unit: "кг/м³", iconClass: "data-conteiner__img-density" },
+  { id: "viscosity", name: "Вязкость при -20°C", value: 8, unit: "мПа·с", iconClass: "data-conteiner__img-viscosity" },
+  { id: "combustionHeat", name: "Массовая теплота сгорания", value: 43100, unit: "кДж/кг", iconClass: "data-conteiner__img-combustion-heat" },
+  { id: "coolingResource", name: "Хладоресурс", value: 2100, unit: "кДж/кг", iconClass: "data-conteiner__img-cooling-resource" },
+  { id: "thermalConductivity", name: "Теплопроводность", value: 0.15, unit: "Вт/(М*К)", iconClass: "data-conteiner__img-thermal-conductivity" },
+  { id: "heatCapacity", name: "Теплоемкость", value: 2000, unit: "Дж/К", iconClass: "data-conteiner__img-heat-capacity" },
+  { id: "inductionPeriod", name: "Период индукции", value: 600, unit: "сек", iconClass: "data-conteiner__img-induction-period" },
+  { id: "burningRate", name: "Скорость горения", value: 0.2, unit: "м/с", iconClass: "data-conteiner__img-burning-rate" },
+  { id: "vaporPressure", name: "Давление насыщеных паров при 150°C", value: 10, unit: "кПа", iconClass: "data-conteiner__img-vapor-pressure" },
 ];
 
 const additionalFields = [
-  { id: 'aircraftMass', name: 'Масса летательного аппарата', unit: 'кг', iconClass: 'data-conteiner__img-aircraft-mass' },
-  { id: 'fuelTankVolume', name: 'Объем бака', unit: 'л', iconClass: 'data-conteiner__img-fuel-tank-volume' },
-  { id: 'payload', name: 'Полезная нагрузка', unit: 'кг', iconClass: 'data-conteiner__img-payload' }
+  { id: "engine", name: "Выбор двигателя", unit: "", iconClass: "data-conteiner__img-engine" },
+  { id: "aircraftMass", name: "Масса летательного аппарата", unit: "кг", iconClass: "data-conteiner__img-aircraft-mass" },
+  { id: "fuelTankVolume", name: "Объем бака", unit: "л", iconClass: "data-conteiner__img-fuel-tank-volume" },
+  { id: "payload", name: "Полезная нагрузка", unit: "кг", iconClass: "data-conteiner__img-payload" },
 ];
 
-export { cards, inputCards, additionalFields };
+export { cards, inputCards, fuelComponents, fuelProperties, additionalFields };
 
-Файл: ./src/components/CustomSelect.jsx
-// ./src/components/CustomSelect.jsx
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/components/CustomSelect.jsx
 import { useState } from "react";
+// import "./data-conteiner__select--engine.css";
 
 const CustomSelect = ({ formData, handleInputChange }) => {
   const [isOpen, setIsOpen] = useState(false);
+
   const options = [
     { value: "", label: "Выберите тип двигателя", disabled: true },
     { value: "gasturbine", label: "Газотурбинный" },
     { value: "turbojet", label: "Турбореактивный" },
     { value: "piston_gasoline", label: "Поршневой бензин" },
     { value: "piston_diesel", label: "Поршневой дизель" },
+    { value: "ramjet", label: "Прямоточный воздушно-реактивный" },
     { value: "liquid_rocket", label: "Жидкостный ракетный" },
-    { value: "solid_rocket", label: "Твердотопливный ракетный" }
+    { value: "solid_rocket", label: "Твердотопливный ракетный" },
   ];
 
   const handleSelect = (option) => {
@@ -1614,7 +1688,7 @@ const CustomSelect = ({ formData, handleInputChange }) => {
 
 export default CustomSelect;
 
-Файл: ./src/components/FuelComponent.jsx
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/components/FuelComponent.jsx
 import React from 'react';
 
 const FuelComponent = ({ name, value, unit, index }) => {
@@ -1628,212 +1702,7 @@ const FuelComponent = ({ name, value, unit, index }) => {
 
 export default FuelComponent;
 
-Файл: ./src/components/FuelForm.jsx
-import React, { useState } from 'react';
-import InputComponent from './InputComponent';
-import SliderComponent from './SliderComponent';
-import '../blocks/data-conteiner/data-conteiner.css';
-import '../blocks/data-conteiner/__two-inputs-container/data-conteiner__two-inputs-container.css';
-import '../blocks/calculate-button/calculate-button.css';
-
-function FuelForm({ onSubmit }) {
-  const [formData, setFormData] = useState({
-    vehicleType: '',
-    engineType: '',
-    aircraftMass: '',
-    fuelTankVolume: '',
-    payload: '',
-    wsmCoefficients: {
-      range: 50,
-      payload: 50,
-      ecology: 50,
-      cost: 50,
-      reliability: 50
-    },
-    limitingParameters: {
-      freezingTemp: { min: '', max: '' },
-      density: { min: '', max: '' },
-      viscosity: { min: '', max: '' },
-      combustionHeat: { min: '', max: '' },
-      coolingResource: { min: '', max: '' },
-      thermalConductivity: { min: '', max: '' },
-      heatCapacity: { min: '', max: '' },
-      inductionPeriod: { min: '', max: '' },
-      burningRate: { min: '', max: '' },
-      vaporPressure: { min: '', max: '' }
-    }
-  });
-
-  const handleInputChange = (id, value) => {
-    if (id.startsWith('wsm')) {
-      setFormData({
-        ...formData,
-        wsmCoefficients: { ...formData.wsmCoefficients, [id.replace('wsm', '').toLowerCase()]: Number(value) }
-      });
-    } else if (id.includes('Min') || id.includes('Max')) {
-      const [param, bound] = id.split(/(Min|Max)/);
-      const paramKey = param.charAt(0).toLowerCase() + param.slice(1);
-      setFormData({
-        ...formData,
-        limitingParameters: {
-          ...formData.limitingParameters,
-          [paramKey]: {
-            ...formData.limitingParameters[paramKey],
-            [bound.toLowerCase()]: value === '' ? '' : Number(value)
-          }
-        }
-      });
-    } else {
-      setFormData({ ...formData, [id]: value });
-    }
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(formData);
-  };
-
-  return (
-    <form onSubmit={handleFormSubmit} className="fuel-form">
-      <h1 className="section-content__name">Ввод данных</h1>
-      
-      <section className="section-content">
-        <h2>Характеристики летательного аппарата</h2>
-        <InputComponent
-          id="vehicleType"
-          name="Тип аппарата"
-          initialValue={formData.vehicleType}
-          onValueChange={handleInputChange}
-          type="select"
-          options={[
-            { value: 'airplane', label: 'Самолет' },
-            { value: 'helicopter', label: 'Вертолет' },
-            { value: 'rocket', label: 'Ракета' }
-          ]}
-        />
-        <InputComponent
-          id="engineType"
-          name="Тип двигателя"
-          initialValue={formData.engineType}
-          onValueChange={handleInputChange}
-          type="select"
-          options={[
-            { value: 'jet', label: 'Реактивный' },
-            { value: 'turboprop', label: 'Турбовинтовой' }
-          ]}
-        />
-        <InputComponent
-          id="aircraftMass"
-          name="Масса аппарата (кг)"
-          initialValue={formData.aircraftMass}
-          onValueChange={handleInputChange}
-          type="number"
-          placeholder="Введите массу"
-        />
-        <InputComponent
-          id="fuelTankVolume"
-          name="Объем бака (л)"
-          initialValue={formData.fuelTankVolume}
-          onValueChange={handleInputChange}
-          type="number"
-          placeholder="Введите объем"
-        />
-        <InputComponent
-          id="payload"
-          name="Полезная нагрузка (кг)"
-          initialValue={formData.payload}
-          onValueChange={handleInputChange}
-          type="number"
-          placeholder="Введите нагрузку"
-        />
-      </section>
-
-      <section className="section-content">
-        <h2>WSM коэффициенты</h2>
-        <SliderComponent
-          id="wsmRange"
-          name="Дальность полета"
-          initialValue={formData.wsmCoefficients.range}
-          onValueChange={handleInputChange}
-          iconClass="data-conteiner__img-range"
-        />
-        <SliderComponent
-          id="wsmPayload"
-          name="Полезная нагрузка"
-          initialValue={formData.wsmCoefficients.payload}
-          onValueChange={handleInputChange}
-          iconClass="data-conteiner__img-payload"
-        />
-        <SliderComponent
-          id="wsmEcology"
-          name="Экологичность"
-          initialValue={formData.wsmCoefficients.ecology}
-          onValueChange={handleInputChange}
-          iconClass="data-conteiner__img-ecology"
-        />
-        <SliderComponent
-          id="wsmCost"
-          name="Стоимость владения"
-          initialValue={formData.wsmCoefficients.cost}
-          onValueChange={handleInputChange}
-          iconClass="data-conteiner__img-cost"
-        />
-        <SliderComponent
-          id="wsmReliability"
-          name="Надежность"
-          initialValue={formData.wsmCoefficients.reliability}
-          onValueChange={handleInputChange}
-          iconClass="data-conteiner__img-reliability"
-        />
-      </section>
-
-      <section className="section-content">
-        <h2>Ограничивающие параметры</h2>
-        {[
-          { id: 'freezingTemp', name: 'Температура застывания (°C)', unit: '°C' },
-          { id: 'density', name: 'Плотность (кг/м³)', unit: 'кг/м³' },
-          { id: 'viscosity', name: 'Вязкость при -20°C (мПа·с)', unit: 'мПа·с' },
-          { id: 'combustionHeat', name: 'Массовая теплота сгорания (кДж/кг)', unit: 'кДж/кг' },
-          { id: 'coolingResource', name: 'Хладоресурс (кДж/кг)', unit: 'кДж/кг' },
-          { id: 'thermalConductivity', name: 'Теплопроводность (Вт/(м·К))', unit: 'Вт/(м·К)' },
-          { id: 'heatCapacity', name: 'Теплоемкость (Дж/К)', unit: 'Дж/К' },
-          { id: 'inductionPeriod', name: 'Период индукции (сек)', unit: 'сек' },
-          { id: 'burningRate', name: 'Скорость горения (м/с)', unit: 'м/с' },
-          { id: 'vaporPressure', name: 'Давление насыщенных паров при 150°C (кПа)', unit: 'кПа' }
-        ].map(param => (
-          <div key={param.id} className="data-conteiner__two-inputs-container">
-            <InputComponent
-              id={`${param.id}Min`}
-              name={`${param.name} (min)`}
-              initialValue={formData.limitingParameters[param.id].min}
-              onValueChange={handleInputChange}
-              type="number"
-              placeholder="Min"
-              iconClass={`data-conteiner__img-${param.id}`}
-            />
-            <InputComponent
-              id={`${param.id}Max`}
-              name={`${param.name} (max)`}
-              initialValue={formData.limitingParameters[param.id].max}
-              onValueChange={handleInputChange}
-              type="number"
-              placeholder="Max"
-              iconClass={`data-conteiner__img-${param.id}`}
-            />
-          </div>
-        ))}
-      </section>
-
-      <button type="submit" className="calculate-button">
-        Рассчитать
-      </button>
-    </form>
-  );
-}
-
-export default FuelForm;
-
-Файл: ./src/components/FuelPropertyComponent.jsx
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/components/FuelPropertyComponent.jsx
 import React from 'react';
 
 const FuelPropertyComponent = ({ name, value, unit, iconClass }) => {
@@ -1852,7 +1721,7 @@ const FuelPropertyComponent = ({ name, value, unit, iconClass }) => {
 
 export default FuelPropertyComponent;
 
-Файл: ./src/components/Header.jsx
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/components/Header.jsx
 import React from "react";
 import { useLocation } from "react-router-dom";
 
@@ -1873,260 +1742,247 @@ function Header() {
 
 export default Header;
 
-Файл: ./src/components/InputComponent.jsx
-// ./src/components/InputComponent.jsx
-import React, { useState } from "react";
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/components/InputComponent.jsx
+import React, { useState, useEffect } from 'react';
 
-function InputComponent({
-  id,
-  name,
-  unit,
-  initialMinValue,
-  initialMaxValue,
-  iconClass,
-  tooltip,
-  step,
-  onValueChange,
-}) {
-  const [minValue, setMinValue] = useState(initialMinValue || "");
-  const [maxValue, setMaxValue] = useState(initialMaxValue || "");
+const InputComponent = ({ id, name, initialMinValue, initialMaxValue, unit, tooltip, iconClass, step, onValueChange }) => {
+  const [minValue, setMinValue] = useState(initialMinValue || '');
+  const [maxValue, setMaxValue] = useState(initialMaxValue || '');
 
   const handleMinChange = (e) => {
     const newValue = e.target.value;
     setMinValue(newValue);
-    onValueChange(id, newValue, maxValue);
+    onValueChange(id, { min: newValue, max: maxValue });
   };
 
   const handleMaxChange = (e) => {
     const newValue = e.target.value;
     setMaxValue(newValue);
-    onValueChange(id, minValue, newValue);
+    onValueChange(id, { min: minValue, max: newValue });
   };
 
-  const inputStep = step || (
-    id === "freezingTemp" ? "any" : (
-      ["viscosity", "thermalConductivity", "vaporPressure", "burningRate"].includes(id) ? 0.01 : 1
-    )
-  );
+  useEffect(() => {
+    // Example: Send data to server
+    // fetch('/api/update', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ id, minValue, maxValue }),
+    //   headers: { 'Content-Type': 'application/json' },
+    // });
+  }, [minValue, maxValue, id]);
 
-  // Set minimum value: only freezingTemp can be negative
-  const inputMin = id === "freezingTemp" ? -273.15 : 0;
-
-  console.log(`InputComponent ${id}: step=${inputStep}, unit=${unit}, min=${inputMin}`);
+  // Определяем шаг для инпутов: используем prop step, если он есть, иначе проверяем unit
+  const inputStep = step || (unit && (unit.includes('Вт') || unit.includes('м/с')) ? 0.01 : 1);
 
   return (
     <div className="data-conteiner">
       <div className="data-conteiner__img-name-container">
         <div className="data-conteiner__img-conteiner">
-          <div className={iconClass || "data-conteiner__img-default"}></div>
+          <div className={iconClass || 'data-conteiner__img-default'}></div>
         </div>
-        <h2 className="data-conteiner__name">{name}{unit ? `, ${unit}` : ""}</h2>
+        <h2 className="data-conteiner__name">{name}{unit ? `, ${unit}` : ''}</h2>
       </div>
       <div className="data-conteiner__two-inputs-container">
-        <div className="data-conteiner__input-field" {...(tooltip ? { "data-tooltip": tooltip } : {})}>
+        <div className="data-conteiner__input-field" {...(tooltip ? { 'data-tooltip': tooltip } : {})}>
           <input
             type="number"
             className="data-conteiner__input"
             value={minValue}
             onChange={handleMinChange}
             step={inputStep}
-            min={inputMin}
+            min={0}
             placeholder="Min"
           />
         </div>
-        <div className="data-conteiner__input-field" {...(tooltip ? { "data-tooltip": tooltip } : {})}>
+        <div className="data-conteiner__input-field" {...(tooltip ? { 'data-tooltip': tooltip } : {})}>
           <input
             type="number"
             className="data-conteiner__input"
             value={maxValue}
             onChange={handleMaxChange}
             step={inputStep}
-            min={inputMin}
+            min={0}
             placeholder="Max"
           />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default InputComponent;
 
-Файл: ./src/components/ResultsPage.jsx
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/components/Main.jsx
+// import React from "react";
+import React, { useState, useEffect } from "react";
+import { useContext } from "react";
+import {
+  Route,
+  Switch,
+  useHistory,
+} from "react-router-dom";
+
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { Card } from "./Card";
+
+export function Main({
+  onEditProfile,
+  onAddPlace,
+  onEditAvatar,
+  onCardClick,
+  cards,
+  onCardLike,
+  onCardDelete,
+  onClick
+}) {
+  const currentUser = useContext(CurrentUserContext);
+  const section = () => {
+    if (cards.length > 0) {
+      return cards.map((card) => (
+        <Card
+          card={card}
+          onCardClick={onCardClick}
+          onCardLike={onCardLike}
+          onDeleteClick={onCardDelete}
+          key={`${card._id}`}
+        />
+      ));
+    }
+  };
+
+  return (
+    <main className="content">
+      <section className="profile">
+        <div className="profile__image-wraper">
+          <img
+            className="profile__image"
+            src={currentUser?.avatar}
+            alt="Изображение профиля"
+          />
+          <button
+            className="profile__black-box"
+            type="button"
+            onClick={onEditAvatar}
+          ></button>
+        </div>
+        <div className="profile__info">
+          <h1 className="profile__name">{currentUser?.name}</h1>
+          <button
+            className="profile__edit"
+            type="button"
+            onClick={onEditProfile}
+          ></button>
+          <p className="profile__job">{currentUser?.about}</p>
+        </div>
+        <button
+          className="profile__add"
+          type="button"
+          onClick={onAddPlace}
+        ></button>
+      </section>
+
+      <section className="elements">{section()}</section>
+    </main>
+  );
+}
+export default Main;
+
+
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/components/ResultsPage.jsx
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FuelComponent from "./FuelComponent";
 import FuelPropertyComponent from "./FuelPropertyComponent";
 import ChartsSection from "./ChartsSection";
 import arrow from "./images/arrow.svg";
-
-// Конфигурация свойств топлива с русскими названиями и единицами измерения
-const fuelPropertiesConfig = [
-  { id: "freezingTemp", name: "Температура замерзания", unit: "°C", iconClass: "data-conteiner__img-freezing-temp" },
-  { id: "density", name: "Плотность", unit: "кг/м³", iconClass: "data-conteiner__img-density" },
-  { id: "viscosity", name: "Вязкость", unit: "мПа·с", iconClass: "data-conteiner__img-viscosity" },
-  { id: "combustionHeat", name: "Теплота сгорания", unit: "кДж/кг", iconClass: "data-conteiner__img-combustion-heat" },
-  { id: "coolingResource", name: "Охлаждающая способность", unit: "кДж/кг", iconClass: "data-conteiner__img-cooling-resource" },
-  { id: "thermalConductivity", name: "Теплопроводность", unit: "Вт/(м·К)", iconClass: "data-conteiner__img-thermal-conductivity" },
-  { id: "heatCapacity", name: "Теплоёмкость", unit: "Дж/К", iconClass: "data-conteiner__img-heat-capacity" },
-  { id: "inductionPeriod", name: "Период индукции", unit: "сек", iconClass: "data-conteiner__img-induction-period" },
-  { id: "burningRate", name: "Скорость горения", unit: "м/с", iconClass: "data-conteiner__img-burning-rate" },
-  { id: "vaporPressure", name: "Давление паров", unit: "кПа", iconClass: "data-conteiner__img-vapor-pressure" }
-];
-
-// Конфигурация для перевода названий компонентов топлива на русский
-const fuelComponentsTranslation = {
-  Methanol: "Метанол",
-  Ethanol: "Этанол",
-  Propanol: "Пропанол",
-  Butanol: "Бутанол",
-  Pentanol: "Пентанол",
-  Isopropanol: "Изопропанол",
-  Isobutanol: "Изобутанол",
-  Neftas: "Нефтяной растворитель",
-  Kerosene: "Керосин",
-  "TS-1": "ТС-1",
-  RT: "РТ",
-  OME1: "ОМЕ-1",
-  OME2: "ОМЕ-2",
-  OME3: "ОМЕ-3",
-  OME4: "ОМЕ-4",
-  OME5: "ОМЕ-5",
-  OME6: "ОМЕ-6",
-  Pentane: "Пентан",
-  Hexane: "Гексан",
-  Heptane: "Гептан",
-  Octane: "Октан",
-  Nonane: "Нонан",
-  Decane: "Декан",
-  Undecane: "Ундекан",
-  Biodiesel: "Биодизель"
-};
+import { fuelComponents, fuelProperties } from "./constants";
 
 function ResultsPage() {
   const navigate = useNavigate();
-  const { state } = useLocation();
-
-  // Форматирование свойств топлива
-  const fuelProperties = fuelPropertiesConfig.map(property => ({
-    ...property,
-    value: state?.properties?.[property.id] ? Number(state.properties[property.id]).toFixed(2) : "N/A"
-  }));
-
-  // Форматирование состава топлива с переводом на русский
-  const fuelMixture = state?.mixture?.map(component => ({
-    ...component,
-    name: fuelComponentsTranslation[component.name] || component.name, // Переводим на русский
-    proportion: (component.proportion * 100).toFixed(2) // Форматируем до 2 знаков
-  })) || [];
-
-  // Форматирование результатов расчёта
-  const formattedFuelEfficiency = state?.fuelEfficiency ? (Number(state.fuelEfficiency) * 100).toFixed(2) : "N/A";
-  const formattedMaxRange = state?.maxRange ? Number(state.maxRange).toFixed(2) : "N/A";
-  const formattedCost = state?.cost ? Number(state.cost).toFixed(2) : "N/A";
+  const location = useLocation();
+  const { state } = location;
 
   const handleRecalculate = () => {
     navigate("/");
   };
 
   return (
-    <div className="whole-page">
-      <div className="page">
-        <main className="main-content">
-          {state ? (
-            <>
-              <section className="section-content">
-                <h1 className="section-content__name">Состав топлива</h1>
-                <div className="cards-container cards-container--two-in-a-row">
-                  {fuelMixture.map((component, index) => (
-                    <FuelComponent
-                      key={index}
-                      name={component.name}
-                      value={component.proportion}
-                      unit="%"
-                      index={index}
-                    />
-                  ))}
-                </div>
-              </section>
+    <main className="main-content">
+      {state && (
+        <>
+          <section className="section-content">
+            <h1 className="section-content__name">Состав топлива</h1>
+            <div className="cards-container cards-container--two-in-a-row">
+              {fuelComponents.map((component, index) => (
+                <FuelComponent
+                  key={component.id}
+                  name={component.name}
+                  value={component.value}
+                  unit={component.unit}
+                  index={index}
+                />
+              ))}
+            </div>
+          </section>
 
-              <section className="section-content">
-                <h1 className="section-content__name">Характеристики топлива</h1>
-                <div className="cards-container cards-container--two-in-a-row">
-                  {fuelProperties.map((property) => (
-                    <FuelPropertyComponent
-                      key={property.id}
-                      name={property.name}
-                      value={property.value}
-                      unit={property.unit}
-                      iconClass={property.iconClass}
-                    />
-                  ))}
-                </div>
-              </section>
+          <section className="section-content">
+            <h1 className="section-content__name">Характеристики топлива</h1>
+            <div className="cards-container cards-container--two-in-a-row">
+              {fuelProperties.map((property) => (
+                <FuelPropertyComponent
+                  key={property.id}
+                  name={property.name}
+                  value={property.value}
+                  unit={property.unit}
+                  iconClass={property.iconClass}
+                />
+              ))}
+            </div>
+          </section>
 
-              <section className="section-content">
-                <h1 className="section-content__name">Результаты расчета</h1>
-                <div className="cards-container">
-                  <div className="data-conteiner">
-                    <div className="data-conteiner__img-name-container">
-                      <div className="data-conteiner__img-conteiner">
-                        <div className="data-conteiner__img-efficiency"></div>
-                      </div>
-                      <h2 className="data-conteiner__name">КПД топлива</h2>
-                    </div>
-                    <p className="data-conteiner__val">{formattedFuelEfficiency} %</p>
-                  </div>
-                  <div className="data-conteiner">
-                    <div className="data-conteiner__img-name-container">
-                      <div className="data-conteiner__img-conteiner">
-                        <div className="data-conteiner__img-range"></div>
-                      </div>
-                      <h2 className="data-conteiner__name">Дальность полёта</h2>
-                    </div>
-                    <p className="data-conteiner__val">{formattedMaxRange} км</p>
-                  </div>
-                  <div className="data-conteiner">
-                    <div className="data-conteiner__img-name-container">
-                      <div className="data-conteiner__img-conteiner">
-                        <div className="data-conteiner__img-cost"></div>
-                      </div>
-                      <h2 className="data-conteiner__name">Стоимость</h2>
-                    </div>
-                    <p className="data-conteiner__val">{formattedCost} руб</p>
-                  </div>
-                </div>
-              </section>
+          <section className="section-content">
+            <h1 className="section-content__name">Результаты расчета</h1>
+            <div className="cards-container">
+              <div className="data-conteiner">
+                <h2 className="data-conteiner__name">КПД топлива</h2>
+                <p>{state.fuelEfficiency} %</p>
+              </div>
+              <div className="data-conteiner">
+                <h2 className="data-conteiner__name">Дальность полёта</h2>
+                <p>{state.maxRange} км</p>
+              </div>
+              <div className="data-conteiner">
+                <h2 className="data-conteiner__name">Стоимость</h2>
+                <p>{state.cost} руб</p>
+              </div>
+            </div>
+          </section>
 
-              <ChartsSection graphData={state.graphData} />
-            </>
-          ) : (
-            <p>Данные не найдены. Пожалуйста, выполните расчёт заново.</p>
-          )}
+          <ChartsSection />
+        </>
+      )}
 
-          <button
-            className="calculate-button"
-            type="button"
-            onClick={handleRecalculate}
-          >
-            Рассчитать еще{" "}
-            <img
-              src={arrow}
-              className="calculate-button__arrow"
-              alt="Пересчитать"
-            />
-          </button>
+      <button
+        className="calculate-button"
+        type="button"
+        onClick={handleRecalculate}
+      >
+        Рассчитать еще{" "}
+        <img
+          src={arrow}
+          className="calculate-button__arrow"
+          alt="BigCo Inc. logo"
+        />
+      </button>
 
-          <footer className="footer">2025. Все права защищены</footer>
-        </main>
-      </div>
-    </div>
+      <footer className="footer">2025. Все права защищены</footer>
+    </main>
   );
 }
 
 export default ResultsPage;
 
-Файл: ./src/components/SliderComponent.jsx
+
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/components/SliderComponent.jsx
 import React, { useState, useEffect } from "react";
 
 const SliderComponent = ({
@@ -2178,7 +2034,7 @@ const SliderComponent = ({
 export default SliderComponent;
 
 
-Файл: ./src/index.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/index.css
 @import url(./blocks/airplane-engine/airplane-engine.css);
 @import url(./blocks/airplane-engine/__image/airplane-engine__image.css);
 @import url(./blocks/box-two-containers/box-two-containers.css);
@@ -2282,7 +2138,7 @@ export default SliderComponent;
 }
 
 
-Файл: ./src/index.js
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -2305,7 +2161,7 @@ root.render(
 reportWebVitals();
 
 
-Файл: ./src/reportWebVitals.js
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/reportWebVitals.js
 const reportWebVitals = onPerfEntry => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
@@ -2321,7 +2177,7 @@ const reportWebVitals = onPerfEntry => {
 export default reportWebVitals;
 
 
-Файл: ./src/setupTests.js
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/setupTests.js
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
@@ -2329,7 +2185,7 @@ export default reportWebVitals;
 import '@testing-library/jest-dom';
 
 
-Файл: ./src/vendor/fonts.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/vendor/fonts.css
 @font-face {
   font-family: 'MADE';
   font-style:  normal;
@@ -2385,7 +2241,7 @@ import '@testing-library/jest-dom';
 }
 
 
-Файл: ./src/vendor/normalize.css
+Файл: /c/Users/admin/dev/fuel-to-do-react/src/vendor/normalize.css
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document

@@ -11,6 +11,8 @@
 # production
 /build
 
+/ml_component/venv/
+
 # misc
 .DS_Store
 .env.local
