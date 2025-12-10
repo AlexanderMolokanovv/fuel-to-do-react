@@ -9,23 +9,16 @@ This is an educational version of a web application designed for students of Har
 
 ## How to Cite
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 If you use this software in your research, please cite it as:
 
-Molokanov, A. A., Zhou, WX, Kuzmin, M. V. (2025). Neural Network Design of Fuel Compositions (Version v1.0). GitHub Repository. Available at: https://github.com/AlexanderMolokanovv/fuel-to-do-react.
+Molokanov, A. A., Zhou, W. X., Kuzmin, M. V., Averkov, I. S., Raznoschikov, V. V., Yanovskiy, L. S., Li, W., Wang, X. M., Zhang, M., Chen, H. (2025). Neural Network Design of Fuel Compositions (Version v1.0). GitHub Repository. Available at: https://github.com/AlexanderMolokanovv/fuel-to-do-react.
 
 We also encourage acknowledging the funding source where appropriate:
 
-Funding acknowledgment: This work was supported by the National Key R&D Program of China under Grant No. 2022YFE0204100, conducted at the Harbin Institute of Technology.
-
-如果您在研究中使用此软件，请按以下方式引用：
-
-Molokanov, A. A., Zhou, WX, Kuzmin, M. V. (2025). Neural Network Design of Fuel Compositions（版本 v1.0）。GitHub 存储库。访问地址：https://github.com/AlexanderMolokanovv/fuel-to-do-react。
+Funding acknowledgment: This research was funded by the National Key R&D Program of China (No. 2022YFE0204100), conducted by Harbin Institute of Technology, and within the framework of the state assignment No. 124020100045-5 of the Ministry of Science and Higher Education of the Russian Federation (Federal Research Center of Problems of Chemical Physics and Medicinal Chemistry RAS).
 
 我们鼓励在适当情况下声明资助来源：
-
-资助声明：本研究得到中国国家重点研发计划（2022YFE0204100号）资助，由哈尔滨工业大学开展。
+资助声明：本研究得到中国国家重点研发计划（2022YFE0204100号）资助，由哈尔滨工业大学开展，并在俄罗斯联邦科学与高等教育部国家任务框架下进行（编号124020100045-5，俄罗斯科学院化学物理与药物化学问题联邦研究中心）。
 
 ## Table of Contents
 
