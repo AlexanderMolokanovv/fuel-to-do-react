@@ -11,7 +11,7 @@ This is an educational version of a web application designed for students of Har
 
 If you use this software in your research, please cite it as:
 
-Molokanov, A. A., Zhou, W. X., Kuzmin, M. V., Averkov, I. S., Raznoschikov, V. V., Yanovskiy, L. S., Li, W., Wang, X. M., Zhang, M., Chen, H. (2025). Neural Network Design of Fuel Compositions (Version v1.0). GitHub Repository. Available at: https://github.com/AlexanderMolokanovv/fuel-to-do-react.
+Molokanov, A. A., Zhou, W. X., Kuzmin, M. V., Averkov, I. S., Raznoschikov, V. V., Yanovskiy, L. S., Lou, I., Ai, Q.L., Li, W., Wang, X. M. (2025). Neural Network Design of Fuel Compositions (Version v1.0). GitHub Repository. Available at: https://github.com/AlexanderMolokanovv/fuel-to-do-react.
 
 We also encourage acknowledging the funding source where appropriate:
 
