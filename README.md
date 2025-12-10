@@ -9,6 +9,8 @@ This is an educational version of a web application designed for students of Har
 
 ## How to Cite
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 If you use this software in your research, please cite it as:
 
 Molokanov, A. A., Zhou, WX, Kuzmin, M. V. (2025). Neural Network Design of Fuel Compositions (Version v1.0). GitHub Repository. Available at: https://github.com/AlexanderMolokanovv/fuel-to-do-react.
